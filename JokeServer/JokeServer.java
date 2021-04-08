@@ -1,38 +1,41 @@
-import java.io.IOException;
-import java.net.*;
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class JokeServer{
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         int port;
-        Socket skt;
         
         int max_q_size = 6;
-     
+        
         if(args.length == 0){
             port = 50000; // default port will be 50000
         }
         else{
             port = 50000;
         }
-
-
-        ServerSocket server_skt = new ServerSocket(port,max_q_size);
-
-
+        
+        
+        System.out.println("Starting Akshay Patel's JokeServer at port: " + port);
+        
         //create new thread that hosts the admin server
         //admin server and main server have to communicate the mode.
         //mode will have to be a saved state in the main server
         //TODO:: admin server here
+        new JokeServerAdmin().run();
         
 
 
+        Socket skt;
+        ServerSocket server_skt = new ServerSocket(port,max_q_size);
+        
         //main server loop
         while(true){
             //this is the method that will check the server socket queue to see if any items have been recieved
             skt = server_skt.accept();
-            new Worker(skt).start();
+            //new Worker(skt).start();
         }
 
     }
@@ -45,38 +48,38 @@ class JokeServerAdmin implements Runnable{
     public static String mode;
     private int port;
 
-    public JokeClientAdmin(){
-        port = 50001;
+    JokeServerAdmin(){
+        this.port = 50001;
     }
-    public JokeClientAdmin(int p){
-        port = p;
+    JokeServerAdmin(int p){
+        this.port = p;
     }
 
-    public void run(){
-        Socket skt;
+    public void run() {
         BufferedReader in;
         String command;
         
         int max_q_size = 6;
-
         
+        
+        Socket skt;
+        ServerSocket server_skt;
         try{
-            ServerSocket server_skt = new ServerSocket(port,max_q_size);
+            server_skt = new ServerSocket(port,max_q_size);
+
+            //main loop 
+            while(true){
+                //blocking call
+                skt = server_skt.accept();
+    
+                //since the socket will block until it recieves data, we can add our logic in the loop itself.
+                in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+                command = in.readLine();
+                read_command(command);
+            }
         }
         catch(IOException e){
             System.out.println(e);
-        }
-
-        
-        //main loop 
-        while(true){
-            //blocking call
-            skt = server_skt.accept();
-
-            //since the socket will block until it recieves data, we can add our logic in the loop itself.
-            in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
-            command = in.readLine();
-            read_command(command);
         }
 
     }
