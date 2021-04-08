@@ -13,14 +13,14 @@ class JokeClientAdmin{
         serverName = "localhost";
 
 
-        System.out.println("Akshay Patel's Inet Client");
+        System.out.println("Akshay Patel's JokeServer Admin Client");
         System.out.println("Using server: " + serverName + ", Port: " + String.valueOf(port));
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-
+        
+        String command;
         try {
-            String command;
             while(true) {
                 System.out.print("Enter a command: ");
                 System.out.flush ();
