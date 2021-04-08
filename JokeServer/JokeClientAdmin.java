@@ -22,7 +22,7 @@ class JokeClientAdmin{
         try {
             String command;
             while(true) {
-                System.out.print("Enter a command");
+                System.out.print("Enter a command: ");
                 System.out.flush ();
                 command = in.readLine ();
                 send_command(command,serverName,port);
