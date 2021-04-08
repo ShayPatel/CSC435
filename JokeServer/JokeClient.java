@@ -19,13 +19,13 @@ public class JokeClient {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         
-        String command;
+        String text;
         try {
             while(true) {
-                System.out.print("Enter a command: ");
+                System.out.print("Enter a line: ");
                 System.out.flush ();
                 command = in.readLine ();
-                send_command(command,serverName,port);
+                send_text(text,serverName,port);
             }
         }
         catch (IOException x){
@@ -33,7 +33,7 @@ public class JokeClient {
         }
     }
 
-    public static void send_command(String command, String serverName, int port){
+    public static void send_text(String text, String serverName, int port){
         Socket skt;
         //BufferedReader fromServer;
         PrintStream toServer;
@@ -47,7 +47,7 @@ public class JokeClient {
             toServer = new PrintStream(skt.getOutputStream());
 
             //sending the command
-            toServer.println(command); toServer.flush();
+            toServer.println(text); toServer.flush();
 
             skt.close();
         }
