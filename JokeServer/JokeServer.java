@@ -32,15 +32,12 @@ public class JokeServer{
         ServerSocket server_skt = new ServerSocket(port,max_q_size);
         
         String command;
+        BufferedReader in;
         //main server loop
         while(true){
             //this is the method that will check the server socket queue to see if any items have been recieved
             skt = server_skt.accept();
-            in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
-            command = in.readLine();
-            if(command == "check"){
-                System.out.println(JokeServerAdmin.mode);
-            }
+            new Worker(s);
         }
 
     }
@@ -69,6 +66,7 @@ class JokeServerAdmin implements Runnable{
         
         Socket skt;
         ServerSocket server_skt;
+        System.out.println("Starting Akshay Patel's JokeServer admin server at port: " + port);
         try{
             server_skt = new ServerSocket(port,max_q_size);
 
@@ -91,11 +89,11 @@ class JokeServerAdmin implements Runnable{
 
 
     private void read_command(String command){
-        if(command.toLowerCase() == "j" || command.toLowerCase() == "joke"){
+        if(command.toLowerCase().equals("j") || command.toLowerCase().equals("joke")){
             mode = "j";
             System.out.println("Changing mode to joke");
         }
-        else if(command.toLowerCase() == "p" || command.toLowerCase() == "proverb"){
+        else if(command.toLowerCase().equals("p") || command.toLowerCase().equals("proverb")){
             mode = "p";
             System.out.println("Changing mode to proverb");
         }
