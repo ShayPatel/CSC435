@@ -35,7 +35,7 @@ public class JokeClient {
 
     public static void send_text(String text, String serverName, int port){
         Socket skt;
-        //BufferedReader fromServer;
+        BufferedReader fromServer;
         PrintStream toServer;
 
 
@@ -45,9 +45,13 @@ public class JokeClient {
             
             //Create the output stream to send to the server
             toServer = new PrintStream(skt.getOutputStream());
+            //create the input stream to recieve the data from the server
+            fromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
 
             //sending the command
             toServer.println(text); toServer.flush();
+
+            System.out.println(fromServer.readLine());
 
             skt.close();
         }

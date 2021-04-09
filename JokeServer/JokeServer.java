@@ -1,6 +1,8 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 public class JokeServer{
 
@@ -48,7 +50,7 @@ public class JokeServer{
 class JokeServerAdmin extends Thread{
     //store the mode as a static string so it can be accessed outside of the class
     //keep static so there is 1 global state
-    public static String mode;
+    public static String mode = "J";
     private int port;
 
     JokeServerAdmin(){
@@ -91,11 +93,12 @@ class JokeServerAdmin extends Thread{
 
     private void read_command(String command){
         if(command.toLowerCase().equals("j") || command.toLowerCase().equals("joke")){
-            mode = "j";
+            mode = "J";
         }
         else if(command.toLowerCase().equals("p") || command.toLowerCase().equals("proverb")){
-            mode = "p";
+            mode = "P";
         }
     }
 
 }
+
