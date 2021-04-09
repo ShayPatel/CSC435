@@ -24,7 +24,7 @@ public class JokeClient {
             while(true) {
                 System.out.print("Enter a line: ");
                 System.out.flush ();
-                command = in.readLine ();
+                text = in.readLine ();
                 send_text(text,serverName,port);
             }
         }
