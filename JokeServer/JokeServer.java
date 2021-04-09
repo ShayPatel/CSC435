@@ -18,26 +18,25 @@ public class JokeServer{
         }
         
         
-        System.out.println("Starting Akshay Patel's JokeServer at port: " + port);
         
         //create new thread that hosts the admin server
         //admin server and main server have to communicate the mode.
         //mode will have to be a saved state in the main server
-        //TODO:: admin server here
-        new JokeServerAdmin().run();
+        new JokeServerAdmin().start();
         
-
-
+        
         Socket skt;
         ServerSocket server_skt = new ServerSocket(port,max_q_size);
+        System.out.println("Starting Akshay Patel's JokeServer at port: " + port);
         
-        String command;
-        BufferedReader in;
+
         //main server loop
         while(true){
             //this is the method that will check the server socket queue to see if any items have been recieved
             skt = server_skt.accept();
-            new Worker(s);
+
+            //have to add the mode from the admin server static variable and pass to thread
+            new Worker(skt,JokeServerAdmin.mode).start();
         }
 
     }
@@ -45,8 +44,10 @@ public class JokeServer{
 }
 
 
-class JokeServerAdmin implements Runnable{
+//have to extend thread. If using runnable, then the server socket on main server is blocked
+class JokeServerAdmin extends Thread{
     //store the mode as a static string so it can be accessed outside of the class
+    //keep static so there is 1 global state
     public static String mode;
     private int port;
 
@@ -91,11 +92,9 @@ class JokeServerAdmin implements Runnable{
     private void read_command(String command){
         if(command.toLowerCase().equals("j") || command.toLowerCase().equals("joke")){
             mode = "j";
-            System.out.println("Changing mode to joke");
         }
         else if(command.toLowerCase().equals("p") || command.toLowerCase().equals("proverb")){
             mode = "p";
-            System.out.println("Changing mode to proverb");
         }
     }
 
