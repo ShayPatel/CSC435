@@ -83,15 +83,30 @@ class Worker extends Thread{
 
     }
 
-    void output_function(String command, PrintStream out) {
+    void output_function(String message, PrintStream out) {
         try{
             int num;
             String output;
 
-            num = Integer.parseInt(command);
-            output = Responses.get_response(num, status);
+            //test to get response output by number
+            //num = Integer.parseInt(message);
+            //output = Responses.get_response(num, status);
 
-            output = status + Responses.state_mapping[num%4] +  ": " + output;
+            //if joke mode, use index 0 of message for client joke state
+            if(status.equals("J")){
+                num = Character.getNumericValue(message.charAt(0));
+            }
+            //proverb mode, use index 1 of message for client proverb state
+            else{
+                num = Character.getNumericValue(message.charAt(1));
+            }
+
+            //extract the username from the message
+            String username;
+            username = message.substring(3);
+
+            output = Responses.get_response(num, status);
+            output = status + Responses.state_mapping[num%4] + " " + username + ": " + output;
             out.println(output);
         }
         catch(NumberFormatException e){
