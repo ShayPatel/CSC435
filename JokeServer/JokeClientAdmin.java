@@ -12,11 +12,11 @@ class JokeClientAdmin{
         
         if(args.length == 0){
             //testing on the default port I assigned to the admin server
-            port = 50000;
+            port = 5050;
             serverName = "localhost";
         }
         else if(args.length == 1){
-            port = 50000;
+            port = 5050;
             serverName = args[0];
         }
         else{

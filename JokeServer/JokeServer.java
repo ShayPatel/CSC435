@@ -26,7 +26,7 @@ public class JokeServer{
             catch(NumberFormatException e){
                 port = 4546;
             }
-            admin_port = 50000;
+            admin_port = 5050;
         }
         //2 args or more
         //read only the first 2
@@ -77,7 +77,7 @@ class JokeServerAdmin extends Thread{
     private int port;
 
     JokeServerAdmin(){
-        this.port = 50000; //default port for the admin server
+        this.port = 5050; //default port for the admin server
     }
     JokeServerAdmin(int p){
         this.port = p;
