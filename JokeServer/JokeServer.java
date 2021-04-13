@@ -15,7 +15,7 @@ public class JokeServer{
         
         if(args.length == 0){
             port = 4545; // default port will be 4545
-            admin_port = 50000; //default admin port is 50000
+            admin_port = 5050; //default admin port is 50000
         }
         //if 1 arg
         //this will only change the server port. if not number, then uses secondary
@@ -136,6 +136,9 @@ class JokeServerAdmin extends Thread{
                 System.out.println("Current mode: J");
                 mode = "J";
             }
+        }
+        else{
+            System.out.println(command);
         }
     }
 
