@@ -41,6 +41,12 @@ class JokeClientAdmin{
                 System.out.print("Enter a command: ");
                 System.out.flush ();
                 command = in.readLine ();
+
+                if(command.toLowerCase().equals("quit")){
+                    System.out.println("Exiting client");
+                    return;
+                }
+
                 send_command(command,serverName,port);
             }
         }
