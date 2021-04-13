@@ -18,16 +18,27 @@ public class JokeServer{
             admin_port = 50000; //default admin port is 50000
         }
         //if 1 arg
-        //this will only change the server port
+        //this will only change the server port. if not number, then uses secondary
         else if(args.length == 1){
-            port = Integer.parseInt(args[0]);
+            try{
+                port = Integer.parseInt(args[0]);
+            }
+            catch(NumberFormatException e){
+                port = 4546;
+            }
             admin_port = 50000;
         }
         //2 args or more
         //read only the first 2
         //1st will be main port. 2nd is admin port
+        //if 2nd is not a number, then use 4546 secondary port
         else{
-            port = Integer.parseInt(args[0]);
+            try{
+                port = Integer.parseInt(args[0]);
+            }
+            catch(NumberFormatException e){
+                port = 4546;
+            }
             admin_port = Integer.parseInt(args[1]);
         }
         
