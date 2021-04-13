@@ -38,6 +38,7 @@ public class JokeClient {
         System.out.println("Using server: " + serverName + ", Port: " + String.valueOf(port));
 
         System.out.println("Enter \"quit\" (case insensitive) to exit client");
+        System.out.println("Any input other than quit will be ignored");
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
