@@ -13,10 +13,10 @@ public class JokeServer{
         int max_q_size = 6;
         
         if(args.length == 0){
-            port = 50000; // default port will be 50000
+            port = 4545; // default port will be 4545
         }
         else{
-            port = 50000;
+            port = 4545;
         }
         
         
@@ -54,7 +54,7 @@ class JokeServerAdmin extends Thread{
     private int port;
 
     JokeServerAdmin(){
-        this.port = 50001;
+        this.port = 4546; //default port for the admin server
     }
     JokeServerAdmin(int p){
         this.port = p;
