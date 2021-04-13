@@ -9,14 +9,21 @@ public class JokeServer{
 
     public static void main(String[] args) throws IOException{
         int port;
+        int admin_port;
         
         int max_q_size = 6;
         
         if(args.length == 0){
             port = 4545; // default port will be 4545
+            admin_port = 50000;
+        }
+        else if(args.length == 1){
+            port = Integer.parseInt(args[0]);
+            admin_port = 50000;
         }
         else{
-            port = 4545;
+            port = Integer.parseInt(args[0]);
+            admin_port = Integer.parseInt(args[1]);
         }
         
         
@@ -24,7 +31,7 @@ public class JokeServer{
         //create new thread that hosts the admin server
         //admin server and main server have to communicate the mode.
         //mode will have to be a saved state in the main server
-        new JokeServerAdmin().start();
+        new JokeServerAdmin(admin_port).start();
         
         
         Socket skt;
@@ -72,7 +79,7 @@ class JokeServerAdmin extends Thread{
         System.out.println("Starting Akshay Patel's JokeServer admin server at port: " + port);
         try{
             server_skt = new ServerSocket(port,max_q_size);
-
+            System.out.println("Current mode: " + mode);
             //main loop 
             while(true){
                 //blocking call
