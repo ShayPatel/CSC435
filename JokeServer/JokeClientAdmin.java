@@ -8,9 +8,21 @@ class JokeClientAdmin{
         String serverName;
         int port;
 
-        //testing on the default port I assigned to the admin server
-        port = 50000;
-        serverName = "localhost";
+        
+        
+        if(args.length == 0){
+            //testing on the default port I assigned to the admin server
+            port = 50000;
+            serverName = "localhost";
+        }
+        else if(args.length == 1){
+            port = 50000;
+            serverName = args[0];
+        }
+        else{
+            serverName = args[0];
+            port = Integer.parseInt(args[1]);
+        }
 
 
         System.out.println("Akshay Patel's JokeServer Admin Client");
