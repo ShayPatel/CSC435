@@ -51,10 +51,16 @@ public class JokeClient {
 
             while(true) {
                 //just prompting the user to press enter
-                //not doing anything with the input given
                 System.out.print("Press Enter for a response: ");
                 System.out.flush ();
                 text = in.readLine ();
+
+                if(text.toLowerCase().equals("quit")){
+                    System.out.println("Exiting client");
+                    return;
+                }
+
+
                 //dont really want to refactor this code
                 //just pass the username as the text instead of passing the input
                 send_text(username,serverName,port);
