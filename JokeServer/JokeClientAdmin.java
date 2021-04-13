@@ -28,6 +28,10 @@ class JokeClientAdmin{
         System.out.println("Akshay Patel's JokeServer Admin Client");
         System.out.println("Using server: " + serverName + ", Port: " + String.valueOf(port));
 
+        System.out.println("Enter \"j\" or \"joke\" (case insentitive) for joke mode");
+        System.out.println("Enter \"p\" or \"proverb\" (case insentitive) for proverb mode");
+
+
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
         
