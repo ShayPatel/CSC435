@@ -15,10 +15,10 @@ class Worker extends Thread{
         }};
         
         public static Map<String,String> proverbs = new HashMap<String,String>(){{
-            put("A", "Proverb A");
-            put("B", "Proverb B");
-            put("C", "Proverb C");
-            put("D", "Proverb D");
+            put("A", "People who live in glass houses should not throw stones.");
+            put("B", "Hope for the best, but prepare for the worst.");
+            put("C", "There's no such thing as a free lunch.");
+            put("D", "Beggars can't be choosers.");
         }};
         
         public static String get_response(int num, String mode){
