@@ -9,7 +9,7 @@ class JokeClientAdmin{
         int port;
 
         //testing on the default port I assigned to the admin server
-        port = 50001;
+        port = 4546;
         serverName = "localhost";
 
 
