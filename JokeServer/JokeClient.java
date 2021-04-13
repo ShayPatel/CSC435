@@ -7,6 +7,7 @@ public class JokeClient {
     public static void main(String[] args) {
         String serverName;
         int port;
+        String username;
 
         //testing on the default port I assigned to the main server
         port = 50000;
@@ -18,7 +19,11 @@ public class JokeClient {
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-        
+
+        System.out.print("\nEnter username: ");
+        System.out.flush ();
+        username = in.readLine ();
+
         String text;
         try {
             while(true) {
