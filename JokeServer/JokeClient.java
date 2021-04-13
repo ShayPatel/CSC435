@@ -14,8 +14,21 @@ public class JokeClient {
         String username;
 
         //testing on the default port I assigned to the main server
-        port = 50000;
-        serverName = "localhost";
+        //port = 50000;
+        //serverName = "localhost";
+
+        if(args.length == 0){
+            port = 4545;
+            serverName = "localhost";
+        }
+        else if(args.length == 1){
+            port = 4545;
+            serverName = args[0];
+        }
+        else{
+            serverName = args[0];
+            port = Integer.parseInt(args[1]);
+        }
 
 
         System.out.println("Akshay Patel's JokesServer Client");
@@ -34,6 +47,8 @@ public class JokeClient {
 
 
             while(true) {
+                //just prompting the user to press enter
+                //not doing anything with the input given
                 System.out.print("Press Enter for a response: ");
                 System.out.flush ();
                 text = in.readLine ();
@@ -62,13 +77,14 @@ public class JokeClient {
             //create the input stream to recieve the data from the server
             fromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
 
-            //create a message that consists of "{joke state}{proverb state}"
+            //create a message that consists of "{joke state}{proverb state} {username}"
+            //the server will parse the message to get the client state directly from the message
             String message = String.format("%d%d %s", joke_state, proverb_state, text);
 
 
             //sending the command
             //toServer.println(text); toServer.flush();
-            //sending the message
+            //sending the message to the server
             toServer.println(message); toServer.flush();
 
             String response = fromServer.readLine();
