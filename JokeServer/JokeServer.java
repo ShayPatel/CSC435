@@ -137,9 +137,6 @@ class JokeServerAdmin extends Thread{
                 mode = "J";
             }
         }
-        else{
-            System.out.println(command);
-        }
     }
 
 }
