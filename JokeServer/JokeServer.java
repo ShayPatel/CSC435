@@ -106,13 +106,13 @@ class JokeServerAdmin extends Thread{
     private void read_command(String command){
         if(command.toLowerCase().equals("j") || command.toLowerCase().equals("joke")){
             if(mode.equals("P")){
-                System.out.println("Current mode: " + mode);
+                System.out.println("Current mode: J");
             }
             mode = "J";
         }
         else if(command.toLowerCase().equals("p") || command.toLowerCase().equals("proverb")){
             if(mode.equals("J")){
-                System.out.println("Current mode: " + mode);
+                System.out.println("Current mode: P");
             }
             mode = "P";
         }
