@@ -66,7 +66,7 @@ class JokeServerAdmin extends Thread{
     private int port;
 
     JokeServerAdmin(){
-        this.port = 4546; //default port for the admin server
+        this.port = 50000; //default port for the admin server
     }
     JokeServerAdmin(int p){
         this.port = p;
