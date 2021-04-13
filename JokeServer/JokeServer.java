@@ -127,7 +127,7 @@ class JokeServerAdmin extends Thread{
             }
             mode = "P";
         }
-        else if(command.isEmpty() || command.isBlank() || command == null){
+        else if(command.isEmpty() || command == null){
             if(mode.equals("J")){
                 System.out.println("Current mode: P");
                 mode = "P";
