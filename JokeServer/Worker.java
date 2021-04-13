@@ -8,10 +8,10 @@ class Worker extends Thread{
         public static String[] state_mapping = {"A","B","C","D"};
         
         public static Map<String,String> jokes = new HashMap<String,String>() {{
-            put("A", "Joke A");
-            put("B", "Joke B");
-            put("C", "Joke C");
-            put("D", "Joke D");
+            put("A", "What's the difference between a bird and a fly? A bord can fly, but a fly can't bird!");
+            put("B", "What time does a duck wake up? The quack of dawn!");
+            put("C", "I couldn't figure out why the baseball kept getting bigger. Then it hit me.");
+            put("D", "What do you get when you pour root beer into a square cup? Beer.");
         }};
         
         public static Map<String,String> proverbs = new HashMap<String,String>(){{
