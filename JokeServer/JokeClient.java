@@ -5,6 +5,7 @@ import javax.swing.text.DefaultStyledDocument.ElementSpec;
 
 public class JokeClient {
     
+    //save the client state in the static variable to the process
     static int joke_state = 0;
     static int proverb_state = 0;
 
@@ -21,10 +22,12 @@ public class JokeClient {
             port = 4545;
             serverName = "localhost";
         }
+        //if 1 arg. then set it to the server name
         else if(args.length == 1){
             port = 4545;
             serverName = args[0];
         }
+        //arg order: server name then port
         else{
             serverName = args[0];
             port = Integer.parseInt(args[1]);
