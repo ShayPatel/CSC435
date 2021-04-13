@@ -15,12 +15,17 @@ public class JokeServer{
         
         if(args.length == 0){
             port = 4545; // default port will be 4545
-            admin_port = 50000;
+            admin_port = 50000; //default admin port is 50000
         }
+        //if 1 arg
+        //this will only change the server port
         else if(args.length == 1){
             port = Integer.parseInt(args[0]);
             admin_port = 50000;
         }
+        //2 args or more
+        //read only the first 2
+        //1st will be main port. 2nd is admin port
         else{
             port = Integer.parseInt(args[0]);
             admin_port = Integer.parseInt(args[1]);
@@ -30,7 +35,7 @@ public class JokeServer{
         
         //create new thread that hosts the admin server
         //admin server and main server have to communicate the mode.
-        //mode will have to be a saved state in the main server
+        //mode will have to be a saved state in the admin server
         new JokeServerAdmin(admin_port).start();
         
         
@@ -101,9 +106,11 @@ class JokeServerAdmin extends Thread{
     private void read_command(String command){
         if(command.toLowerCase().equals("j") || command.toLowerCase().equals("joke")){
             mode = "J";
+            System.out.println("Current mode: " + mode);
         }
         else if(command.toLowerCase().equals("p") || command.toLowerCase().equals("proverb")){
             mode = "P";
+            System.out.println("Current mode: " + mode);
         }
     }
 
