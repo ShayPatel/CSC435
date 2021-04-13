@@ -1,8 +1,12 @@
 import java.io.*;
 import java.net.*;
 
-public class JokeClient {
+import javax.swing.text.DefaultStyledDocument.ElementSpec;
 
+public class JokeClient {
+    
+    static int joke_state = 0;
+    static int proverb_state = 0;
 
     public static void main(String[] args) {
         String serverName;
@@ -20,17 +24,22 @@ public class JokeClient {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
 
-        System.out.print("\nEnter username: ");
-        System.out.flush ();
-        username = in.readLine ();
-
+        
         String text;
         try {
+            //get the username
+            System.out.print("\nEnter username: ");
+            System.out.flush ();
+            username = in.readLine ();
+
+
             while(true) {
-                System.out.print("Enter a line: ");
+                System.out.print("Press Enter for a response: ");
                 System.out.flush ();
                 text = in.readLine ();
-                send_text(text,serverName,port);
+                //dont really want to refactor this code
+                //just pass the username as the text instead of passing the input
+                send_text(username,serverName,port);
             }
         }
         catch (IOException x){
@@ -53,15 +62,39 @@ public class JokeClient {
             //create the input stream to recieve the data from the server
             fromServer = new BufferedReader(new InputStreamReader(skt.getInputStream()));
 
-            //sending the command
-            toServer.println(text); toServer.flush();
+            //create a message that consists of "{joke state}{proverb state}"
+            String message = String.format("%d%d %s", joke_state, proverb_state, text);
 
-            System.out.println(fromServer.readLine());
+
+            //sending the command
+            //toServer.println(text); toServer.flush();
+            //sending the message
+            toServer.println(message); toServer.flush();
+
+            String response = fromServer.readLine();
+            System.out.println(response);
+            
+            if(response.charAt(0) == 'J'){
+                joke_state = (joke_state + 1)%4;
+                if(joke_state == 0){
+                    System.out.println("JOKE CYCLE COMPLETED");
+                }
+            }
+            else if(response.charAt(0) == 'P'){
+                proverb_state = (proverb_state + 1)%4;
+                if(proverb_state == 0){
+                    System.out.println("PROVERB CYCLE COMPLETED");
+                }
+            }
+            else{
+                System.out.println("Unknown response");
+            }
+            
 
             skt.close();
         }
         catch(IOException e){
-
+            System.out.println(e);
         }
     }
 
