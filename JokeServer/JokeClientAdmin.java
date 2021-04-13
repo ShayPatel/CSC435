@@ -28,6 +28,8 @@ class JokeClientAdmin{
         System.out.println("Akshay Patel's JokeServer Admin Client");
         System.out.println("Using server: " + serverName + ", Port: " + String.valueOf(port));
 
+
+        //input instructions
         System.out.println("Enter \"j\" or \"joke\" (case insensitive) for joke mode");
         System.out.println("Enter \"p\" or \"proverb\" (case insensitive) for proverb mode");
         System.out.println("Press Enter to switch to alternate mode");
@@ -43,6 +45,7 @@ class JokeClientAdmin{
                 System.out.flush ();
                 command = in.readLine ();
 
+                //check for quit before sending message
                 if(command.toLowerCase().equals("quit")){
                     System.out.println("Exiting client");
                     return;
@@ -59,6 +62,7 @@ class JokeClientAdmin{
     public static void send_command(String command, String serverName, int port){
         Socket skt;
         //BufferedReader fromServer;
+        //admin client does not recieve messages, so don't need buffered reader
         PrintStream toServer;
 
 
