@@ -30,7 +30,7 @@ class JokeClientAdmin{
 
         System.out.println("Enter \"j\" or \"joke\" (case insensitive) for joke mode");
         System.out.println("Enter \"p\" or \"proverb\" (case insensitive) for proverb mode");
-
+        System.out.println("Enter \"quit\" (case insensitive) to exit client");
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 

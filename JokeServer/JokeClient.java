@@ -37,6 +37,8 @@ public class JokeClient {
         System.out.println("Akshay Patel's JokesServer Client");
         System.out.println("Using server: " + serverName + ", Port: " + String.valueOf(port));
 
+        System.out.println("Enter \"quit\" (case insensitive) to exit client");
+
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
 
