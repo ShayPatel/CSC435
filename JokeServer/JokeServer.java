@@ -1,3 +1,40 @@
+/*--------------------------------------------------------
+
+1. Akshay Patel 4/13/21:
+
+2. Java version used (java -version), if not the official version for the class:
+
+build 1.8.0_282-8u282-b08-0ubuntu1~20.04-b08
+
+3. Precise command-line compilation examples / instructions:
+
+> javac JokeServer.java
+
+4. Precise examples / instructions to run this program:
+
+In separate shell windows:
+
+> java JokeServer
+
+You may pass additional arguments into the run command for the server to change the port
+
+> java JokeServer [port]
+
+
+5. List of files needed for running the program.
+JokeServer.java
+JokeClient.java
+JokeClientAdmin.java
+
+5. Notes:
+
+The server clients can handle additional commands to change the state of the server. The state of the server is tied to the running instance of the server.
+
+
+----------------------------------------------------------*/
+
+
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -84,7 +121,7 @@ class JokeServerAdmin extends Thread{
     }
 
     public void run() {
-        BufferedReader in;
+        BufferedReader reader;
         String command;
         
         int max_q_size = 6;
@@ -102,8 +139,8 @@ class JokeServerAdmin extends Thread{
                 skt = server_skt.accept();
     
                 //since the socket will block until it recieves data, we can add our logic in the loop itself.
-                in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
-                command = in.readLine();
+                reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+                command = reader.readLine();
                 read_command(command);
             }
         }
@@ -115,24 +152,31 @@ class JokeServerAdmin extends Thread{
 
 
     private void read_command(String command){
+        //checking if joke command was sent
         if(command.toLowerCase().equals("j") || command.toLowerCase().equals("joke")){
             if(mode.equals("P")){
+                //print if previous mode was proverb
                 System.out.println("Current mode: J");
             }
             mode = "J";
         }
+        //checking if proverb command was sent
         else if(command.toLowerCase().equals("p") || command.toLowerCase().equals("proverb")){
             if(mode.equals("J")){
+                //print if the previous mode was joke
                 System.out.println("Current mode: P");
             }
             mode = "P";
         }
+        //if nothing was entered in the admin command
         else if(command.isEmpty() || command == null){
             if(mode.equals("J")){
+                //print if previous mode was joke
                 System.out.println("Current mode: P");
                 mode = "P";
             }
             else{
+                //print if previous mode was proverb
                 System.out.println("Current mode: J");
                 mode = "J";
             }
@@ -146,6 +190,7 @@ class Worker extends Thread{
     public static class Responses{
         public static String[] state_mapping = {"A","B","C","D"};
         
+        //jokes from https://bestlifeonline.com/funny-clean-jokes/
         public static Map<String,String> jokes = new HashMap<String,String>() {{
             put("A", "What's the difference between a bird and a fly? A bird can fly, but a fly can't bird!");
             put("B", "What time does a duck wake up? The quack of dawn!");
@@ -153,6 +198,7 @@ class Worker extends Thread{
             put("D", "What do you get when you pour root beer into a square cup? Beer.");
         }};
         
+        //proverbs from https://www.phrasemix.com/collections/the-50-most-important-english-proverbs
         public static Map<String,String> proverbs = new HashMap<String,String>(){{
             put("A", "People who live in glass houses should not throw stones.");
             put("B", "Hope for the best, but prepare for the worst.");
@@ -160,15 +206,16 @@ class Worker extends Thread{
             put("D", "Beggars can't be choosers.");
         }};
         
+        //reads the index of state_mapping given by num. Use the value to key the hashmap
         public static String get_response(int num, String mode){
             if(mode.equals("J")){
-                String joke_letter = state_mapping[num%4];
-                String output = jokes.get(joke_letter);
+                String joke_letter = state_mapping[num%4]; //get state_mapping from num
+                String output = jokes.get(joke_letter); //query the key
                 return output;
             }
             else{
-                String proverb_letter = state_mapping[num%4];
-                String output = proverbs.get(proverb_letter);
+                String proverb_letter = state_mapping[num%4]; //get state_mapping from num
+                String output = proverbs.get(proverb_letter); //query the key
                 return output;
             }
         }
@@ -177,8 +224,6 @@ class Worker extends Thread{
 
     Socket skt;
     String status;
-    String cookie;
-    String user;
     
     //constructor to save the socket applied to the worker thread
     Worker(Socket s){
@@ -188,30 +233,23 @@ class Worker extends Thread{
         skt = s;
         status = stat;
     }
-    Worker(Socket s, String stat, String c, String u){
-        skt = s;
-        status = stat;
-        cookie = c;
-        user = u;
-    }
 
     
     public void run(){
         PrintStream out = null; //output stream to client
-        BufferedReader in = null;//input stream from client socket
+        BufferedReader reader = null;//input stream from client socket
         try {
-            in = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+            reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
             out = new PrintStream(skt.getOutputStream());
 
             
             try {
                 String command;
-                command = in.readLine (); //read the string from the socket
+                command = reader.readLine (); //read the string from the socket
                 output_function(command, out); //pass the input to the output function
             }
-            catch (IOException x) {
-                System.out.println("Server read error");
-                x.printStackTrace ();
+            catch (IOException e) {
+                System.out.println(e);
             }
             
             skt.close(); //close the connection so it doesn't persist in memory
@@ -224,7 +262,7 @@ class Worker extends Thread{
 
     void output_function(String message, PrintStream out) {
         try{
-            int num;
+            int num; //the client state for the current mode
             String output;
 
             //test to get response output by number
@@ -244,7 +282,9 @@ class Worker extends Thread{
             String username;
             username = message.substring(3);
 
+            
             output = Responses.get_response(num, status);
+            //concat the strings to get the proper output
             output = status + Responses.state_mapping[num%4] + " " + username + ": " + output;
             out.println(output);
         }
@@ -252,19 +292,6 @@ class Worker extends Thread{
             System.out.println(e);
         }
 
-        //just a reference to the INET code to print onto the client terminal
-        //out.println("Host name : " + machine.getHostName ());
-        //out.println("Host IP : " + toText (machine.getAddress ()));
-    }
-       
-    // reusing from INET code
-    static String toText (byte ip[]) { /* Make portable for 128 bit format */
-        StringBuffer result = new StringBuffer ();
-        for (int i = 0; i < ip.length; ++ i) {
-            if (i > 0) result.append (".");
-            result.append (0xff & ip[i]);
-        }
-        return result.toString ();
     }
 
 }

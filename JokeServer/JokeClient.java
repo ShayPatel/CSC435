@@ -1,7 +1,41 @@
+/*--------------------------------------------------------
+
+1. Akshay Patel 4/13/21:
+
+2. Java version used (java -version), if not the official version for the class:
+
+build 1.8.0_282-8u282-b08-0ubuntu1~20.04-b08
+
+3. Precise command-line compilation examples / instructions:
+
+> javac JokeClient.java
+
+
+4. Precise examples / instructions to run this program:
+
+In separate shell windows:
+
+> java JokeClient
+
+The server name and the port number can be passed as command line arguments
+
+> java JokeClient [server name]
+> java JokeClientAdmin [server name] [port]
+
+5. List of files needed for running the program.
+JokeServer.java
+JokeClient.java
+JokeClientAdmin.java
+
+5. Notes:
+The client stores its own state in the running process. The state is passed as a message to the server. Each client has independent state.
+----------------------------------------------------------*/
+
+
+
+
 import java.io.*;
 import java.net.*;
-
-import javax.swing.text.DefaultStyledDocument.ElementSpec;
 
 public class JokeClient {
     
@@ -10,54 +44,56 @@ public class JokeClient {
     static int proverb_state = 0;
 
     public static void main(String[] args) {
-        String serverName;
+        String server_name;
         int port;
         String username;
 
         //testing on the default port I assigned to the main server
         //port = 50000;
-        //serverName = "localhost";
+        //server_name = "localhost";
 
         if(args.length == 0){
-            port = 4545;
-            serverName = "localhost";
+            port = 4545; //default port from assignment
+            server_name = "localhost";
         }
         //if 1 arg. then set it to the server name
         else if(args.length == 1){
             port = 4545;
-            serverName = args[0];
+            server_name = args[0];
         }
         //arg order: server name then port
         else{
-            serverName = args[0];
+            server_name = args[0];
             port = Integer.parseInt(args[1]);
         }
 
 
         System.out.println("Akshay Patel's JokesServer Client");
-        System.out.println("Using server: " + serverName + ", Port: " + String.valueOf(port));
+        System.out.println("Using server: " + server_name + ", Port: " + String.valueOf(port));
 
+        //instructions
         System.out.println("Enter \"quit\" (case insensitive) to exit client");
         System.out.println("Any input other than quit will be ignored");
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
-
         
+        
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String text;
         try {
             //get the username
             System.out.print("\nEnter username: ");
             System.out.flush ();
-            username = in.readLine ();
+            username = reader.readLine ();
 
 
             while(true) {
                 //just prompting the user to press enter
                 System.out.print("Press Enter for a response: ");
                 System.out.flush ();
-                text = in.readLine ();
+                text = reader.readLine ();
 
+                //checking for quit condition
                 if(text.toLowerCase().equals("quit")){
                     System.out.println("Exiting client");
                     return;
@@ -66,15 +102,15 @@ public class JokeClient {
 
                 //dont really want to refactor this code
                 //just pass the username as the text instead of passing the input
-                send_text(username,serverName,port);
+                send_text(username,server_name,port);
             }
         }
-        catch (IOException x){
-            x.printStackTrace ();
+        catch (IOException e){
+            System.out.println(e);;
         }
     }
 
-    public static void send_text(String text, String serverName, int port){
+    public static void send_text(String text, String server_name, int port){
         Socket skt;
         BufferedReader fromServer;
         PrintStream toServer;
@@ -82,7 +118,7 @@ public class JokeClient {
 
         try{
             //open the connection to the admin server
-            skt = new Socket(serverName, port);
+            skt = new Socket(server_name, port);
             
             //Create the output stream to send to the server
             toServer = new PrintStream(skt.getOutputStream());
@@ -95,21 +131,25 @@ public class JokeClient {
 
 
             //sending the command
-            //toServer.println(text); toServer.flush();
+            //to_server.println(text); to_server.flush();
             //sending the message to the server
-            toServer.println(message); toServer.flush();
+            toServer.println(message);
+            toServer.flush();
 
             String response = fromServer.readLine();
             System.out.println(response);
             
+            //update the client state based on the response from the server
             if(response.charAt(0) == 'J'){
                 joke_state = (joke_state + 1)%4;
+                //check cycle
                 if(joke_state == 0){
                     System.out.println("JOKE CYCLE COMPLETED");
                 }
             }
             else if(response.charAt(0) == 'P'){
                 proverb_state = (proverb_state + 1)%4;
+                //check cycle
                 if(proverb_state == 0){
                     System.out.println("PROVERB CYCLE COMPLETED");
                 }
