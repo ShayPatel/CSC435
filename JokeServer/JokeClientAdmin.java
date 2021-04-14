@@ -51,13 +51,15 @@ class JokeClientAdmin{
             port = 5050;
             server_name = "localhost";
         }
+        //if 1 arg then assign to server name
         else if(args.length == 1){
             port = 5050;
             server_name = args[0];
         }
+        //if 2 args. 1st is server name. 2nd is port
         else{
             server_name = args[0];
-            port = Integer.parseInt(args[1]);
+            port = Integer.parseInt(args[1]); //should probably catch the exception.
         }
 
 
@@ -71,9 +73,9 @@ class JokeClientAdmin{
         System.out.println("Press Enter to switch to alternate mode");
         System.out.println("Enter \"quit\" (case insensitive) to exit client");
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
         
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String command;
         try {
             while(true) {
@@ -81,12 +83,12 @@ class JokeClientAdmin{
                 System.out.print("Enter a command: ");
                 System.out.flush ();
                 //read the command
-                command = in.readLine ();
+                command = reader.readLine ();
 
                 //check for quit before sending message
                 if(command.toLowerCase().equals("quit")){
                     System.out.println("Exiting client");
-                    return;
+                    return;//exit main
                 }
 
                 send_command(command,server_name,port);

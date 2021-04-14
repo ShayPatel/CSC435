@@ -45,14 +45,15 @@ public class JokeServer{
 
 
     public static void main(String[] args) throws IOException{
+        //admin server and the main server have to run on different ports
         int port;
         int admin_port;
-        
+        //ignore. took it from the inet code i submitted
         int max_q_size = 6;
         
         if(args.length == 0){
             port = 4545; // default port will be 4545
-            admin_port = 5050; //default admin port is 50000
+            admin_port = 5050; //default admin port is 5050
         }
         //if 1 arg
         //this will only change the server port. if not number, then uses secondary
@@ -107,21 +108,24 @@ public class JokeServer{
 
 
 //have to extend thread. If using runnable, then the server socket on main server is blocked
+//call with start(), not run()
 class JokeServerAdmin extends Thread{
     //store the mode as a static string so it can be accessed outside of the class
-    //keep static so there is 1 global state
+    //keep static so there is 1 global state per admin server process
     public static String mode = "J";
     private int port;
 
+    //for testing
     JokeServerAdmin(){
         this.port = 5050; //default port for the admin server
     }
+    //this constructor will always get called
     JokeServerAdmin(int p){
         this.port = p;
     }
 
     public void run() {
-        BufferedReader reader;
+        BufferedReader reader; //TODO:: check if there is another way to extract socket data in java 8
         String command;
         
         int max_q_size = 6;
@@ -131,7 +135,7 @@ class JokeServerAdmin extends Thread{
         ServerSocket server_skt;
         System.out.println("Starting Akshay Patel's JokeServer admin server at port: " + port);
         try{
-            server_skt = new ServerSocket(port,max_q_size);
+            server_skt = new ServerSocket(port,max_q_size); //start the server
             System.out.println("Current mode: " + mode);
             //main loop 
             while(true){
@@ -187,11 +191,16 @@ class JokeServerAdmin extends Thread{
 
 
 class Worker extends Thread{
+    //Create nested inner class to keep static
+    //dont create constructor
     public static class Responses{
+        //converts a number to response letter by index of the array
+        //to convert the state of the client to a position in the response dictionary
         public static String[] state_mapping = {"A","B","C","D"};
         
         //jokes from https://bestlifeonline.com/funny-clean-jokes/
         public static Map<String,String> jokes = new HashMap<String,String>() {{
+            //add the entries in place
             put("A", "What's the difference between a bird and a fly? A bird can fly, but a fly can't bird!");
             put("B", "What time does a duck wake up? The quack of dawn!");
             put("C", "I couldn't figure out why the baseball kept getting bigger. Then it hit me.");
@@ -200,6 +209,7 @@ class Worker extends Thread{
         
         //proverbs from https://www.phrasemix.com/collections/the-50-most-important-english-proverbs
         public static Map<String,String> proverbs = new HashMap<String,String>(){{
+            //add the entries in place
             put("A", "People who live in glass houses should not throw stones.");
             put("B", "Hope for the best, but prepare for the worst.");
             put("C", "There's no such thing as a free lunch.");
@@ -208,6 +218,7 @@ class Worker extends Thread{
         
         //reads the index of state_mapping given by num. Use the value to key the hashmap
         public static String get_response(int num, String mode){
+            //if joke mode
             if(mode.equals("J")){
                 String joke_letter = state_mapping[num%4]; //get state_mapping from num
                 String output = jokes.get(joke_letter); //query the key
@@ -226,12 +237,14 @@ class Worker extends Thread{
     String status;
     
     //constructor to save the socket applied to the worker thread
+    //for testing
     Worker(Socket s){
         skt = s;
     }
+    //only call this constructor
     Worker(Socket s, String stat){
         skt = s;
-        status = stat;
+        status = stat; // only J or P
     }
 
     

@@ -1,0 +1,77 @@
+//from the joke client
+apatel1995@ubuntu:~/Desktop/CSC435/JokeServer$ java JokeClient
+Akshay Patel's JokesServer Client
+Using server: localhost, Port: 4545
+Enter "quit" (case insensitive) to exit client
+Any input other than quit will be ignored
+
+Enter username: akshay
+Press Enter for a response: 
+JA akshay: What's the difference between a bird and a fly? A bird can fly, but a fly can't bird!
+Press Enter for a response: 
+JB akshay: What time does a duck wake up? The quack of dawn!
+Press Enter for a response: 
+JC akshay: I couldn't figure out why the baseball kept getting bigger. Then it hit me.
+Press Enter for a response: 
+JD akshay: What do you get when you pour root beer into a square cup? Beer.
+JOKE CYCLE COMPLETED
+//mode changed here
+Press Enter for a response: 
+PA akshay: People who live in glass houses should not throw stones.
+Press Enter for a response: 
+PB akshay: Hope for the best, but prepare for the worst.
+Press Enter for a response: 
+PC akshay: There's no such thing as a free lunch.
+Press Enter for a response: 
+PD akshay: Beggars can't be choosers.
+PROVERB CYCLE COMPLETED
+Press Enter for a response: 
+PA akshay: People who live in glass houses should not throw stones.
+Press Enter for a response: 
+PB akshay: Hope for the best, but prepare for the worst.
+//mode changed here
+Press Enter for a response: 
+JA akshay: What's the difference between a bird and a fly? A bird can fly, but a fly can't bird!
+Press Enter for a response: 
+JB akshay: What time does a duck wake up? The quack of dawn!
+Press Enter for a response: 
+JC akshay: I couldn't figure out why the baseball kept getting bigger. Then it hit me.
+//mode changed here
+Press Enter for a response: 
+PC akshay: There's no such thing as a free lunch.
+Press Enter for a response: 
+PD akshay: Beggars can't be choosers.
+PROVERB CYCLE COMPLETED
+//mode changed here
+Press Enter for a response: 
+JD akshay: What do you get when you pour root beer into a square cup? Beer.
+JOKE CYCLE COMPLETED
+Press Enter for a response: quit
+Exiting client
+
+
+//from the joke client admin
+apatel1995@ubuntu:~/Desktop/CSC435/JokeServer$ java JokeClientAdmin
+Akshay Patel's JokeServer Admin Client
+Using server: localhost, Port: 5050
+Enter "j" or "joke" (case insensitive) for joke mode
+Enter "p" or "proverb" (case insensitive) for proverb mode
+Press Enter to switch to alternate mode
+Enter "quit" (case insensitive) to exit client
+Enter a command: 
+Enter a command: 
+Enter a command: 
+Enter a command: 
+Enter a command: quit
+Exiting client
+
+
+//from the joke server
+apatel1995@ubuntu:~/Desktop/CSC435/JokeServer$ java JokeServer
+Starting Akshay Patel's JokeServer at port: 4545
+Starting Akshay Patel's JokeServer admin server at port: 5050
+Current mode: J
+Current mode: P
+Current mode: J
+Current mode: P
+Current mode: J

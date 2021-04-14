@@ -40,6 +40,7 @@ import java.net.*;
 public class JokeClient {
     
     //save the client state in the static variable to the process
+    //each process should not be able modify others' state
     static int joke_state = 0;
     static int proverb_state = 0;
 
@@ -90,13 +91,13 @@ public class JokeClient {
             while(true) {
                 //just prompting the user to press enter
                 System.out.print("Press Enter for a response: ");
-                System.out.flush ();
-                text = reader.readLine ();
+                System.out.flush();
+                text = reader.readLine(); // not really doing anything with it. should I even save the variable?
 
                 //checking for quit condition
                 if(text.toLowerCase().equals("quit")){
                     System.out.println("Exiting client");
-                    return;
+                    return;//exit main
                 }
 
 
@@ -136,10 +137,11 @@ public class JokeClient {
             toServer.println(message);
             toServer.flush();
 
-            String response = fromServer.readLine();
+            String response = fromServer.readLine(); //output formatted by server. no change to this
             System.out.println(response);
             
             //update the client state based on the response from the server
+            //if state > 4 then cycle
             if(response.charAt(0) == 'J'){
                 joke_state = (joke_state + 1)%4;
                 //check cycle
