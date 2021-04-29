@@ -1,0 +1,115 @@
+
+<html>
+    <head> <title> Wireshark Checklist </title>
+    </head>
+    <body>
+    
+    <FONT FACE="Cambria" SIZE=1>
+    2.1
+    <br>
+    Updates:
+    <ol>
+    <li> none
+    </ol>
+    
+    
+    <FONT FACE="Cambria" SIZE=4>
+    <center> <h2> WireShark Checklist </h2> </center> <p>
+    
+    <br> 
+    
+    Change "No" to "Yes" as you complete the tasks. Submit to D2L when complete:<p>
+    
+    <table border=1 width="50%" >
+    
+    <tr><td align="Left"><b> <FONT FACE="Cambria" SIZE=5>Task
+    </font></b></td>
+    <td align="Left"><b><FONT FACE="Cambria" SIZE=5> Complete? </task> 
+    </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    My name is...
+    </b></td><td align="left"><b>
+    Akshay Patel                  </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I have installed and run WireShark
+    </b></td><td align="left"><b>
+    Yes                    </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I have completed the Intro lab</b></td><td align="left"><b>
+    Yes                    </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I have completed the IP lab
+    </b></td><td align="left"><b>
+    Yes                    </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I have completed the DNS lab
+    </b></td><td align="left"><b>
+    Yes                    </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I have completed the HTTP lab
+    </b></td><td align="left"><b>
+    Yes                    </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I have completed the TCP lab
+    </b></td><td align="left"><b>
+    Yes                    </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I have completed the UDP lab
+    </b></td><td align="left"><b>
+    Yes                    </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I have completed the SSL lab
+    </b></td><td align="left"><b>
+    Yes                    </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I have inserted my one-page write-up into the bottom of the checklist.
+    </b></td><td align="left"><b>
+    No          </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I will have submitted this checklist to D2L
+    </b></td><td align="left"><b>
+    No          </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    Bragging Rights Below ---------------------
+    </b></td><td align="left"><b>
+    This Line          </b></td></tr>
+    
+    <tr> <td align="left"><b>
+    I did something cool and posted it at the discussion forum
+    </b></td><td align="left"><b>
+    No          </b></td></tr>
+    
+    </table>
+    
+    <h3> My One Page Writeup: </h3>
+    
+    
+    
+    I downloaded wireshark on a linux vm hosted on my desktop computer. Since this is a VM, I have to use the virtual ethernet adapter as the interface. I started with the umass.edu website as instructed. I then went to youtube to see how the network traffic looks. It was interesting to see that the video streams were all using the QUIC protocol. I was hoping to be able to identify when the authentication took place. The output went too fast, but I think it was the 2 TCP packets that appeared very briefly.<p>
+    
+    I ran the IP lab. I ran the traceroute command and viewed the results. I am not really network oriented, so there was some confusion as to how I could identify what fragmentation occurred. Determining the host for each request was troublesome so I enabled name resolution. That made things easier to read.<p>
+    
+    I ran the DNS lab. In the lab I ran the commands on the given domain names. I also ran it to find my raspberry pi devices on my LAN. Running with the type NS did not give any results to find the pi. I assume I didn’t receive the results since I am querying by device name rather than some domain or ip. Running the nslookup without the NS type did give me the correct output. This is a handy utility to find my devices on LAN. I was really bad at stopping the wireshark output quick enough after entering the commands in the terminal. It took a few tries, but I eventually did it and got the packets for the nslookup commands.<p>
+    
+    I ran the HTTP lab. The results of the last modified data were a bit different for me, but that is probably because I run my VM in a different time than my desktop. The html2 would produce the http 304 not modified code. I never knew that before. At work I usually deal with 200 or 4xx html codes. I get the familiar 401 error in the html5 step.<p>
+
+    I ran the TCP lab. I ran the tcp commands and found the ones that synced the server and client. I then read the tcp messages for the http messages. Those I found un the data section at the end of the message. It is interesting that the messages get sent kilobytes at a time as a stream. I would have expected that but never thought of it before. Of course, the acknowledgment needs to be sent after each message. However, I don’t understand why there are multiple acknowledgements after each message.<p>
+
+    I ran the UDP lab. I didn’t really connect to any sources as there were UDP messages sent automatically by the machine. UDP seems to be the most common protocol when inactive.<p>
+
+    I ran the SSL lab. I accidentally went past the instructions and am now the owner of a new air fryer. Luckily my credit card data was passed using the TLS protocol to amazon. I am assuming the data was in the Encrypted Application Data field inside of the TLS record layer.<p>
+
+    </body></html>
+    
