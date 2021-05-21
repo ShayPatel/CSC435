@@ -49,13 +49,47 @@ class utils{
         //should probably convert to string here, but probably more modular if I don't
         return output_hash;
     }
+    //wrapper to translate the hash byte array to a string
+    public static String hash_string(String s) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+        byte[] output_hash = hash(s);
+        String output = ByteArrayToString(output_hash);
+        return output;
+    }
 
 }
 
 class block{
 
     public void work(String data){
-        
-    }
+        //string to store the random seed for the answer
+        String rand;
+        //placeholder string for the concatenatation
+        String concat;
+        String hash;
+        int answer;
 
+        try {
+            do{
+                //generate a random string and concatenate with the data
+                rand = utils.randomAlphaNumeric(8);
+                concat = data + rand;
+
+                //perform the hash of the new string
+                hash = utils.hash_string(concat);
+                
+                //take the first 4 characters and parse to hex
+                answer = Integer.parseInt(hash.substring(0,4),16);
+
+                //TODO: sleep here
+                //TODO: check if the blockchain has been updated
+
+            }while(answer > 20000);
+
+
+        }
+        catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            //Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }
