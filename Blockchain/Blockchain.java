@@ -56,9 +56,32 @@ class utils{
         return output;
     }
 
+
+    public static block read_json(String filename){
+        Gson gson = new Gson();
+
+        try (Reader reader = new FileReader(filename)){
+            block b = gson.fromJson(reader, block.class);
+            return b;
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
 
+
 class block{
+    //serializable block class to contain all the data
+    String data;
+    String hash;
+    String seed;
+}
+
+
+class blockchain{
 
     public void work(String data){
         //TODO: update to ensure that the work is consistent with the assignment
