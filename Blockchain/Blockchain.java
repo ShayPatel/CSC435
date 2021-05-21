@@ -36,5 +36,26 @@ class utils{
 		}
 		return hex.toString();
     }
+    
+    //wrapper function to hash the input string
+    public static byte[] hash(String s) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+        //create the digest on the sha 256 algorithm
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+        //perform the hash. gets the output as a byte array
+        //class code converts to utf encoding. Don't know why
+        byte[] output_hash = digest.digest(s.getBytes("UTF-8"));
+
+        //should probably convert to string here, but probably more modular if I don't
+        return output_hash;
+    }
+
+}
+
+class block{
+
+    public void work(String data){
+        
+    }
 
 }
