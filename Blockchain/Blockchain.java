@@ -61,6 +61,8 @@ class utils{
 class block{
 
     public void work(String data){
+        //TODO: update to ensure that the work is consistent with the assignment
+
         //string to store the random seed for the answer
         String rand;
         //placeholder string for the concatenatation
@@ -69,6 +71,7 @@ class block{
         int answer;
 
         try {
+            //keep generating until an answer has been found
             do{
                 //generate a random string and concatenate with the data
                 rand = utils.randomAlphaNumeric(8);
@@ -81,7 +84,9 @@ class block{
                 answer = Integer.parseInt(hash.substring(0,4),16);
 
                 //TODO: sleep here
+                
                 //TODO: check if the blockchain has been updated
+                //if the chain is updated, then break from the loop
 
             }while(answer > 20000);
 
