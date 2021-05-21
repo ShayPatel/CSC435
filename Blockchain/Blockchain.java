@@ -2,8 +2,7 @@ import com.google.gson.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-
-
+import java.lang.reflect.Field;
 import java.security.*;
 
 
@@ -11,18 +10,9 @@ class Blockchain{
 
     public static void main(String[] args) {
         block b = new block();
-        b.data = "output data";
-        try {
-            b.hash = utils.hash_string(b.data);
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            //Auto-generated catch block
-            e.printStackTrace();
-        }
-        b.seed = utils.randomAlphaNumeric(8);
-
-        utils.write_json(b, "output.json");
+        b.data = "data string";
+    
     }
-
 
 }
 
@@ -96,12 +86,39 @@ class utils{
         }
     }
 
+    public static String iterate_block(block b){
+        Field[] fields = b.getClass().getDeclaredFields();
+        
+        String block_data = "";
+        try {
+            for(Field f: fields){
+                Class t = f.getType();
+                Object v = f.get(b);
+                
+                //check if the field is a string
+                if(t == String.class && v != null){
+                    //concatenate to the data string
+                    block_data += v;
+                }
+                else if (t == int.class){
+                    block_data += String.valueOf(v);
+                }
+            }    
+        }
+        catch (IllegalArgumentException | IllegalAccessException e) {
+             e.printStackTrace();
+        }
+        return block_data;
+    }
 }
 
 
 class block{
     //TODO:: enter fields given by the assignment
     //serializable block class to contain all the data
+    public String uuid;
+    public int number;
+    public String timestamp;
     public String data;
     public String hash;
     public String seed;
