@@ -2,12 +2,19 @@ import com.google.gson.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+
+
 import java.security.*;
 
 
 class Blockchain{
 
     public static void main(String[] args) {
+        block b = utils.read_json("block.json");
+        System.out.println(b);
+        System.out.println(b.data);
+        System.out.println(b.hash);
+        System.out.println(b.seed);
         
     }
 
@@ -56,10 +63,12 @@ class utils{
         return output;
     }
 
-
+    //wrapper function to read the json into a block
     public static block read_json(String filename){
+        //create json deserializer
         Gson gson = new Gson();
 
+        //read the file and serialize it to the block class
         try (Reader reader = new FileReader(filename)){
             block b = gson.fromJson(reader, block.class);
             return b;
@@ -69,15 +78,28 @@ class utils{
         }
         return null;
     }
+    //wrapper function to write a block to the given filename
+    public static void write_json(block b, String filename){
+        //from the class code to write the json
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try( FileWriter writer = new FileWriter(filename)){
+            gson.toJson(b, writer);
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 
 }
 
 
 class block{
+    //TODO:: enter fields given by the assignment
     //serializable block class to contain all the data
-    String data;
-    String hash;
-    String seed;
+    public String data;
+    public String hash;
+    public String seed;
 }
 
 
