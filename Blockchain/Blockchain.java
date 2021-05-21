@@ -10,12 +10,17 @@ import java.security.*;
 class Blockchain{
 
     public static void main(String[] args) {
-        block b = utils.read_json("block.json");
-        System.out.println(b);
-        System.out.println(b.data);
-        System.out.println(b.hash);
-        System.out.println(b.seed);
-        
+        block b = new block();
+        b.data = "output data";
+        try {
+            b.hash = utils.hash_string(b.data);
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            //Auto-generated catch block
+            e.printStackTrace();
+        }
+        b.seed = utils.randomAlphaNumeric(8);
+
+        utils.write_json(b, "output.json");
     }
 
 
