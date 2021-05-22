@@ -9,9 +9,7 @@ import java.security.*;
 class Blockchain{
 
     public static void main(String[] args) {
-        block b = new block();
-        b.data = "data string";
-    
+        
     }
 
 }
@@ -51,7 +49,7 @@ class utils{
         //should probably convert to string here, but probably more modular if I don't
         return output_hash;
     }
-    //wrapper to translate the hash byte array to a string
+    //wrapper to translate the input string to hash byte array to a string
     public static String hash_string(String s) throws NoSuchAlgorithmException, UnsupportedEncodingException{
         byte[] output_hash = hash(s);
         String output = ByteArrayToString(output_hash);
@@ -86,7 +84,10 @@ class utils{
         }
     }
 
+    //iterate over all the fields in a block
     public static String iterate_block(block b){
+        //from https://stackoverflow.com/questions/17095628/loop-over-all-fields-in-a-java-class
+
         Field[] fields = b.getClass().getDeclaredFields();
         
         String block_data = "";
@@ -110,18 +111,57 @@ class utils{
         }
         return block_data;
     }
+
+    public static void read_data(String filename){
+        ArrayList<block> block_data = new ArrayList<block>();
+
+        int pnum = 1;
+
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            String line;
+
+            while ((line = br.readLine()) != null){
+                block b = new block(); // Careful
+
+                
+                //from class code
+                /* CDE For the timestamp in the block entry: */
+                Date date = new Date();
+                //String T1 = String.format("%1$s %2$tF.%2$tT", "Timestamp:", date);
+                String T1 = String.format("%1$s %2$tF.%2$tT", "", date);
+
+                //set the timestamp in the block
+                b.timestamp = T1;
+
+                
+            }
+        }
+        catch(IOException e){
+
+        }
+
+    }
 }
 
 
-class block{
+class block implements Serializable{
     //TODO:: enter fields given by the assignment
     //serializable block class to contain all the data
-    public String uuid;
-    public int number;
-    public String timestamp;
-    public String data;
-    public String hash;
-    public String seed;
+    String block_id;
+    String timestamp;
+    String VerificationProcessID;
+    String PreviousHash; // We'll copy from previous block
+    UUID uuid; // Just to show how JSON marshals this binary data.
+    String Fname;
+    String Lname;
+    String SSNum;
+    String DOB;
+    String RandomSeed; // Our guess. Ultimately our winning guess.
+    String WinningHash;
+    String Diag;
+    String Treat;
+    String Rx;
 }
 
 
@@ -163,5 +203,46 @@ class blockchain{
             //Auto-generated catch block
             e.printStackTrace();
         }
+    }
+}
+
+
+class verification_server implements Runnable{
+    //this is the server that takes the unverified block and starts the work on the block
+    int port;
+    verification_server(int p){
+        //take the port as an arg to specify the port outside of the function
+        //part of the coordination step
+        port = p;
+    }
+
+
+    public void run(){
+        int max_q_size = 12;
+        Socket skt;
+        ServerSocket server_skt;
+
+        try{
+            server_skt = new ServerSocket(port,max_q_size);
+            while(true){
+                skt = server_skt.accept();
+                new verification_worker(skt).start();
+            }
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+}
+
+class verification_worker extends Thread{
+    Socket skt;
+    verification_worker(Socket s){
+        skt = s;
+    }
+
+    public void run(){
+        
     }
 }
