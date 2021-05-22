@@ -113,6 +113,8 @@ class utils{
     }
 
     public static void read_data(String filename){
+        //TODO:: finish implementation
+
         ArrayList<block> block_data = new ArrayList<block>();
 
         int pnum = 1;
@@ -124,17 +126,7 @@ class utils{
             while ((line = br.readLine()) != null){
                 block b = new block(); // Careful
 
-                
-                //from class code
-                /* CDE For the timestamp in the block entry: */
-                Date date = new Date();
-                //String T1 = String.format("%1$s %2$tF.%2$tT", "Timestamp:", date);
-                String T1 = String.format("%1$s %2$tF.%2$tT", "", date);
-
-                //set the timestamp in the block
-                b.timestamp = T1;
-
-                
+                //add line data to block
             }
         }
         catch(IOException e){
@@ -147,6 +139,7 @@ class utils{
 
 class block implements Serializable{
     //TODO:: enter fields given by the assignment
+
     //serializable block class to contain all the data
     String block_id;
     String timestamp;
@@ -208,6 +201,8 @@ class blockchain{
 
 
 class verification_server implements Runnable{
+    //TODO:: finish implementation
+
     //this is the server that takes the unverified block and starts the work on the block
     int port;
     verification_server(int p){
@@ -237,6 +232,9 @@ class verification_server implements Runnable{
 }
 
 class verification_worker extends Thread{
+    //TODO:: finish implementation
+
+
     Socket skt;
     verification_worker(Socket s){
         skt = s;
