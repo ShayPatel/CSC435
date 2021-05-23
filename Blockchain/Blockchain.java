@@ -160,28 +160,33 @@ class Node{
 
 
     //TODO:: add list of child node hosts and ports
+    HashMap<String,Integer> unverified_block_server_hosts;
+    HashMap<String,Integer> verified_block_server_hosts;
 
 
-    //ports of this node's servers
-    int unverified_block_server_port;
-    int verified_block_server_port;
 
-
-    Node(){
+    Node(int ub_port, int vb_port){
+        /*
+        constructor to specify the ports of the unverified and verified block servers.
+        Also initialize the queue and set
+        */
+        unverified_block_server_hosts.put("localhost", ub_port);
+        verified_block_server_hosts.put("localhost", vb_port);
+        
+        
         //keep the blocking queue as an unbounded queue to allow for unlimited blocks
         processing_queue = new LinkedBlockingQueue<block>();
         verified_blocks = new HashSet<String>();
     }
 
-    Node(int ub_port, int vb_port){
-        /*
-        Secondary constructor to specify the ports of the unverified and verified block servers.
-        Calls the default constructor to initialize the queue and set
-        */
-        this();
-        unverified_block_server_port = ub_port;
-        verified_block_server_port = vb_port;
+    public void add_unverified_block_host(String host, int port){
+        unverified_block_server_hosts.put(host, port);
     }
+
+    public void add_verified_block_host(String host, int port){
+        verified_block_server_hosts.put(host,port);
+    }
+
 
     class unverified_block_server implements Runnable{
         /*
