@@ -292,12 +292,12 @@ class Node{
 
                     String block_id = b.get_block_id();
                     String winning_hash = work(b.get_block_string(), block_id);
-                    if(winning_hash != null){
+                    if(winning_hash == null){
                         continue;
                     }
                     else{
                         //TODO:: create verified block and send to verified block server
-                        b = create_verified_block(b, winning_hash);
+                        b.set_winning_hash(winning_hash);
 
 
                         //TODO:: create loop to send to all child nodes
@@ -398,15 +398,7 @@ class Node{
             }
         }
     
-        public block create_verified_block(block b, String hash){
-            /*
-            Take in a block and add the verification hash to it
-            */
-            
-            //TODO:: implement the function
-            
-            return null;
-        }
+
     }
 
 
