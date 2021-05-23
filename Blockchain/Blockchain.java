@@ -137,29 +137,21 @@ class block implements Serializable{
         previous_hash = hash;
     }
 
-    public void set_winning_hash(String hash){
-        /*
-        Sets the winning hash to the given hash string
-        */
-        winning_hash = hash;
-    }
-
     public void set_random_seed(String seed){
         /*
-        Sets the winning seed and the winning hash
+        Sets the  seed and the corresponding hash
         */
-        random_seed = seed;
-
-        String block_string = get_block_string();
-        String concat = block_string + seed;
+        
         try {
+            random_seed = seed;
+            String block_string = get_block_string();
+            String concat = block_string + seed;
             winning_hash = utils.hash_string(concat);
+
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             //Auto-generated catch block
             e.printStackTrace();
         }
-        
-
     }
 
 }
@@ -167,6 +159,9 @@ class block implements Serializable{
 
 class Node{
 
+    //the difficulty of the problem
+    //increase the value to make easier. decrease to make harder
+    //range from 0 to 65535
     public static final int difficulty = 1000;
 
     //from the class code
@@ -356,7 +351,7 @@ class Node{
                     else{
                         //send the verified block to the other nodes
 
-                        //set the random seed in the block.
+                        //set the random seed and the winning hash
                         b.set_random_seed(random_seed);
 
                         int port;
@@ -410,9 +405,6 @@ class Node{
                         answer = Integer.parseInt(hash.substring(0,4),16);
 
                         //verification step
-                        //the difficulty of the problem
-                        //increase the value to make easier. decrease to make harder
-                        //range from 0 to 65535
                         if(answer < difficulty){
                             //solved if condition met.
                             //return the random seed generated
