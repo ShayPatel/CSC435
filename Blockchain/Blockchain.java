@@ -112,49 +112,12 @@ class utils{
         return block_data;
     }
 
-    public static void read_data(String filename){
-        //TODO:: finish implementation
-
-        ArrayList<block> block_data = new ArrayList<block>();
-
-        int pnum = 1;
-
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(filename));
-            String line;
-
-            while ((line = br.readLine()) != null){
-                block b = new block(); // Careful
-
-                //add line data to block
-            }
-        }
-        catch(IOException e){
-
-        }
-
-    }
 }
 
 
 class block implements Serializable{
     //TODO:: enter fields given by the assignment
 
-    //serializable block class to contain all the data
-    String block_id;
-    String timestamp;
-    String VerificationProcessID;
-    String PreviousHash; // We'll copy from previous block
-    UUID uuid; // Just to show how JSON marshals this binary data.
-    String Fname;
-    String Lname;
-    String SSNum;
-    String DOB;
-    String RandomSeed; // Our guess. Ultimately our winning guess.
-    String WinningHash;
-    String Diag;
-    String Treat;
-    String Rx;
 }
 
 
@@ -200,47 +163,50 @@ class blockchain{
 }
 
 
-class verification_server implements Runnable{
-    //TODO:: finish implementation
 
-    //this is the server that takes the unverified block and starts the work on the block
-    int port;
-    verification_server(int p){
-        //take the port as an arg to specify the port outside of the function
-        //part of the coordination step
-        port = p;
-    }
+class Node{
 
-
-    public void run(){
-        int max_q_size = 12;
+    class verification_server implements Runnable{
+        int port;
         Socket skt;
-        ServerSocket server_skt;
 
-        try{
-            server_skt = new ServerSocket(port,max_q_size);
-            while(true){
-                skt = server_skt.accept();
-                new verification_worker(skt).start();
+        verification_server(int p){
+            port = p;
+        }
+
+        public void run(){
+            int max_q_size = 12;
+            try{
+                ServerSocket server = new ServerSocket(port,max_q_size);
+                while(true){
+                    skt = server.accept();
+
+                    //TODO:: add to processing queue
+                }
             }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+
+
         }
-        catch(IOException e){
-            e.printStackTrace();
+    }
+
+    class verification_worker extends Thread{
+        Socket skt;
+
+
+        public void run(){
+
         }
     }
 
-}
+    class blockchain_server{
 
-class verification_worker extends Thread{
-    //TODO:: finish implementation
-
-
-    Socket skt;
-    verification_worker(Socket s){
-        skt = s;
     }
 
-    public void run(){
-        
+    class blockchain_worker{
+
     }
+
 }
