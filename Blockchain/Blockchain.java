@@ -106,9 +106,14 @@ class block implements Serializable{
         This function gets the string representation of this block to senf to the work function to be hashed
         */
 
-        //TODO:: implement this function
+        //start with the previous hash
+        String data = previous_hash;
 
-        return null;
+        //concatenate the block fields
+        data += block_id;
+        //TODO:: add more fields
+
+        return data;
     }
 
     public String get_block_id(){
