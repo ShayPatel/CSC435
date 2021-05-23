@@ -310,12 +310,12 @@ class Node{
                     b = processing_queue.take();
 
                     String block_id = b.get_block_id();
-                    String winning_hash = work(b.get_block_string(), block_id);
-                    if(winning_hash == null){
+                    String random_seed = work(b.get_block_string(), block_id);
+                    if(random_seed == null){
                         continue;
                     }
                     else{
-                        b.set_winning_hash(winning_hash);
+                        b.set_random_seed(random_seed);
 
 
                         //TODO:: create loop to send to all child nodes
