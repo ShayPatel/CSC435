@@ -141,6 +141,7 @@ class Node{
     //blocking queue to store unverified blocks to be processed
     BlockingQueue<block> processing_queue;
     //store the identifier of a block. Populate set with verified block ids
+    //TODO:: choose the identifier. UUID or previous hash
     //can be used to check if a block has been verified. Useful to stop work on already verified blocks.
     HashSet<String> verified_blocks;
 
@@ -148,6 +149,7 @@ class Node{
     Node(){
         //keep the blocking queue as an unbounded queue to allow for unlimited blocks
         processing_queue = new LinkedBlockingQueue<block>();
+        verified_blocks = new HashSet<String>();
     }
 
     class unverified_block_server implements Runnable{
@@ -270,7 +272,11 @@ class Node{
             try{
                 block b;
                 while(true){
+                    //take from the blocking queue if an item exists
                     b = processing_queue.take();
+
+                    //TODO:: call the work function here
+                    work(b.get_block_string());
                 }
             }
             catch(InterruptedException e){
@@ -278,7 +284,7 @@ class Node{
             }
         }
 
-        public void work(String data){
+        public String work(String data){
             /*
             This function is used to perform the work to verify a block.
             Expects the block string as input.
@@ -299,30 +305,43 @@ class Node{
     
             try {
                 //keep generating until an answer has been found
-                do{
-                    //generate a random string and concatenate with the data
-                    rand = utils.randomAlphaNumeric(8);
-                    concat = data + rand;
-    
-                    //perform the hash of the new string
-                    hash = utils.hash_string(concat);
-                    
-                    //take the first 4 characters and parse to hex
-                    answer = Integer.parseInt(hash.substring(0,4),16);
+                while(true){
+                    //run loop n times before checking the set for the verified block
+                    for(int i = 0; i < 10; i++){
+                        //generate a random string and concatenate with the data
+                        rand = utils.randomAlphaNumeric(8);
+                        concat = data + rand;
+        
+                        //perform the hash of the new string
+                        hash = utils.hash_string(concat);
+                        
+                        //take the first 4 characters and parse to hex
+                        answer = Integer.parseInt(hash.substring(0,4),16);
+
+                        if(answer < 20000){
+                            return hash;
+                        }
+                    }
     
                     //TODO: sleep here
                     
                     //TODO: check if the blockchain has been updated
                     //if the chain is updated, then break from the loop
-    
-                }while(answer > 20000);
-    
+                    //use the verified_blocks set
+                    //TODO:: use the block key here to check contains
+                    String block_id = "";
+                    if(verified_blocks.contains(block_id)){
+                        return null;
+                    }
+                }
     
             }
             catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
             }
+            //final return block for any exceptions that occur
+            return null;
         }
 
     }
