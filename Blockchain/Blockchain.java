@@ -159,7 +159,7 @@ class Node{
     HashSet<String> verified_blocks;
 
 
-    //TODO:: add list of child node hosts and ports
+    //hashmap maps
     HashMap<String,Integer> unverified_block_server_hosts;
     HashMap<String,Integer> verified_block_server_hosts;
 
@@ -168,8 +168,11 @@ class Node{
     Node(int ub_port, int vb_port){
         /*
         constructor to specify the ports of the unverified and verified block servers.
-        Also initialize the queue and set
+        Also initialize the queue, set, and hashmaps
         */
+        unverified_block_server_hosts = new HashMap<>();
+        verified_block_server_hosts = new HashMap<>();
+
         unverified_block_server_hosts.put("localhost", ub_port);
         verified_block_server_hosts.put("localhost", vb_port);
         
