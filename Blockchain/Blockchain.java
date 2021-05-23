@@ -4,7 +4,6 @@ import java.net.*;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.lang.reflect.Field;
 import java.security.*;
 
 
@@ -92,6 +91,14 @@ class utils{
 class block implements Serializable{
     //TODO:: enter fields given by the assignment
 
+    //block identifier
+    String block_id;
+    //hash of the previous block to chain to
+    String previous_hash;
+    //winning hash that verifies this block
+    String winning_hash;
+
+
     public String get_block_string(){
         /*
         This function gets the string representation of this block to senf to the work function to be hashed
@@ -101,10 +108,25 @@ class block implements Serializable{
 
         return null;
     }
+
+    public String get_block_id(){
+        /*
+        returns the identifier of the block
+        */
+        //TODO:: implement function
+
+        return block_id;
+    }
+
+    public void set_winning_hash(String hash){
+        /*
+        Sets the winning hash to the given hash string
+        */
+        winning_hash = hash;
+    }
+
+
 }
-
-
-
 
 
 class Node{
@@ -118,10 +140,28 @@ class Node{
     HashSet<String> verified_blocks;
 
 
+    //TODO:: add list of child node hosts and ports
+
+
+    //ports of this node's servers
+    int unverified_block_server_port;
+    int verified_block_server_port;
+
+
     Node(){
         //keep the blocking queue as an unbounded queue to allow for unlimited blocks
         processing_queue = new LinkedBlockingQueue<block>();
         verified_blocks = new HashSet<String>();
+    }
+
+    Node(int ub_port, int vb_port){
+        /*
+        Secondary constructor to specify the ports of the unverified and verified block servers.
+        Calls the default constructor to initialize the queue and set
+        */
+        this();
+        unverified_block_server_port = ub_port;
+        verified_block_server_port = vb_port;
     }
 
     class unverified_block_server implements Runnable{
@@ -173,8 +213,6 @@ class Node{
         }
 
         public void run(){
-            //TODO:: needs testing
-
             block b;
 
             try{
@@ -183,6 +221,7 @@ class Node{
                 //cast the object to a block
                 b = (block)input.readObject();
                 processing_queue.add(b);
+                skt.close();
             }
             catch(IOException | ClassNotFoundException e){
                 e.printStackTrace();
@@ -220,6 +259,7 @@ class Node{
             catch(IOException e){
                 e.printStackTrace();
             }
+            
         }
     }
 
@@ -250,14 +290,20 @@ class Node{
                     //take from the blocking queue if an item exists
                     b = processing_queue.take();
 
-                    //TODO:: take the block id from the block object
-                    String block_id = "";
+                    String block_id = b.get_block_id();
                     String winning_hash = work(b.get_block_string(), block_id);
                     if(winning_hash != null){
                         continue;
                     }
                     else{
                         //TODO:: create verified block and send to verified block server
+                        b = create_verified_block(b, winning_hash);
+
+
+                        //TODO:: create loop to send to all child nodes
+                        String host = "localhost";
+                        int port = verified_block_server_port;
+                        send_verified_block(b, host, port);
                     }
                 }
             }
@@ -267,13 +313,13 @@ class Node{
         }
 
         public String work(String data, String block_id){
-            //TODO:: change function arguments to accept the block identifier
-
             /*
             This function is used to perform the work to verify a block.
             Expects the block string as input.
             Performs the work in a loop and periodically checks if the current block has already been verified.
             If so, then stop. Continues work until the block is verified.
+            Returns the winning hash if found
+            Returns null if exited early
             */
 
             //TODO: update to ensure that the work is consistent with the assignment
@@ -305,6 +351,7 @@ class Node{
                         //verification step
                         //the difficulty of the problem
                         //increase the value to make easier. decrease to make harder
+                        //range from 0 to 65535
                         if(answer < 20000){
                             return hash;
                         }
@@ -327,6 +374,39 @@ class Node{
             return null;
         }
 
+        public void send_verified_block(block b, String host, int port){
+            /*
+            Sends the block to the given host on the given port.
+            Assumes the block has already been verified.
+            */
+            Socket skt;
+
+            try {
+                skt = new Socket(host,port);
+
+                //send the data as an object
+                ObjectOutputStream output = new ObjectOutputStream(skt.getOutputStream());
+
+                //send the object
+                output.writeObject(b);
+                output.flush();
+                skt.close();
+                
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    
+        public block create_verified_block(block b, String hash){
+            /*
+            Take in a block and add the verification hash to it
+            */
+            
+            //TODO:: implement the function
+            
+            return null;
+        }
     }
 
 
