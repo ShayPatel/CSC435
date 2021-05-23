@@ -86,34 +86,6 @@ class utils{
         }
     }
 
-    //iterate over all the fields in a block
-    public static String iterate_block(block b){
-        //from https://stackoverflow.com/questions/17095628/loop-over-all-fields-in-a-java-class
-
-        Field[] fields = b.getClass().getDeclaredFields();
-        
-        String block_data = "";
-        try {
-            for(Field f: fields){
-                Class t = f.getType();
-                Object v = f.get(b);
-                
-                //check if the field is a string
-                if(t == String.class && v != null){
-                    //concatenate to the data string
-                    block_data += v;
-                }
-                else if (t == int.class){
-                    block_data += String.valueOf(v);
-                }
-            }    
-        }
-        catch (IllegalArgumentException | IllegalAccessException e) {
-             e.printStackTrace();
-        }
-        return block_data;
-    }
-
 }
 
 
@@ -278,7 +250,9 @@ class Node{
                     //take from the blocking queue if an item exists
                     b = processing_queue.take();
 
-                    String winning_hash = work(b.get_block_string());
+                    //TODO:: take the block id from the block object
+                    String block_id = "";
+                    String winning_hash = work(b.get_block_string(), block_id);
                     if(winning_hash != null){
                         continue;
                     }
@@ -292,7 +266,9 @@ class Node{
             }
         }
 
-        public String work(String data){
+        public String work(String data, String block_id){
+            //TODO:: change function arguments to accept the block identifier
+
             /*
             This function is used to perform the work to verify a block.
             Expects the block string as input.
@@ -337,8 +313,6 @@ class Node{
                     //check if the blockchain has been updated
                     //if the chain is updated, then break from the loop
                     //use the verified_blocks set
-                    //TODO:: use the block key here to check contains
-                    String block_id = "";
                     if(verified_blocks.contains(block_id)){
                         return null;
                     }
