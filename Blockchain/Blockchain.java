@@ -322,11 +322,12 @@ class Node{
                     else{
                         b.set_random_seed(random_seed);
 
-
-                        //TODO:: create loop to send to all child nodes
-                        String host = "localhost";
-                        int port = verified_block_server_port;
-                        send_verified_block(b, host, port);
+                        int port;
+                        //create loop to send to all child nodes' verified block servers
+                        for(String host:verified_block_server_hosts.keySet()){
+                            port = verified_block_server_hosts.get(host);
+                            send_verified_block(b, host, port);
+                        }
                     }
                 }
             }
