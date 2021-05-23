@@ -120,55 +120,29 @@ class utils{
 class block implements Serializable{
     //TODO:: enter fields given by the assignment
 
-}
+    public String get_block_string(){
+        /*
+        This function gets the string representation of this block to senf to the work function to be hashed
+        */
 
+        //TODO:: implement this function
 
-class blockchain{
-
-    public void work(String data){
-        //TODO: update to ensure that the work is consistent with the assignment
-
-        //string to store the random seed for the answer
-        String rand;
-        //placeholder string for the concatenatation
-        String concat;
-        String hash;
-        int answer;
-
-        try {
-            //keep generating until an answer has been found
-            do{
-                //generate a random string and concatenate with the data
-                rand = utils.randomAlphaNumeric(8);
-                concat = data + rand;
-
-                //perform the hash of the new string
-                hash = utils.hash_string(concat);
-                
-                //take the first 4 characters and parse to hex
-                answer = Integer.parseInt(hash.substring(0,4),16);
-
-                //TODO: sleep here
-                
-                //TODO: check if the blockchain has been updated
-                //if the chain is updated, then break from the loop
-
-            }while(answer > 20000);
-
-
-        }
-        catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            //Auto-generated catch block
-            e.printStackTrace();
-        }
+        return null;
     }
 }
 
 
 
+
+
 class Node{
 
+    //from the class code
+    //blocking queue to store unverified blocks to be processed
     BlockingQueue<block> processing_queue;
+    //store the identifier of a block. Populate set with verified block ids
+    //can be used to check if a block has been verified. Useful to stop work on already verified blocks.
+    HashSet<String> verified_blocks;
 
 
     Node(){
@@ -288,5 +262,71 @@ class Node{
             //TODO:: add the new block to the ledger
         }
     }
+
+
+    class worker implements Runnable{
+
+        public void run(){
+            try{
+                block b;
+                while(true){
+                    b = processing_queue.take();
+                }
+            }
+            catch(InterruptedException e){
+                e.printStackTrace();
+            }
+        }
+
+        public void work(String data){
+            /*
+            This function is used to perform the work to verify a block.
+            Expects the block string as input.
+            Performs the work in a loop and periodically checks if the current block has already been verified.
+            If so, then stop. Continues work until the block is verified.
+            */
+
+            //TODO: update to ensure that the work is consistent with the assignment
+    
+            //string to store the random seed for the answer
+            String rand;
+            //placeholder string for the concatenatation
+            String concat;
+            //placeholder string to store the hash
+            String hash;
+            //placeholder int to store the hash leading values
+            int answer;
+    
+            try {
+                //keep generating until an answer has been found
+                do{
+                    //generate a random string and concatenate with the data
+                    rand = utils.randomAlphaNumeric(8);
+                    concat = data + rand;
+    
+                    //perform the hash of the new string
+                    hash = utils.hash_string(concat);
+                    
+                    //take the first 4 characters and parse to hex
+                    answer = Integer.parseInt(hash.substring(0,4),16);
+    
+                    //TODO: sleep here
+                    
+                    //TODO: check if the blockchain has been updated
+                    //if the chain is updated, then break from the loop
+    
+                }while(answer > 20000);
+    
+    
+            }
+            catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
 
 }
