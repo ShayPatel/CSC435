@@ -166,47 +166,108 @@ class blockchain{
 
 class Node{
 
-    class verification_server implements Runnable{
+
+
+    class unverified_block_server implements Runnable{
+        /*
+        Server to handle incoming new unverified blocks.
+        Starts a server socket and expects block type objects.
+        Once recieved, starts the unverified block worker to add the block to the processing queue.
+        */
+
+        //server variables
         int port;
         Socket skt;
+        int max_q_size = 12;
 
-        verification_server(int p){
+        unverified_block_server(int p){
             port = p;
         }
 
         public void run(){
-            int max_q_size = 12;
+            /*
+            starts the server
+            */
+
             try{
                 ServerSocket server = new ServerSocket(port,max_q_size);
                 while(true){
                     skt = server.accept();
 
-                    //TODO:: add to processing queue
+                    //start the worker to add to the queue
+                    new unverified_block_worker(skt).start();
                 }
             }
             catch(IOException e){
                 e.printStackTrace();
             }
-
-
         }
     }
 
-    class verification_worker extends Thread{
+    class unverified_block_worker extends Thread{
+        /*
+        A worker thread to read an incoming socket request.
+        The data should be a block object. Once read, the worker adds the block to the processing queue.
+        */
+
         Socket skt;
 
+        unverified_block_worker(Socket s){
+            skt = s;
+        }
+
+        public void run(){
+            //TODO:: read the socket and convert to block
+            
+            //TODO:: add the new block to the processing queue
+        }
+    }
+
+    class verified_block_server implements Runnable{
+        /*
+        Server to handle incoming verified blocks.
+        Starts a server socket and expects block type objects.
+        Once recieved, starts the verifified block worker to add the block to the ledger.
+        The worker will also muticast the verified block out to the child nodes
+        */
+
+        //server variables
+        int port;
+        Socket skt;
+        int max_q_size = 12;
+
+        verified_block_server(int p){
+            port = p;
+        }
 
         public void run(){
 
+            try{
+                ServerSocket server = new ServerSocket(port,max_q_size);
+                while(true){
+                    skt = server.accept();
+
+                    new verified_block_worker(skt).start();
+                }
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
-    class blockchain_server{
+    class verified_block_worker extends Thread{
+        Socket skt;
 
-    }
+        verified_block_worker(Socket s){
+            skt = s;
+        }
 
-    class blockchain_worker{
-
+        public void run(){
+            //TODO:: read the socket and convert to block
+            
+            //TODO:: add the new block to the ledger
+        }
     }
 
 }
