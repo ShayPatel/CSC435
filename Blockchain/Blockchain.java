@@ -2,6 +2,8 @@ import com.google.gson.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.lang.reflect.Field;
 import java.security.*;
 
@@ -166,7 +168,13 @@ class blockchain{
 
 class Node{
 
+    BlockingQueue<block> processing_queue;
 
+
+    Node(){
+        //keep the blocking queue as an unbounded queue to allow for unlimited blocks
+        processing_queue = new LinkedBlockingQueue<block>();
+    }
 
     class unverified_block_server implements Runnable{
         /*
@@ -217,9 +225,20 @@ class Node{
         }
 
         public void run(){
-            //TODO:: read the socket and convert to block
-            
-            //TODO:: add the new block to the processing queue
+            //TODO:: needs testing
+
+            block b;
+
+            try{
+                //get the socket data as an object
+                ObjectInputStream input = new ObjectInputStream(skt.getInputStream());
+                //cast the object to a block
+                b = (block)input.readObject();
+                processing_queue.add(b);
+            }
+            catch(IOException | ClassNotFoundException e){
+                e.printStackTrace();
+            }
         }
     }
 
