@@ -167,6 +167,8 @@ class block implements Serializable{
 
 class Node{
 
+    public static final int difficulty = 1000;
+
     //from the class code
     //blocking queue to store unverified blocks to be processed
     BlockingQueue<block> processing_queue;
@@ -176,8 +178,11 @@ class Node{
     HashSet<String> verified_blocks;
 
 
-    //hashmap maps
+    //hashmap maps to store host information
+    //maps a host to a port
+    //these are the hosts to send unverified blocks to
     HashMap<String,Integer> unverified_block_server_hosts;
+    //these are the hosts to send verified blocks to
     HashMap<String,Integer> verified_block_server_hosts;
 
 
@@ -326,6 +331,7 @@ class Node{
         /*
         Class to perform the work on a block.
         Use as a process to take from the processing queue and verify the block
+        Sends the verified block to other nodes
         */
         public void run(){
             try{
@@ -334,12 +340,23 @@ class Node{
                     //take from the blocking queue if an item exists
                     b = processing_queue.take();
 
+                    //need the block id to check in the verified blocks hashmap
                     String block_id = b.get_block_id();
+
+                    //perform the work and get the random seed back
                     String random_seed = work(b.get_block_string(), block_id);
+                    
                     if(random_seed == null){
                         continue;
                     }
+                    else if(verified_blocks.contains(block_id)){
+                        //last check to see if the block has been verified before sending
+                        continue;
+                    }
                     else{
+                        //send the verified block to the other nodes
+
+                        //set the random seed in the block.
                         b.set_random_seed(random_seed);
 
                         int port;
@@ -396,7 +413,7 @@ class Node{
                         //the difficulty of the problem
                         //increase the value to make easier. decrease to make harder
                         //range from 0 to 65535
-                        if(answer < 20000){
+                        if(answer < difficulty){
                             //solved if condition met.
                             //return the random seed generated
                             return rand;
