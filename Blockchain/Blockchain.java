@@ -97,6 +97,8 @@ class block implements Serializable{
     String previous_hash;
     //winning hash that verifies this block
     String winning_hash;
+    //the winning guess
+    String random_seed;
 
 
     public String get_block_string(){
@@ -125,6 +127,23 @@ class block implements Serializable{
         winning_hash = hash;
     }
 
+    public void set_random_seed(String seed){
+        /*
+        Sets the winning seed and the winning hash
+        */
+        random_seed = seed;
+
+        String block_string = get_block_string();
+        String concat = block_string + seed;
+        try {
+            winning_hash = utils.hash_string(concat);
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            //Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+
+    }
 
 }
 
@@ -296,7 +315,6 @@ class Node{
                         continue;
                     }
                     else{
-                        //TODO:: create verified block and send to verified block server
                         b.set_winning_hash(winning_hash);
 
 
@@ -318,7 +336,7 @@ class Node{
             Expects the block string as input.
             Performs the work in a loop and periodically checks if the current block has already been verified.
             If so, then stop. Continues work until the block is verified.
-            Returns the winning hash if found
+            Returns the random seed if found
             Returns null if exited early
             */
 
@@ -353,7 +371,9 @@ class Node{
                         //increase the value to make easier. decrease to make harder
                         //range from 0 to 65535
                         if(answer < 20000){
-                            return hash;
+                            //solved if condition met.
+                            //return the random seed generated
+                            return rand;
                         }
                     }
                     
