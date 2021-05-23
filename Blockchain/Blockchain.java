@@ -125,6 +125,18 @@ class block implements Serializable{
         return block_id;
     }
 
+    public String get_previous_hash(){
+        return previous_hash;
+    }
+
+    public void set_block_id(String id){
+        block_id = id;
+    }
+
+    public void set_previous_hash(String hash){
+        previous_hash = hash;
+    }
+
     public void set_winning_hash(String hash){
         /*
         Sets the winning hash to the given hash string
