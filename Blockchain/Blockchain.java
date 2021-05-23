@@ -267,7 +267,10 @@ class Node{
 
 
     class worker implements Runnable{
-
+        /*
+        Class to perform the work on a block.
+        Use as a process to take from the processing queue and verify the block
+        */
         public void run(){
             try{
                 block b;
@@ -275,8 +278,13 @@ class Node{
                     //take from the blocking queue if an item exists
                     b = processing_queue.take();
 
-                    //TODO:: call the work function here
-                    work(b.get_block_string());
+                    String winning_hash = work(b.get_block_string());
+                    if(winning_hash != null){
+                        continue;
+                    }
+                    else{
+                        //TODO:: create verified block and send to verified block server
+                    }
                 }
             }
             catch(InterruptedException e){
@@ -318,14 +326,15 @@ class Node{
                         //take the first 4 characters and parse to hex
                         answer = Integer.parseInt(hash.substring(0,4),16);
 
+                        //verification step
+                        //the difficulty of the problem
+                        //increase the value to make easier. decrease to make harder
                         if(answer < 20000){
                             return hash;
                         }
                     }
-    
-                    //TODO: sleep here
                     
-                    //TODO: check if the blockchain has been updated
+                    //check if the blockchain has been updated
                     //if the chain is updated, then break from the loop
                     //use the verified_blocks set
                     //TODO:: use the block key here to check contains
