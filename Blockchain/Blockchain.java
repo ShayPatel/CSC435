@@ -215,6 +215,9 @@ class Node{
     //these are the hosts to send verified blocks to
     HashMap<String,Integer> verified_block_server_hosts;
 
+    //store the latest verified block hash
+    String previous_hash;
+
 
 
     Node(int ub_port, int vb_port){
@@ -232,6 +235,7 @@ class Node{
         //keep the blocking queue as an unbounded queue to allow for unlimited blocks
         processing_queue = new LinkedBlockingQueue<block>();
         verified_blocks = new HashSet<String>();
+
 
         //TODO:: start the servers and the workers
         new Thread(new unverified_block_server(ub_port)).start();;
@@ -302,6 +306,12 @@ class Node{
             //block b;
 
             try{
+                System.out.println("---------- Recieved unverified block to be processed ----------");
+
+                //get the sender information
+                SocketAddress remote = skt.getRemoteSocketAddress();
+                System.out.println(String.format("block sent from: %s", remote));
+
                 //this input expects the data in string format
                 BufferedReader reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
                 //get the socket data as a json string
@@ -319,7 +329,8 @@ class Node{
 
                 //add the block to the processing queue
                 processing_queue.add(b);
-                //System.out.println("added the block to the queue");
+                System.out.println("added the block to the processing queue");
+                
                 skt.close();
             }
             catch(IOException e){
@@ -377,41 +388,46 @@ class Node{
         }
 
         public void run(){
-            //TODO:: read the socket and convert to block
-            block b = null;
             try {
+                System.out.println("---------- Received block to be verified ----------");
+
+                //get the sender information
+                SocketAddress remote = skt.getRemoteSocketAddress();
+                System.out.println(String.format("block sent from: %s", remote));
+                
+                
+                //read the socket and convert to block
+                block b;
                 BufferedReader reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
                 String json = reader.readLine();
                 b = utils.decode_json(json);
+                
+                //reverify the block
+                String data = b.get_block_string();
+                String concat = data + b.random_seed;
+                String hash = utils.hash_string(concat);
+                int answer = Integer.parseInt(hash.substring(0,4),16);
+
+                if(answer < difficulty){
+                    //TODO:: process the newly verified block
+                    System.out.println(String.format("successfully verified with id: %s", b.get_block_id()));
+                    System.out.println("Adding to ledger");
+                    
+                }
+                else{
+                    System.out.println(String.format("unable to verify block with id: %s", b.get_block_id()));
+                }
+
+
             } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
             }
 
-            if(b == null){
-                System.out.println("Unable to read as a block");
-            }
-            //TODO:: add the new block to the ledger
-            else{
-                try {
-                    //reverify the block
-                    String data = b.get_block_string();
-                    String concat = data + b.random_seed;
-                    String hash = utils.hash_string(concat);
-                    int answer = Integer.parseInt(hash.substring(0,4),16);
-                    if(answer >= difficulty){
-                        System.out.println("Invalid block");;
-                    }
-                    else{
-                        System.out.println("valid block");
-                    }
-
-                } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-                    //Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-            }
+            
         }
     }
 
@@ -426,24 +442,31 @@ class Node{
             try{
                 block b;
                 while(true){
+                    
                     //take from the blocking queue if an item exists
                     b = processing_queue.take();
+                    System.out.println("---------- Working on block ----------");
+                    System.out.println(String.format("took block from queue with id: %s", b.get_block_id()));
 
                     //need the block id to check in the verified blocks hashmap
                     String block_id = b.get_block_id();
 
+                    System.out.println("starting work");
                     //perform the work and get the random seed back
                     String random_seed = work(b.get_block_string(), block_id);
                     
                     if(random_seed == null){
+                        System.out.println("unable to process the block");
                         continue;
                     }
                     else if(verified_blocks.contains(block_id)){
                         //last check to see if the block has been verified before sending
+                        System.out.println("block already verified by another process");
                         continue;
                     }
                     else{
                         //send the verified block to the other nodes
+                        System.out.println("---------- Sending verified block to other nodes ----------");
 
                         //set the random seed and the winning hash
                         b.set_random_seed(random_seed);
@@ -452,6 +475,7 @@ class Node{
                         //create loop to send to all child nodes' verified block servers
                         for(String host:verified_block_server_hosts.keySet()){
                             port = verified_block_server_hosts.get(host);
+                            System.out.println(String.format("sending to: %s:%d", host,port));
                             send_verified_block(b, host, port);
                         }
                     }
