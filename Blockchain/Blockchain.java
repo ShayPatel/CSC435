@@ -236,6 +236,7 @@ class Node{
         //TODO:: start the servers and the workers
         new Thread(new unverified_block_server(ub_port)).start();;
         new Thread(new worker()).start();
+        new Thread(new verified_block_server(vb_port)).start();
     }
 
     public void add_unverified_block_host(String host, int port){
@@ -331,9 +332,9 @@ class Node{
     class verified_block_server implements Runnable{
         /*
         Server to handle incoming verified blocks.
-        Starts a server socket and expects block type objects.
+        Starts a server socket and expects blocks serialized as json.
         Once recieved, starts the verifified block worker to add the block to the ledger.
-        The worker will also muticast the verified block out to the child nodes
+        The worker will also multicast the verified block out to the child nodes
         */
 
         //server variables
@@ -363,6 +364,12 @@ class Node{
     }
 
     class verified_block_worker extends Thread{
+        /*
+        Expects a json string input from the socket
+        converts the string to a block
+        reverifies to confirm work
+        multicast the block out to other nodes
+        */
         Socket skt;
 
         verified_block_worker(Socket s){
@@ -371,8 +378,40 @@ class Node{
 
         public void run(){
             //TODO:: read the socket and convert to block
-            
+            block b = null;
+            try {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+                String json = reader.readLine();
+                b = utils.decode_json(json);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            if(b == null){
+                System.out.println("Unable to read as a block");
+            }
             //TODO:: add the new block to the ledger
+            else{
+                try {
+                    //reverify the block
+                    String data = b.get_block_string();
+                    String concat = data + b.random_seed;
+                    String hash = utils.hash_string(concat);
+                    int answer = Integer.parseInt(hash.substring(0,4),16);
+                    if(answer >= difficulty){
+                        System.out.println("Invalid block");;
+                    }
+                    else{
+                        System.out.println("valid block");
+                    }
+
+                } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+                    //Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            }
         }
     }
 
@@ -450,7 +489,7 @@ class Node{
                     //run loop n times before checking the set for the verified block
                     //increase n to solve faster
                     //decrease n to solve slower
-                    for(int i = 0; i < 3; i++){
+                    for(int i = 0; i < 100; i++){
                         //generate a random string and concatenate with the data
                         rand = utils.randomAlphaNumeric(8);
                         concat = data + rand;
@@ -500,18 +539,23 @@ class Node{
             /*
             Sends the block to the given host on the given port.
             Assumes the block has already been verified.
+            Converts the block to a json string before sending
             */
-            Socket skt;
 
             try {
-                skt = new Socket(host,port);
+                //convert the block to a json string
+                Gson gson = new Gson();
+                String json = gson.toJson(b);
+                //System.out.println(json);
+                
 
-                //send the data as an object
-                ObjectOutputStream output = new ObjectOutputStream(skt.getOutputStream());
+                Socket skt = new Socket(host,port);
+                PrintStream to_server = new PrintStream(skt.getOutputStream());
 
-                //send the object
-                output.writeObject(b);
-                output.flush();
+                //sending the command
+                to_server.println(json);
+                to_server.flush();
+
                 skt.close();
                 
             } catch (IOException e) {
