@@ -17,6 +17,10 @@ class Blockchain{
         String json = gson.toJson(b);
 
         send_command(json,"localhost",4821);
+
+        b = utils.read_json("block2.json");
+        json = gson.toJson(b);
+        send_command(json,"localhost",4821);
     }
 
     public static void send_command(String command, String server_name, int port){
@@ -178,8 +182,7 @@ class block implements Serializable{
         
         try {
             random_seed = seed;
-            String block_string = get_block_string();
-            String concat = block_string + seed;
+            String concat = previous_hash + get_block_string() + seed;
             winning_hash = utils.hash_string(concat);
 
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
@@ -196,7 +199,7 @@ class Node{
     //the difficulty of the problem
     //increase the value to make easier. decrease to make harder
     //range from 0 to 65535
-    public static final int difficulty = 1000;
+    public static final int difficulty = 10000;
 
     //from the class code
     //blocking queue to store unverified blocks to be processed
@@ -422,6 +425,13 @@ class Node{
 
                         //TODO:: process the newly verified block
                         ledger.add(b);
+
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+                        // Convert the Java object to a JSON String:
+                        String output = gson.toJson(b);
+                        System.out.println("----------- block added to the ledger ---------");
+                        System.out.println(output);
                         
                     }
                     else{
@@ -431,10 +441,6 @@ class Node{
                 else{
                     System.out.println("block previous hash does not match the current previous hash");
                 }
-                
-                
-
-
             } catch (IOException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
@@ -458,7 +464,10 @@ class Node{
             try{
                 block b;
                 while(true){
-                    
+                    //start a sleep before working on the next block
+                    //sleep for a while to ensure the previous hash has been updated
+                    Thread.sleep(2000);
+
                     //take from the blocking queue if an item exists
                     b = processing_queue.take();
                     System.out.println("---------- Working on block ----------");
@@ -532,7 +541,7 @@ class Node{
                     //run loop n times before checking the set for the verified block
                     //increase n to solve faster
                     //decrease n to solve slower
-                    for(int i = 0; i < 100; i++){
+                    for(int i = 0; i < 1; i++){
                         //generate a random string and concatenate with the data
                         rand = utils.randomAlphaNumeric(8);
                         concat = previous_hash + data + rand;
