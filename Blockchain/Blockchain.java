@@ -448,7 +448,9 @@ class Node{
                 //keep generating until an answer has been found
                 while(true){
                     //run loop n times before checking the set for the verified block
-                    for(int i = 0; i < 10; i++){
+                    //increase n to solve faster
+                    //decrease n to solve slower
+                    for(int i = 0; i < 3; i++){
                         //generate a random string and concatenate with the data
                         rand = utils.randomAlphaNumeric(8);
                         concat = data + rand;
@@ -465,11 +467,17 @@ class Node{
                             //return the random seed generated
 
                             System.out.println("block verified");
-                            System.out.println(rand);
-
+                            System.out.println(String.format("random seed is: %s", rand));
+                            System.out.println(String.format("winning hash is: %s", hash));
+                            System.out.println(String.format("answer is: %d", answer));
                             return rand;
                         }
                     }
+
+                    //reach here if the n attempts did not result in an answer
+                    //System.out.println("not found in n attempts. trying again");
+                    //sleep to fake the work
+                    Thread.sleep(2000);
                     
                     //check if the blockchain has been updated
                     //if the chain is updated, then break from the loop
@@ -480,7 +488,7 @@ class Node{
                 }
     
             }
-            catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            catch (NoSuchAlgorithmException | UnsupportedEncodingException | InterruptedException e) {
                 //Auto-generated catch block
                 e.printStackTrace();
             }
