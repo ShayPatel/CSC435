@@ -10,7 +10,37 @@ import java.security.*;
 class Blockchain{
 
     public static void main(String[] args) {
-        
+        Node n1 = new Node(4821,4931);
+
+        block b = utils.read_json("block.json");
+        Gson gson = new Gson();
+        String json = gson.toJson(b);
+
+        send_command(json,"localhost",4821);
+    }
+
+    public static void send_command(String command, String server_name, int port){
+        Socket skt;
+        //admin client does not recieve messages, so don't need buffered reader
+        PrintStream to_server;
+
+
+        try{
+            //open the connection to the admin server
+            skt = new Socket(server_name, port);
+            
+            //Create the output stream to send to the server
+            to_server = new PrintStream(skt.getOutputStream());
+
+            //sending the command
+            to_server.println(command);
+            to_server.flush();
+
+            skt.close();
+        }
+        catch(IOException e){
+            System.out.println(e);
+        }
     }
 
 }
@@ -84,7 +114,12 @@ class utils{
             e.printStackTrace();
         }
     }
+    //wrapper function to read a json string anc convert to a block
+    public static block decode_json(String json){
+        Gson gson = new Gson();
 
+        return gson.fromJson(json, block.class);
+    }
 }
 
 
@@ -197,6 +232,10 @@ class Node{
         //keep the blocking queue as an unbounded queue to allow for unlimited blocks
         processing_queue = new LinkedBlockingQueue<block>();
         verified_blocks = new HashSet<String>();
+
+        //TODO:: start the servers and the workers
+        new Thread(new unverified_block_server(ub_port)).start();;
+        new Thread(new worker()).start();
     }
 
     public void add_unverified_block_host(String host, int port){
@@ -247,7 +286,9 @@ class Node{
     class unverified_block_worker extends Thread{
         /*
         A worker thread to read an incoming socket request.
-        The data should be a block object. Once read, the worker adds the block to the processing queue.
+        The data should be a block object serialized as a json string.
+        The process decodes the json string to a block.
+        Once read, the worker adds the block to the processing queue.
         */
 
         Socket skt;
@@ -257,17 +298,31 @@ class Node{
         }
 
         public void run(){
-            block b;
+            //block b;
 
             try{
+                //this input expects the data in string format
+                BufferedReader reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+                //get the socket data as a json string
+                String json = reader.readLine();
+                //System.out.println(json);
+                //decode the string into a block object
+                block b = utils.decode_json(json);
+                //System.out.println(b.block_id);
+
+                
                 //get the socket data as an object
-                ObjectInputStream input = new ObjectInputStream(skt.getInputStream());
+                //ObjectInputStream input = new ObjectInputStream(skt.getInputStream());
                 //cast the object to a block
-                b = (block)input.readObject();
+                //b = (block)input.readObject();
+
+                //add the block to the processing queue
                 processing_queue.add(b);
+                //System.out.println("added the block to the queue");
                 skt.close();
             }
-            catch(IOException | ClassNotFoundException e){
+            catch(IOException e){
+            //catch(IOException | ClassNotFoundException e){
                 e.printStackTrace();
             }
         }
@@ -408,6 +463,10 @@ class Node{
                         if(answer < difficulty){
                             //solved if condition met.
                             //return the random seed generated
+
+                            System.out.println("block verified");
+                            System.out.println(rand);
+
                             return rand;
                         }
                     }
