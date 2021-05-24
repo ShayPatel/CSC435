@@ -141,8 +141,7 @@ class block implements Serializable{
         This function gets the string representation of this block to senf to the work function to be hashed
         */
 
-        //start with the previous hash
-        String data = previous_hash;
+        String data = "";
 
         //concatenate the block fields
         data += block_id;
@@ -217,6 +216,8 @@ class Node{
 
     //store the latest verified block hash
     String previous_hash;
+    //have a linked list of all the blocks that have been varified
+    LinkedList<block> ledger;
 
 
 
@@ -235,6 +236,11 @@ class Node{
         //keep the blocking queue as an unbounded queue to allow for unlimited blocks
         processing_queue = new LinkedBlockingQueue<block>();
         verified_blocks = new HashSet<String>();
+
+        //set initial value for previous hash
+        previous_hash = "";
+        //initialize the linked list
+        ledger = new LinkedList<block>();
 
 
         //TODO:: start the servers and the workers
@@ -401,22 +407,32 @@ class Node{
                 BufferedReader reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
                 String json = reader.readLine();
                 b = utils.decode_json(json);
-                
-                //reverify the block
-                String data = b.get_block_string();
-                String concat = data + b.random_seed;
-                String hash = utils.hash_string(concat);
-                int answer = Integer.parseInt(hash.substring(0,4),16);
+                //check the previous hash is still valid
+                if(b.get_previous_hash().equals(previous_hash)){
+                    //reverify the block
+                    String data = b.get_block_string();
+                    String concat = previous_hash + data + b.random_seed;
+                    String hash = utils.hash_string(concat);
+                    int answer = Integer.parseInt(hash.substring(0,4),16);
 
-                if(answer < difficulty){
-                    //TODO:: process the newly verified block
-                    System.out.println(String.format("successfully verified with id: %s", b.get_block_id()));
-                    System.out.println("Adding to ledger");
-                    
+                    if(answer < difficulty){
+                        System.out.println(String.format("successfully verified with id: %s", b.get_block_id()));
+                        System.out.println("Setting previous hash to the latest winning hash");
+                        previous_hash = hash;
+
+                        //TODO:: process the newly verified block
+                        ledger.add(b);
+                        
+                    }
+                    else{
+                        System.out.println(String.format("unable to verify block with id: %s", b.get_block_id()));
+                    }
                 }
                 else{
-                    System.out.println(String.format("unable to verify block with id: %s", b.get_block_id()));
+                    System.out.println("block previous hash does not match the current previous hash");
                 }
+                
+                
 
 
             } catch (IOException e) {
@@ -454,7 +470,9 @@ class Node{
                     System.out.println("starting work");
                     //perform the work and get the random seed back
                     String random_seed = work(b.get_block_string(), block_id);
-                    
+                    //set previous hash here to prevent previous hash from being changed on thread switch
+                    b.set_previous_hash(previous_hash);
+
                     if(random_seed == null){
                         System.out.println("unable to process the block");
                         continue;
@@ -470,6 +488,7 @@ class Node{
 
                         //set the random seed and the winning hash
                         b.set_random_seed(random_seed);
+                        
 
                         int port;
                         //create loop to send to all child nodes' verified block servers
@@ -516,7 +535,7 @@ class Node{
                     for(int i = 0; i < 100; i++){
                         //generate a random string and concatenate with the data
                         rand = utils.randomAlphaNumeric(8);
-                        concat = data + rand;
+                        concat = previous_hash + data + rand;
         
                         //perform the hash of the new string
                         hash = utils.hash_string(concat);
