@@ -10,7 +10,20 @@ import java.security.*;
 class Blockchain{
 
     public static void main(String[] args) {
-        Node n1 = new Node(4821,4931,"N-1");
+        Node a0 = new Node(4820,4930,"A-0");
+        Node b1 = new Node(4821,4931,"B-1");
+
+        a0.add_unverified_block_host("localhost", 4821);
+        a0.add_verified_block_host("localhost", 4931);
+        b1.add_unverified_block_host("localhost", 4820);
+        b1.add_verified_block_host("localhost", 4930);
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
         block b = utils.read_json("block.json");
         Gson gson = new Gson();
@@ -210,6 +223,7 @@ class Node{
     //TODO:: choose the identifier. UUID or previous hash
     //can be used to check if a block has been verified. Useful to stop work on already verified blocks.
     HashSet<String> verified_blocks;
+    HashSet<String> unverified_blocks;
 
 
     //hashmap maps to store host information
@@ -231,6 +245,7 @@ class Node{
         constructor to specify the ports of the unverified and verified block servers.
         Also initialize the queue, set, and hashmaps
         */
+        
         unverified_block_server_hosts = new HashMap<>();
         verified_block_server_hosts = new HashMap<>();
 
@@ -244,6 +259,7 @@ class Node{
         //keep the blocking queue as an unbounded queue to allow for unlimited blocks
         processing_queue = new LinkedBlockingQueue<block>();
         verified_blocks = new HashSet<String>();
+        unverified_blocks = new HashSet<String>();
 
         //set initial value for previous hash
         previous_hash = "";
@@ -292,6 +308,12 @@ class Node{
                 while(true){
                     skt = server.accept();
 
+                    System.out.println(String.format("%s-UB-server: Recieved unverified block to be processed",name));
+                    //get the sender information
+                    SocketAddress remote = skt.getRemoteSocketAddress();
+                    System.out.println(String.format("%s-UB-server: block sent from: %s", name, remote));
+
+
                     //start the worker to add to the queue
                     new unverified_block_worker(skt).start();
                 }
@@ -320,12 +342,6 @@ class Node{
             //block b;
 
             try{
-                System.out.println(String.format("%s: ---------- Recieved unverified block to be processed ----------",name));
-
-                //get the sender information
-                SocketAddress remote = skt.getRemoteSocketAddress();
-                System.out.println(String.format("%s: block sent from: %s", name, remote));
-
                 //this input expects the data in string format
                 BufferedReader reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
                 //get the socket data as a json string
@@ -335,20 +351,60 @@ class Node{
                 block b = utils.decode_json(json);
                 //System.out.println(b.block_id);
 
-                
-                //get the socket data as an object
-                //ObjectInputStream input = new ObjectInputStream(skt.getInputStream());
-                //cast the object to a block
-                //b = (block)input.readObject();
 
-                //add the block to the processing queue
-                processing_queue.add(b);
-                System.out.println(String.format("%s: added the block to the processing queue",name));
-                
-                skt.close();
+                if(unverified_blocks.contains(b.get_block_id())){
+                    System.out.println(String.format("%s-UB-worker: Recieved unverified block that has already been acknowledged", name));
+                }
+                else{
+                    System.out.println(String.format("%s-UB-worker: Acknowledging unverified block: %s", name, b.get_block_id()));
+                    unverified_blocks.add(b.get_block_id());
+
+                    //add the block to the processing queue
+                    processing_queue.add(b);
+                    System.out.println(String.format("%s-UB-worker: added the block to the processing queue",name));
+                    
+                    skt.close();
+
+                    int port;
+                    //create loop to send to all child nodes' unverified block servers
+                    for(String host:unverified_block_server_hosts.keySet()){
+                        port = unverified_block_server_hosts.get(host);
+                        System.out.println(String.format("%s-UB-worker: sending unverified block | host: %s:%d | %s", name, host, port, b.get_block_id()));
+                        send_block(b, host, port);
+                    }
+                }
             }
             catch(IOException e){
             //catch(IOException | ClassNotFoundException e){
+                e.printStackTrace();
+            }
+        }
+    
+        public void send_block(block b, String host, int port){
+            /*
+            Sends the block to the given host on the given port.
+            This function does not assume the block has been verified
+            Converts the block to a json string before sending
+            */
+
+            try {
+                //convert the block to a json string
+                Gson gson = new Gson();
+                String json = gson.toJson(b);
+                //System.out.println(json);
+                
+
+                Socket skt = new Socket(host,port);
+                PrintStream to_server = new PrintStream(skt.getOutputStream());
+
+                //sending the command
+                to_server.println(json);
+                to_server.flush();
+
+                skt.close();
+                
+            } catch (IOException e) {
+                //Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -378,6 +434,13 @@ class Node{
                 while(true){
                     skt = server.accept();
 
+                    System.out.println(String.format("%s-BC-server: Received block to be verified",name));
+
+                    //get the sender information
+                    SocketAddress remote = skt.getRemoteSocketAddress();
+                    System.out.println(String.format("%s-BC-server: block sent from: %s", name, remote));
+                    
+
                     new verified_block_worker(skt).start();
                 }
             }
@@ -403,20 +466,19 @@ class Node{
 
         public void run(){
             try {
-                System.out.println(String.format("%s: ---------- Received block to be verified ----------",name));
-
-                //get the sender information
-                SocketAddress remote = skt.getRemoteSocketAddress();
-                System.out.println(String.format("%s: block sent from: %s", name, remote));
-                
                 
                 //read the socket and convert to block
                 block b;
                 BufferedReader reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
                 String json = reader.readLine();
                 b = utils.decode_json(json);
+
+                
+                if(verified_blocks.contains(b.get_block_id())){
+                    System.out.println(String.format("%s-BC-worker: Recieved block that has already been added to ledger", name));
+                }
                 //check the previous hash is still valid
-                if(b.get_previous_hash().equals(previous_hash)){
+                else if(b.get_previous_hash().equals(previous_hash)){
                     //reverify the block
                     String data = b.get_block_string();
                     String concat = previous_hash + data + b.random_seed;
@@ -424,29 +486,39 @@ class Node{
                     int answer = Integer.parseInt(hash.substring(0,4),16);
 
                     if(answer < difficulty){
-                        System.out.println(String.format("%s: successfully verified with id: %s", name, b.get_block_id()));
-                        System.out.println("Setting previous hash to the latest winning hash");
+                        System.out.println(String.format("%s-BC-worker: Successfully verified block | id: %s", name, b.get_block_id()));
+                        System.out.println(String.format("%s-BC-worker: Updating previous hash | old: %s | new: %s", name, previous_hash, hash));
                         previous_hash = hash;
 
-                        //TODO:: process the newly verified block
-                        ledger.add(b);
+                        //process the newly verified block
                         verified_blocks.add(b.get_block_id());
-
-
+                        
+                        
                         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
+                        
                         // Convert the Java object to a JSON String:
                         String output = gson.toJson(b);
-                        System.out.println(String.format("%s: ----------- block added to the ledger ---------", name));
+                        System.out.println(String.format("%s-BC-worker: block added to the ledger | id: %s", name, b.get_block_id()));
                         System.out.println(output);
+                        ledger.add(b);
+
+                        System.out.println(String.format("%s-BC-worker: Sending verified block to other nodes", name));
+                        int port;
+                        //forward the verified block to other blockchain servers
+                        //create loop to send to all child nodes' verified block servers
+                        for(String host:verified_block_server_hosts.keySet()){
+                            port = verified_block_server_hosts.get(host);
+                            System.out.println(String.format("%s-BC-worker: sending to: %s:%d", name, host, port));
+                            send_verified_block(b, host, port);
+                        }
                         
                     }
                     else{
-                        System.out.println(String.format("%s: unable to verify block with id: %s", name, b.get_block_id()));
+                        System.out.println(String.format("%s-BC-worker: unable to verify block with id: %s", name, b.get_block_id()));
                     }
                 }
                 else{
-                    System.out.println(String.format("%s: block previous hash does not match the current previous hash", name));
+                    System.out.println(String.format("%s: block previous hash does not match the current previous hash | block: %s | node: %s", name, b.get_block_id(), previous_hash));
                 }
             } catch (IOException e) {
                 //Auto-generated catch block
@@ -457,6 +529,35 @@ class Node{
             }
 
             
+        }
+    
+        public void send_verified_block(block b, String host, int port){
+            /*
+            Sends the block to the given host on the given port.
+            Assumes the block has already been verified.
+            Converts the block to a json string before sending
+            */
+
+            try {
+                //convert the block to a json string
+                Gson gson = new Gson();
+                String json = gson.toJson(b);
+                //System.out.println(json);
+                
+
+                Socket skt = new Socket(host,port);
+                PrintStream to_server = new PrintStream(skt.getOutputStream());
+
+                //sending the command
+                to_server.println(json);
+                to_server.flush();
+
+                skt.close();
+                
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 
@@ -477,30 +578,30 @@ class Node{
 
                     //take from the blocking queue if an item exists
                     b = processing_queue.take();
-                    System.out.println(String.format("%s: ---------- Working on block ----------", name));
-                    System.out.println(String.format("%s: took block from queue with id: %s", name, b.get_block_id()));
+                    System.out.println(String.format("%s-worker: Working on block", name));
+                    System.out.println(String.format("%s-worker: took block from queue with id: %s", name, b.get_block_id()));
 
                     //need the block id to check in the verified blocks hashmap
                     String block_id = b.get_block_id();
 
-                    System.out.println(String.format("%s: starting work", name));
+                    System.out.println(String.format("%s-worker: starting work function on block: ", name, b.get_block_id()));
                     //perform the work and get the random seed back
                     String random_seed = work(b.get_block_string(), block_id);
                     //set previous hash here to prevent previous hash from being changed on thread switch
                     b.set_previous_hash(previous_hash);
 
                     if(random_seed == null){
-                        System.out.println(String.format("%s: unable to process the block", name));
+                        System.out.println(String.format("%s-worker: unable to process the block. Seed is null | block: %s", name, b.get_block_id()));
                         continue;
                     }
                     else if(verified_blocks.contains(block_id)){
                         //last check to see if the block has been verified before sending
-                        System.out.println(String.format("%s: block already verified by another process", name));
+                        System.out.println(String.format("%s-worker: block already verified by another process | block: %s", name, b.get_block_id()));
                         continue;
                     }
                     else{
                         //send the verified block to the other nodes
-                        System.out.println(String.format("%s: ---------- Sending verified block to other nodes ----------", name));
+                        System.out.println(String.format("%s-worker: Sending verified block to other nodes | block: %s", name, b.get_block_id()));
 
                         //set the random seed and the winning hash
                         b.set_random_seed(random_seed);
@@ -510,7 +611,8 @@ class Node{
                         //create loop to send to all child nodes' verified block servers
                         for(String host:verified_block_server_hosts.keySet()){
                             port = verified_block_server_hosts.get(host);
-                            System.out.println(String.format("%s: sending to: %s:%d", name, host, port));                            send_verified_block(b, host, port);
+                            System.out.println(String.format("%s-worker: sending to: %s:%d", name, host, port));                            
+                            send_verified_block(b, host, port);
                         }
                     }
                 }
@@ -561,10 +663,7 @@ class Node{
                             //solved if condition met.
                             //return the random seed generated
 
-                            System.out.println("block verified");
-                            System.out.println(String.format("random seed is: %s", rand));
-                            System.out.println(String.format("winning hash is: %s", hash));
-                            System.out.println(String.format("answer is: %d", answer));
+                            System.out.println(String.format("%s-worker: Verified block | seed: %s | hash: %s", name, rand, hash));
                             return rand;
                         }
                     }
