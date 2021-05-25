@@ -208,19 +208,30 @@ class block implements Serializable{
 
 
 class Node{
-
+    
+    //the first n characters to take from the hash and convert to int
+    //this determines the size of the problem space to 16^n possible values
+    //increase to make the problem harder
+    //decrease to make the problem easier
+    public static final int hash_substring_length = 4;
     //the difficulty of the problem
     //increase the value to make easier. decrease to make harder
-    //range from 0 to 65535
-    public static final int difficulty = 10000;
+    //range from 0 to 65535 if hash_substring is 4
+    //for n chars, easiest difficulty value is (16^n)-1
+    public static final int difficulty = 1000;
+    //speed translates to how many attempts to make before sleeping.
+    //increase speed to solve the work faster
+    //decrease to solve it slower
     public static final int speed = 1;
+
+
     public String name;
 
     //from the class code
     //blocking queue to store unverified blocks to be processed
     BlockingQueue<block> processing_queue;
     //store the identifier of a block. Populate set with verified block ids
-    //TODO:: choose the identifier. UUID or previous hash
+    
     //can be used to check if a block has been verified. Useful to stop work on already verified blocks.
     HashSet<String> verified_blocks;
     HashSet<String> unverified_blocks;
@@ -229,9 +240,12 @@ class Node{
     //hashmap maps to store host information
     //maps a host to a port
     //these are the hosts to send unverified blocks to
-    HashMap<String,Integer> unverified_block_server_hosts;
+    //HashMap<String,Integer> unverified_block_server_hosts;
     //these are the hosts to send verified blocks to
-    HashMap<String,Integer> verified_block_server_hosts;
+    //HashMap<String,Integer> verified_block_server_hosts;
+    //use these hashmaps as you cannot store the same key with multiple values in the hashmap
+    HashSet<String> unverified_block_server_hosts;
+    HashSet<String> verified_block_server_hosts;
 
     //store the latest verified block hash
     String previous_hash;
@@ -245,12 +259,16 @@ class Node{
         constructor to specify the ports of the unverified and verified block servers.
         Also initialize the queue, set, and hashmaps
         */
-        
-        unverified_block_server_hosts = new HashMap<>();
-        verified_block_server_hosts = new HashMap<>();
 
-        unverified_block_server_hosts.put("localhost", ub_port);
-        verified_block_server_hosts.put("localhost", vb_port);
+        //unverified_block_server_hosts = new HashMap<>();
+        unverified_block_server_hosts = new HashSet<String>();
+        //verified_block_server_hosts = new HashMap<>();
+        verified_block_server_hosts = new HashSet<String>();
+
+        //unverified_block_server_hosts.put("localhost", ub_port);
+        unverified_block_server_hosts.add("localhost:"+ub_port);
+        //verified_block_server_hosts.put("localhost", vb_port);
+        verified_block_server_hosts.add("localhost:"+vb_port);
 
         //give a name to the node
         name = n;
@@ -274,11 +292,13 @@ class Node{
     }
 
     public void add_unverified_block_host(String host, int port){
-        unverified_block_server_hosts.put(host, port);
+        //unverified_block_server_hosts.put(host, port);
+        unverified_block_server_hosts.add(host + ":" + port);
     }
 
     public void add_verified_block_host(String host, int port){
-        verified_block_server_hosts.put(host,port);
+        //verified_block_server_hosts.put(host,port);
+        verified_block_server_hosts.add(host + ":" + port);
     }
 
 
@@ -365,11 +385,14 @@ class Node{
                     
                     skt.close();
 
+                    String host;
                     int port;
                     //create loop to send to all child nodes' unverified block servers
-                    for(String host:unverified_block_server_hosts.keySet()){
-                        port = unverified_block_server_hosts.get(host);
-                        System.out.println(String.format("%s-UB-worker: sending unverified block | host: %s:%d | %s", name, host, port, b.get_block_id()));
+                    for(String h:unverified_block_server_hosts){
+                        //port = unverified_block_server_hosts.get(host);
+                        host = h.split(":")[0];
+                        port = Integer.parseInt(h.split(":")[1]);
+                        System.out.println(String.format("%s-UB-worker: sending unverified block | host: %s:%d | block: %s", name, host, port, b.get_block_id()));
                         send_block(b, host, port);
                     }
                 }
@@ -503,11 +526,15 @@ class Node{
                         ledger.add(b);
 
                         System.out.println(String.format("%s-BC-worker: Sending verified block to other nodes", name));
+                        
+                        String host;
                         int port;
                         //forward the verified block to other blockchain servers
                         //create loop to send to all child nodes' verified block servers
-                        for(String host:verified_block_server_hosts.keySet()){
-                            port = verified_block_server_hosts.get(host);
+                        for(String h:verified_block_server_hosts){
+                            //port = verified_block_server_hosts.get(host);
+                            host = h.split(":")[0];
+                            port = Integer.parseInt(h.split(":")[1]);
                             System.out.println(String.format("%s-BC-worker: sending to: %s:%d", name, host, port));
                             send_verified_block(b, host, port);
                         }
@@ -607,10 +634,13 @@ class Node{
                         b.set_random_seed(random_seed);
                         
 
+                        String host;
                         int port;
                         //create loop to send to all child nodes' verified block servers
-                        for(String host:verified_block_server_hosts.keySet()){
-                            port = verified_block_server_hosts.get(host);
+                        for(String h:verified_block_server_hosts){
+                            //port = verified_block_server_hosts.get(host);
+                            host = h.split(":")[0];
+                            port = Integer.parseInt(h.split(":")[1]);
                             System.out.println(String.format("%s-worker: sending to: %s:%d", name, host, port));                            
                             send_verified_block(b, host, port);
                         }
@@ -655,8 +685,8 @@ class Node{
                         //perform the hash of the new string
                         hash = utils.hash_string(concat);
                         
-                        //take the first 4 characters and parse to hex
-                        answer = Integer.parseInt(hash.substring(0,4),16);
+                        //take the first n characters and parse to hex
+                        answer = Integer.parseInt(hash.substring(0,hash_substring_length),16);
 
                         //verification step
                         if(answer < difficulty){
@@ -677,6 +707,7 @@ class Node{
                     //if the chain is updated, then break from the loop
                     //use the verified_blocks set
                     if(verified_blocks.contains(block_id)){
+                        System.out.println(String.format("%s-worker: block verified during work. Exiting work function | block: %s", name, block_id));
                         return null;
                     }
                 }
