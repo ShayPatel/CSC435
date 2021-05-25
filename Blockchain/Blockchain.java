@@ -26,8 +26,7 @@ class Blockchain{
             Gson gson = new Gson();
             for(block b: new_blocks){
                 String json = gson.toJson(b);
-                send_command(json,"localhost",4821);
-                Thread.sleep(5000);    
+                send_command(json,"localhost",4821); 
             }
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
