@@ -10,6 +10,8 @@ import java.security.*;
 class Blockchain{
 
     public static void main(String[] args) {
+        ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
+        
         Node a0 = new Node(4820,4930,"A-0");
         Node b1 = new Node(4821,4931,"B-1");
 
@@ -20,20 +22,19 @@ class Blockchain{
 
         try {
             Thread.sleep(3000);
+            
+            Gson gson = new Gson();
+            for(block b: new_blocks){
+                String json = gson.toJson(b);
+                send_command(json,"localhost",4821);
+                Thread.sleep(5000);    
+            }
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        block b = utils.read_json("block.json");
-        Gson gson = new Gson();
-        String json = gson.toJson(b);
 
-        send_command(json,"localhost",4821);
-
-        b = utils.read_json("block2.json");
-        json = gson.toJson(b);
-        send_command(json,"localhost",4821);
     }
 
     public static void send_command(String command, String server_name, int port){
@@ -131,11 +132,56 @@ class utils{
             e.printStackTrace();
         }
     }
-    //wrapper function to read a json string anc convert to a block
+    //wrapper function to read a json string and convert to a block
     public static block decode_json(String json){
         Gson gson = new Gson();
 
         return gson.fromJson(json, block.class);
+    }
+
+    public static ArrayList<block> read_input_file(String filename, String name){
+        ArrayList<block> new_blocks = new ArrayList<block>();
+        try {
+
+            //from the class code
+            Date date = new Date();
+
+            //from the class code
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+
+            String line;
+            String[] split;
+            while((line = br.readLine()) != null){
+                block b = new block();
+                split = line.split("\\s+");
+                
+                //set the block id
+                b.set_block_id(UUID.randomUUID().toString());
+
+                //set the creator name
+                b.set_creator_name(name);
+                //set the timestamp
+                //from the class code
+                b.set_timestamp(String.format("%1$s %2$tF.%2$tT", "", date));
+
+                b.set_first_name(split[0]);
+                b.set_last_name(split[1]);
+                b.set_birth_day(split[2]);
+                b.set_ssn(split[3]);
+                b.set_condition(split[4]);
+                b.set_treatment(split[5]);
+                b.set_medicine(split[6]);
+
+                new_blocks.add(b);
+            }
+
+            br.close();
+        } catch (IOException e) {
+            //Auto-generated catch block
+            e.printStackTrace();
+        }
+        return new_blocks;
+        
     }
 }
 
@@ -151,13 +197,17 @@ class block implements Serializable{
     String random_seed;
     //the node name of the creator
     String creator_name;
+    //timestamp the block was created
+    String timestamp;
 
     String first_name;
     String last_name;
-    String timestamp;
+    String birth_day;
+    String ssn;
     String condition;
     String treatment;
     String medicine;
+    
 
 
     //special get as this creates the string representation of the block used during the work
@@ -171,9 +221,12 @@ class block implements Serializable{
         //concatenate the block fields
         data += block_id;
         data += creator_name;
+        data += timestamp;
+
         data += first_name;
         data += last_name;
-        data += timestamp;
+        data += birth_day;
+        data += ssn;
         data += condition;
         data += treatment;
         data += medicine;
@@ -202,6 +255,12 @@ class block implements Serializable{
     }
     public String get_timestamp(){
         return timestamp;
+    }
+    public String get_birth_day(){
+        return birth_day;
+    }
+    public String get_ssn(){
+        return ssn;
     }
     public String get_condition(){
         return condition;
@@ -248,6 +307,12 @@ class block implements Serializable{
     public void set_timestamp(String s){
         timestamp = s;
     }
+    public void set_birth_day(String s){
+        birth_day = s;
+    }
+    public void set_ssn(String s){
+        ssn = s;
+    }
     public void set_condition(String s){
         condition = s;
     }
@@ -272,11 +337,16 @@ class Node{
     //increase the value to make easier. decrease to make harder
     //range from 0 to 65535 if hash_substring is 4
     //for n chars, easiest difficulty value is (16^n)-1
-    public static final int difficulty = 1000;
+    public static final int difficulty = 10000;
     //speed translates to how many attempts to make before sleeping.
     //increase speed to solve the work faster
     //decrease to solve it slower
     public static final int speed = 1;
+    //how many milliseconds to sleep after each set of attempts during work
+    //increase to solve slower
+    //decrease to solve faster
+    //set to 0 or 1 for effectively no sleep
+    public static final int sleep = 2000;
 
 
     public String name;
@@ -665,7 +735,7 @@ class Node{
                     //need the block id to check in the verified blocks hashmap
                     String block_id = b.get_block_id();
 
-                    System.out.println(String.format("%s-worker: starting work function on block: ", name, b.get_block_id()));
+                    System.out.println(String.format("%s-worker: starting work function on block: %s", name, b.get_block_id()));
                     //perform the work and get the random seed back
                     String random_seed = work(b.get_block_string(), block_id);
                     //set previous hash here to prevent previous hash from being changed on thread switch
@@ -747,7 +817,7 @@ class Node{
                             //solved if condition met.
                             //return the random seed generated
 
-                            System.out.println(String.format("%s-worker: Verified block | seed: %s | hash: %s", name, rand, hash));
+                            System.out.println(String.format("%s-worker: SUCCESS! solved block | seed: %s | hash: %s", name, rand, hash));
                             return rand;
                         }
                     }
@@ -755,7 +825,7 @@ class Node{
                     //reach here if the n attempts did not result in an answer
                     //System.out.println("not found in n attempts. trying again");
                     //sleep to fake the work
-                    Thread.sleep(2000);
+                    Thread.sleep(sleep);
                     
                     //check if the blockchain has been updated
                     //if the chain is updated, then break from the loop
