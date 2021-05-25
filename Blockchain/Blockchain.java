@@ -141,8 +141,6 @@ class utils{
 
 
 class block implements Serializable{
-    //TODO:: enter fields given by the assignment
-
     //block identifier
     String block_id;
     //hash of the previous block to chain to
@@ -151,8 +149,18 @@ class block implements Serializable{
     String winning_hash;
     //the winning guess
     String random_seed;
+    //the node name of the creator
+    String creator_name;
+
+    String first_name;
+    String last_name;
+    String timestamp;
+    String condition;
+    String treatment;
+    String medicine;
 
 
+    //special get as this creates the string representation of the block used during the work
     public String get_block_string(){
         /*
         This function gets the string representation of this block to senf to the work function to be hashed
@@ -162,35 +170,60 @@ class block implements Serializable{
 
         //concatenate the block fields
         data += block_id;
-        //TODO:: add more fields
+        data += creator_name;
+        data += first_name;
+        data += last_name;
+        data += timestamp;
+        data += condition;
+        data += treatment;
+        data += medicine;
 
         return data;
     }
-
+    
+    
     public String get_block_id(){
         /*
         returns the identifier of the block
         */
-        //TODO:: implement function
-
         return block_id;
     }
-
     public String get_previous_hash(){
         return previous_hash;
     }
+    public String get_creator_name(){
+        return creator_name;
+    }
+    public String get_first_name(){
+        return first_name;
+    }
+    public String get_last_name(){
+        return last_name;
+    }
+    public String get_timestamp(){
+        return timestamp;
+    }
+    public String get_condition(){
+        return condition;
+    }
+    public String get_treatment(){
+        return treatment;
+    }
+    public String get_medicine(){
+        return medicine;
+    }
+
 
     public void set_block_id(String id){
         block_id = id;
     }
-
     public void set_previous_hash(String hash){
         previous_hash = hash;
     }
-
     public void set_random_seed(String seed){
         /*
         Sets the  seed and the corresponding hash
+        assumes the previous hash exists
         */
         
         try {
@@ -202,6 +235,27 @@ class block implements Serializable{
             //Auto-generated catch block
             e.printStackTrace();
         }
+    }
+    public void set_creator_name(String s){
+        creator_name = s;
+    }
+    public void set_first_name(String s){
+        first_name = s;
+    }
+    public void set_last_name(String s){
+        last_name = s;
+    }
+    public void set_timestamp(String s){
+        timestamp = s;
+    }
+    public void set_condition(String s){
+        condition = s;
+    }
+    public void set_treatment(String s){
+        treatment = s;
+    }
+    public void set_medicine(String s){
+        medicine = s;
     }
 
 }
