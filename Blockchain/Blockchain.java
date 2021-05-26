@@ -146,9 +146,14 @@ class Blockchain{
                 System.out.println("Enter a port to run the verified block server");
                 System.out.flush();
                 int vb_port = Integer.parseInt(reader.readLine());
+                System.out.println("Start command console? y/n");
+                System.out.flush();
+                String console = reader.readLine();
 
                 Node n = new Node(command_port, ub_port, vb_port, name);
-                start_console("localhost", command_port, name);
+                if(console.equals("y")){
+                    start_console("localhost", command_port, name);
+                }
             }
             catch(IOException e){
                 e.printStackTrace();
