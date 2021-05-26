@@ -4,6 +4,7 @@ import java.net.*;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.security.*;
 
 
@@ -14,9 +15,10 @@ class Blockchain{
         if(args.length == 1){
             int process;
             int[] servers = {4710,4820,4930};
+            String[] names = {"first", "second", "third"};
             process = Integer.parseInt(args[0]);
 
-            String name = "node-" + process;
+            String name = names[process];
 
             Node n = new Node(servers[0]+process,servers[1]+process,servers[2]+process,name);
             
@@ -28,55 +30,117 @@ class Blockchain{
                     n.add_verified_block_host("localhost", 4932);
                     break;
                 case 1:
+                    n.add_unverified_block_host("localhost", 4820);
+                    n.add_verified_block_host("localhost", 4930);
+                    n.add_unverified_block_host("localhost", 4822);
+                    n.add_verified_block_host("localhost", 4932);
                     break;
                 case 2:
+                    n.add_unverified_block_host("localhost", 4820);
+                    n.add_verified_block_host("localhost", 4930);
+                    n.add_unverified_block_host("localhost", 4821);
+                    n.add_verified_block_host("localhost", 4931);
+                    try {
+                        Thread.sleep(3000);
+                        
+                        Gson gson = new Gson();
+                        ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
+                        for(block b: new_blocks){
+                            String json = gson.toJson(b);
+                            send_command(json,"localhost",4820); 
+                        }
+                        new_blocks =  utils.read_input_file("BlockInput1.txt", "B-1");
+                        for(block b: new_blocks){
+                            String json = gson.toJson(b);
+                            send_command(json,"localhost",4821); 
+                        }
+                        new_blocks =  utils.read_input_file("BlockInput2.txt", "C-2");
+                        for(block b: new_blocks){
+                            String json = gson.toJson(b);
+                            send_command(json,"localhost",4822); 
+                        }
+            
+                    } catch (InterruptedException e) {
+                        //Auto-generated catch block
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     System.out.println();
                     break;
             }
         }
-
-        Node a0 = new Node(4710,4820,4930,"A-0");
-        Node b1 = new Node(4711,4821,4931,"B-1");
-        Node c2 = new Node(4712,4822,4932,"C-2");
-        
-        b1.add_unverified_block_host("localhost", 4820);
-        b1.add_verified_block_host("localhost", 4930);
-        b1.add_unverified_block_host("localhost", 4822);
-        b1.add_verified_block_host("localhost", 4932);
-        c2.add_unverified_block_host("localhost", 4820);
-        c2.add_verified_block_host("localhost", 4930);
-        c2.add_unverified_block_host("localhost", 4821);
-        c2.add_verified_block_host("localhost", 4931);
-        
-        
-        try {
-            Thread.sleep(3000);
+        else if(args.length == 0){
+            Node a0 = new Node(4710,4820,4930,"A-0");
+            Node b1 = new Node(4711,4821,4931,"B-1");
+            Node c2 = new Node(4712,4822,4932,"C-2");
             
-            Gson gson = new Gson();
-            ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
-            for(block b: new_blocks){
-                String json = gson.toJson(b);
-                send_command(json,"localhost",4820); 
+            a0.add_unverified_block_host("localhost", 4821);
+            a0.add_verified_block_host("localhost", 4931);
+            a0.add_unverified_block_host("localhost", 4822);
+            a0.add_verified_block_host("localhost", 4932);
+            
+            b1.add_unverified_block_host("localhost", 4820);
+            b1.add_verified_block_host("localhost", 4930);
+            b1.add_unverified_block_host("localhost", 4822);
+            b1.add_verified_block_host("localhost", 4932);
+            
+            c2.add_unverified_block_host("localhost", 4820);
+            c2.add_verified_block_host("localhost", 4930);
+            c2.add_unverified_block_host("localhost", 4821);
+            c2.add_verified_block_host("localhost", 4931);
+            
+            try {
+                Thread.sleep(3000);
+                
+                Gson gson = new Gson();
+                ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
+                for(block b: new_blocks){
+                    String json = gson.toJson(b);
+                    send_command(json,"localhost",4820); 
+                }
+                Thread.sleep(5000);
+                new_blocks =  utils.read_input_file("BlockInput1.txt", "B-1");
+                for(block b: new_blocks){
+                    String json = gson.toJson(b);
+                    send_command(json,"localhost",4821); 
+                }
+                Thread.sleep(5000);
+                new_blocks =  utils.read_input_file("BlockInput2.txt", "C-2");
+                for(block b: new_blocks){
+                    String json = gson.toJson(b);
+                    send_command(json,"localhost",4822); 
+                }
+    
+            } catch (InterruptedException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
             }
-            new_blocks =  utils.read_input_file("BlockInput1.txt", "B-1");
-            for(block b: new_blocks){
-                String json = gson.toJson(b);
-                send_command(json,"localhost",4821); 
+            
+            //https://www.baeldung.com/java-detect-os
+            String os = System.getProperty("os.name");
+            if(os.equals("Linux")){
+                
+                try {
+                    Process pb = new ProcessBuilder("x-terminal-emulator", "-e", String.format("java -cp \".:gson-2.8.2.jar\" Blockchain console %s %d %s;read line","localhost",4710,"A-0")).start();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
-            new_blocks =  utils.read_input_file("BlockInput2.txt", "C-2");
-            for(block b: new_blocks){
-                String json = gson.toJson(b);
-                send_command(json,"localhost",4822); 
-            }
-
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            
         }
-
-        
+        else if(args[0].equals("console")){
+            String host = args[1];
+            int port = Integer.parseInt(args[2]);
+            String name = args[3];
+            try {
+                command_console(host, port, name);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
 
     }
 
@@ -100,9 +164,105 @@ class Blockchain{
             skt.close();
         }
         catch(IOException e){
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
+
+    //https://stackoverflow.com/questions/3819571/bash-open-a-terminal-with-a-command-to-run-passed-as-an-argument
+    //https://askubuntu.com/questions/630698/how-can-i-keep-the-gnome-terminal-open-after-a-program-closes#:~:text=First%20option%3A%20edit%20gnome%2Dterminal,choose%20%22Keep%20terminal%20open%22.
+    public static void command_console(String host, int port, String name) throws IOException{
+        System.out.println("Starting the command console");
+        System.out.println(String.format("host: %s | port: %d | name: %s\n", host, port, name));
+        
+        System.out.println("Available commands:");
+        System.out.println("print | ledger | show | print ledger | show ledger - prints the ledger on the running node's console");
+        System.out.println("add | host | add host | new host- connect a node to this node");
+        System.out.println("file | from file | read | read file - give a txt file that contains the new block data you want to add to the blockchain");
+        System.out.println("block | new block | new - allows you to enter a line to create a single block to add to the chain");
+        System.out.println("");
+
+        String command;
+        String json;
+        Gson gson = new Gson();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        while(true){
+            System.out.println("Enter a command: ");
+            System.out.flush();
+            command = reader.readLine();
+
+            if(command.toLowerCase().equals("add") | command.toLowerCase().equals("host") | command.toLowerCase().equals("add host") | command.toLowerCase().equals("new host")){
+                System.out.println("Enter the new host details");
+                System.out.println("Enter the host name: ");
+                System.out.flush();
+                String h = reader.readLine();
+                System.out.println("Enter the port to send unverified blocks");
+                int ub_port = Integer.parseInt(reader.readLine());
+                System.out.println("Enter the port to send verified blocks");
+                int vb_port = Integer.parseInt(reader.readLine());
+                
+                HashMap<String,String> output_json = new HashMap<String,String>(){{
+                    put("host",h);
+                    put("ub_port",""+ub_port);
+                    put("vb_port",""+vb_port);
+                }};
+                json = gson.toJson(output_json);
+                send_command(json, host, port);
+            }
+            else if (command.toLowerCase().equals("block") | command.toLowerCase().equals("new") | command.toLowerCase().equals("new block")){
+                System.out.println("Enter the block details in 1 line:");
+                System.out.flush();
+
+                String line;
+                String[] split;
+                Date date = new Date();
+
+                line = reader.readLine();
+                block b = new block();
+                split = line.split("\\s+");
+                
+                //set the block id
+                b.set_block_id(UUID.randomUUID().toString());
+
+                //set the creator name
+                b.set_creator_name(name);
+                //set the timestamp
+                //from the class code
+                b.set_timestamp(String.format("%1$s %2$tF.%2$tT", "", date));
+
+                b.set_first_name(split[0]);
+                b.set_last_name(split[1]);
+                b.set_birth_day(split[2]);
+                b.set_ssn(split[3]);
+                b.set_condition(split[4]);
+                b.set_treatment(split[5]);
+                b.set_medicine(split[6]);
+                
+                json = gson.toJson(b);
+                send_command(json,host,port);
+            }
+            else if(command.toLowerCase().equals("file") | command.toLowerCase().equals("from file") | command.toLowerCase().equals("read") | command.toLowerCase().equals("read file")){
+                System.out.println("Enter a file name to read the block from");
+                System.out.flush();
+
+                String filename = reader.readLine();
+
+                ArrayList<block> new_blocks = utils.read_input_file(filename, name);
+                for(block b: new_blocks){
+                    json = gson.toJson(b);
+                    System.out.println(String.format("Sending block: %s",b.get_block_id()));
+                    send_command(json,host,port); 
+                }
+            }
+            else if(command.toLowerCase().equals("print") | command.toLowerCase().equals("ledger") | command.toLowerCase().equals("print ledger") | command.toLowerCase().equals("show") | command.toLowerCase().equals("show ledger")){
+                send_command("{\"type\":\"print\"}", host, port);
+            }
+            else{
+                System.out.println("Invalid command");
+            }
+        }
+    }
+
+
 
 }
 
@@ -240,6 +400,8 @@ class block implements Serializable{
     String random_seed;
     //the node name of the creator
     String creator_name;
+    //the node name of the solver
+    String solver;
     //timestamp the block was created
     String timestamp;
 
@@ -314,7 +476,9 @@ class block implements Serializable{
     public String get_medicine(){
         return medicine;
     }
-
+    public String get_solver(){
+        return solver;
+    }
 
     public void set_block_id(String id){
         block_id = id;
@@ -365,6 +529,9 @@ class block implements Serializable{
     public void set_medicine(String s){
         medicine = s;
     }
+    public void set_solver(String s){
+        solver = s;
+    }
 
 }
 
@@ -380,7 +547,7 @@ class Node{
     //increase the value to make easier. decrease to make harder
     //range from 0 to 65535 if hash_substring is 4
     //for n chars, easiest difficulty value is (16^n)-1
-    public static final int difficulty = 10000;
+    public static final int difficulty = 1000;
     //speed translates to how many attempts to make before sleeping.
     //increase speed to solve the work faster
     //decrease to solve it slower
@@ -396,7 +563,8 @@ class Node{
 
     //from the class code
     //blocking queue to store unverified blocks to be processed
-    BlockingQueue<block> processing_queue;
+    //BlockingQueue<block> processing_queue;
+    PriorityBlockingQueue<block> processing_queue;
     //store the identifier of a block. Populate set with verified block ids
     
     //can be used to check if a block has been verified. Useful to stop work on already verified blocks.
@@ -443,7 +611,9 @@ class Node{
         
         
         //keep the blocking queue as an unbounded queue to allow for unlimited blocks
-        processing_queue = new LinkedBlockingQueue<block>();
+        //processing_queue = new LinkedBlockingQueue<block>();
+        //from the class code
+        processing_queue = new PriorityBlockingQueue<>(100, BlockTSComparator);
         verified_blocks = new HashSet<String>();
         unverified_blocks = new HashSet<String>();
 
@@ -454,8 +624,8 @@ class Node{
 
 
         //TODO:: start the servers and the workers
-        new Thread(new command_server(command_port));
-        new Thread(new unverified_block_server(ub_port)).start();;
+        new Thread(new command_server(command_port)).start();
+        new Thread(new unverified_block_server(ub_port)).start();
         new Thread(new worker()).start();
         new Thread(new verified_block_server(vb_port)).start();
     }
@@ -472,6 +642,20 @@ class Node{
         verified_block_server_hosts.add(host + ":" + port);
     }
 
+    //from the class code
+    public static Comparator<block> BlockTSComparator = new Comparator<block>()
+    {
+        @Override
+        public int compare(block b1, block b2)
+        {
+            String s1 = b1.get_timestamp();
+            String s2 = b2.get_timestamp();
+            if (s1 == s2) {return 0;}
+            if (s1 == null) {return -1;}
+            if (s2 == null) {return 1;}
+            return s1.compareTo(s2);
+        }
+    };
 
     class unverified_block_server implements Runnable{
         /*
@@ -717,7 +901,7 @@ class Node{
                     }
                 }
                 else{
-                    System.out.println(String.format("%s: block previous hash does not match the current previous hash | block: %s | node: %s", name, b.get_block_id(), previous_hash));
+                    System.out.println(String.format("%s: block previous hash does not match the current previous hash | block hash: %s | node hash: %s", name, b.get_block_id(), previous_hash));
                 }
             } catch (IOException e) {
                 //Auto-generated catch block
@@ -787,6 +971,7 @@ class Node{
                     String random_seed = work(b.get_block_string(), block_id);
                     //set previous hash here to prevent previous hash from being changed on thread switch
                     b.set_previous_hash(previous_hash);
+                    b.set_solver(name);
 
                     if(random_seed == null){
                         System.out.println(String.format("%s-worker: unable to process the block. Seed is null | block: %s", name, b.get_block_id()));
@@ -984,8 +1169,8 @@ class Node{
                 switch(type){
                     case "add host":
                         String host = (String) command.get("host");
-                        int ub_port = (int) command.get("ub_port");
-                        int vb_port = (int) command.get("vb_port");
+                        int ub_port = Integer.parseInt((String) command.get("ub_port"));
+                        int vb_port = Integer.parseInt((String) command.get("vb_port"));
                         add_unverified_block_host(host, ub_port);
                         add_verified_block_host(host, vb_port);
                         break;
@@ -1008,6 +1193,7 @@ class Node{
         }
 
         public void print_ledger(){
+            System.out.println(String.format("%s-command-worker: PRINTING LEDGER", name));
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String output = gson.toJson(ledger);
             System.out.println(output);
