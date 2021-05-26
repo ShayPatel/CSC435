@@ -722,6 +722,7 @@ class Node{
 
             try{
                 ServerSocket server = new ServerSocket(port,max_q_size);
+                System.out.println(String.format("%s-UB-server: Starting unverified block server",name));
                 while(true){
                     skt = server.accept();
 
@@ -851,6 +852,7 @@ class Node{
 
             try{
                 ServerSocket server = new ServerSocket(port,max_q_size);
+                System.out.println(String.format("%s-BC-server: Starting verified block server",name));
                 while(true){
                     skt = server.accept();
 
@@ -1170,6 +1172,7 @@ class Node{
 
             try{
                 ServerSocket server = new ServerSocket(port,max_q_size);
+                System.out.println(String.format("%s-command-server: Starting command server",name));
                 while(true){
                     skt = server.accept();
 
