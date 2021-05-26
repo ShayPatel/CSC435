@@ -285,15 +285,21 @@ class Blockchain{
         //https://www.baeldung.com/java-detect-os
         //https://stackoverflow.com/questions/3819571/bash-open-a-terminal-with-a-command-to-run-passed-as-an-argument
         //https://askubuntu.com/questions/630698/how-can-i-keep-the-gnome-terminal-open-after-a-program-closes#:~:text=First%20option%3A%20edit%20gnome%2Dterminal,choose%20%22Keep%20terminal%20open%22.
-        String os = System.getProperty("os.name");
-        if(os.equals("Linux")){
-            
-            try {
-                Process pb = new ProcessBuilder("x-terminal-emulator", "-e", String.format("java -cp \".:gson-2.8.2.jar\" Blockchain console %s %d %s;read line",host,port,name)).start();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+        try{
+            String os = System.getProperty("os.name");
+            if(os.equals("Linux")){
+                
+                try {
+                    Process pb = new ProcessBuilder("x-terminal-emulator", "-e", String.format("java -cp \".:gson-2.8.2.jar\" Blockchain console %s %d %s;read line",host,port,name)).start();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
+
+        }
+        catch(Exception e){
+            System.out.println("Console cannot be started");
         }
     }
 
