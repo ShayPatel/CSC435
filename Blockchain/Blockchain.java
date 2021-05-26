@@ -10,8 +10,67 @@ import java.security.*;
 class Blockchain{
 
     public static void main(String[] args) {
-        
-        if(args.length == 1){
+        if(args.length > 0 && args[0].equals("test")){
+            Node a0 = new Node(4710,4820,4930,"A-0");
+            Node b1 = new Node(4711,4821,4931,"B-1");
+            Node c2 = new Node(4712,4822,4932,"C-2");
+            
+            a0.add_unverified_block_host("localhost", 4821);
+            a0.add_verified_block_host("localhost", 4931);
+            a0.add_unverified_block_host("localhost", 4822);
+            a0.add_verified_block_host("localhost", 4932);
+            
+            b1.add_unverified_block_host("localhost", 4820);
+            b1.add_verified_block_host("localhost", 4930);
+            b1.add_unverified_block_host("localhost", 4822);
+            b1.add_verified_block_host("localhost", 4932);
+            
+            c2.add_unverified_block_host("localhost", 4820);
+            c2.add_verified_block_host("localhost", 4930);
+            c2.add_unverified_block_host("localhost", 4821);
+            c2.add_verified_block_host("localhost", 4931);
+            
+            try {
+                Thread.sleep(3000);
+                start_console("localhost",4710,"A-0");
+                
+                Gson gson = new Gson();
+                ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
+                for(block b: new_blocks){
+                    String json = gson.toJson(b);
+                    send_command(json,"localhost",4820); 
+                }
+                Thread.sleep(5000);
+                new_blocks =  utils.read_input_file("BlockInput1.txt", "B-1");
+                for(block b: new_blocks){
+                    String json = gson.toJson(b);
+                    send_command(json,"localhost",4821); 
+                }
+                Thread.sleep(5000);
+                new_blocks =  utils.read_input_file("BlockInput2.txt", "C-2");
+                for(block b: new_blocks){
+                    String json = gson.toJson(b);
+                    send_command(json,"localhost",4822); 
+                }
+    
+            } catch (InterruptedException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+            
+        }
+        else if(args.length > 0 && args[0].equals("console")){
+            String host = args[1];
+            int port = Integer.parseInt(args[2]);
+            String name = args[3];
+            try {
+                command_console(host, port, name);
+            } catch (IOException e) {
+                //Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        else if(args.length == 1){
             int process;
             int[] servers = {4710,4820,4930};
             String[] names = {"first", "second", "third"};
@@ -70,66 +129,6 @@ class Blockchain{
                 default:
                     System.out.println();
                     break;
-            }
-        }
-        else if(args.length > 0 && args[0].equals("test")){
-            Node a0 = new Node(4710,4820,4930,"A-0");
-            Node b1 = new Node(4711,4821,4931,"B-1");
-            Node c2 = new Node(4712,4822,4932,"C-2");
-            
-            a0.add_unverified_block_host("localhost", 4821);
-            a0.add_verified_block_host("localhost", 4931);
-            a0.add_unverified_block_host("localhost", 4822);
-            a0.add_verified_block_host("localhost", 4932);
-            
-            b1.add_unverified_block_host("localhost", 4820);
-            b1.add_verified_block_host("localhost", 4930);
-            b1.add_unverified_block_host("localhost", 4822);
-            b1.add_verified_block_host("localhost", 4932);
-            
-            c2.add_unverified_block_host("localhost", 4820);
-            c2.add_verified_block_host("localhost", 4930);
-            c2.add_unverified_block_host("localhost", 4821);
-            c2.add_verified_block_host("localhost", 4931);
-            
-            try {
-                Thread.sleep(3000);
-                start_console("localhost",4710,"A-0");
-                
-                Gson gson = new Gson();
-                ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
-                for(block b: new_blocks){
-                    String json = gson.toJson(b);
-                    send_command(json,"localhost",4820); 
-                }
-                Thread.sleep(5000);
-                new_blocks =  utils.read_input_file("BlockInput1.txt", "B-1");
-                for(block b: new_blocks){
-                    String json = gson.toJson(b);
-                    send_command(json,"localhost",4821); 
-                }
-                Thread.sleep(5000);
-                new_blocks =  utils.read_input_file("BlockInput2.txt", "C-2");
-                for(block b: new_blocks){
-                    String json = gson.toJson(b);
-                    send_command(json,"localhost",4822); 
-                }
-    
-            } catch (InterruptedException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
-            }
-            
-        }
-        else if(args.length > 0 && args[0].equals("console")){
-            String host = args[1];
-            int port = Integer.parseInt(args[2]);
-            String name = args[3];
-            try {
-                command_console(host, port, name);
-            } catch (IOException e) {
-                //Auto-generated catch block
-                e.printStackTrace();
             }
         }
         else{
