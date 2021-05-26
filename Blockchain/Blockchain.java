@@ -10,29 +10,73 @@ import java.security.*;
 class Blockchain{
 
     public static void main(String[] args) {
-        ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
         
-        Node a0 = new Node(4820,4930,"A-0");
-        Node b1 = new Node(4821,4931,"B-1");
+        if(args.length == 1){
+            int process;
+            int[] servers = {4710,4820,4930};
+            process = Integer.parseInt(args[0]);
 
-        a0.add_unverified_block_host("localhost", 4821);
-        a0.add_verified_block_host("localhost", 4931);
+            String name = "node-" + process;
+
+            Node n = new Node(servers[0]+process,servers[1]+process,servers[2]+process,name);
+            
+            switch(process){
+                case 0:
+                    n.add_unverified_block_host("localhost", 4821);
+                    n.add_verified_block_host("localhost", 4931);
+                    n.add_unverified_block_host("localhost", 4822);
+                    n.add_verified_block_host("localhost", 4932);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                default:
+                    System.out.println();
+                    break;
+            }
+        }
+
+        Node a0 = new Node(4710,4820,4930,"A-0");
+        Node b1 = new Node(4711,4821,4931,"B-1");
+        Node c2 = new Node(4712,4822,4932,"C-2");
+        
         b1.add_unverified_block_host("localhost", 4820);
         b1.add_verified_block_host("localhost", 4930);
-
+        b1.add_unverified_block_host("localhost", 4822);
+        b1.add_verified_block_host("localhost", 4932);
+        c2.add_unverified_block_host("localhost", 4820);
+        c2.add_verified_block_host("localhost", 4930);
+        c2.add_unverified_block_host("localhost", 4821);
+        c2.add_verified_block_host("localhost", 4931);
+        
+        
         try {
             Thread.sleep(3000);
             
             Gson gson = new Gson();
+            ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
+            for(block b: new_blocks){
+                String json = gson.toJson(b);
+                send_command(json,"localhost",4820); 
+            }
+            new_blocks =  utils.read_input_file("BlockInput1.txt", "B-1");
             for(block b: new_blocks){
                 String json = gson.toJson(b);
                 send_command(json,"localhost",4821); 
             }
+            new_blocks =  utils.read_input_file("BlockInput2.txt", "C-2");
+            for(block b: new_blocks){
+                String json = gson.toJson(b);
+                send_command(json,"localhost",4822); 
+            }
+
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
+        
 
     }
 
@@ -375,9 +419,10 @@ class Node{
     //have a linked list of all the blocks that have been varified
     LinkedList<block> ledger;
 
+    int unverified_block_server_port;
 
 
-    Node(int ub_port, int vb_port, String n){
+    Node(int command_port, int ub_port, int vb_port, String n){
         /*
         constructor to specify the ports of the unverified and verified block servers.
         Also initialize the queue, set, and hashmaps
@@ -409,6 +454,7 @@ class Node{
 
 
         //TODO:: start the servers and the workers
+        new Thread(new command_server(command_port));
         new Thread(new unverified_block_server(ub_port)).start();;
         new Thread(new worker()).start();
         new Thread(new verified_block_server(vb_port)).start();
@@ -416,11 +462,13 @@ class Node{
 
     public void add_unverified_block_host(String host, int port){
         //unverified_block_server_hosts.put(host, port);
+        System.out.println(String.format("%s-command: added new unverified block host | host: %s | port %d", name, host, port));
         unverified_block_server_hosts.add(host + ":" + port);
     }
 
     public void add_verified_block_host(String host, int port){
         //verified_block_server_hosts.put(host,port);
+        System.out.println(String.format("%s-command: added new verified block host | host: %s | port %d", name, host, port));
         verified_block_server_hosts.add(host + ":" + port);
     }
 
@@ -439,6 +487,7 @@ class Node{
 
         unverified_block_server(int p){
             port = p;
+            unverified_block_server_port = p;
         }
 
         public void run(){
@@ -711,7 +760,6 @@ class Node{
         }
     }
 
-
     class worker implements Runnable{
         /*
         Class to perform the work on a block.
@@ -876,6 +924,123 @@ class Node{
 
     }
 
+    class command_server implements Runnable{
+        /*
+        Starts a server that accepts incomming commands
+        commands can be to add a child node, read a file, print the ledger
+        */
+        
+        //server variables
+        int port;
+        Socket skt;
+        int max_q_size = 12;
 
+        command_server(int p){
+            port = p;
+        }
+
+        public void run(){
+
+            try{
+                ServerSocket server = new ServerSocket(port,max_q_size);
+                while(true){
+                    skt = server.accept();
+
+                    System.out.println(String.format("%s-command-server: Received command",name));
+
+                    //get the sender information
+                    SocketAddress remote = skt.getRemoteSocketAddress();
+                    System.out.println(String.format("%s-command-server: command sent from: %s", name, remote));
+                    
+
+                    new command_worker(skt).start();
+                }
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+            
+        }
+    }
+
+    class command_worker extends Thread{
+        Socket skt;
+
+        command_worker(Socket s){
+            skt = s;
+        }
+
+        public void run(){
+            try {
+                //read the socket and convert to json string
+                BufferedReader reader = new BufferedReader(new InputStreamReader(skt.getInputStream()));
+                String json;
+                json = reader.readLine();
+                Gson gson = new Gson();
+                Map command = gson.fromJson(json, Map.class);
+
+                String type = (String) command.get("type");
+
+                switch(type){
+                    case "add host":
+                        String host = (String) command.get("host");
+                        int ub_port = (int) command.get("ub_port");
+                        int vb_port = (int) command.get("vb_port");
+                        add_unverified_block_host(host, ub_port);
+                        add_verified_block_host(host, vb_port);
+                        break;
+                    case "print":
+                        print_ledger();
+                        break;
+                    case "new":
+                        String b = (String) command.get("block");
+                        send_block(b);
+                        break;
+                    default:
+                        System.out.println("invalid command recieved");
+                        break;
+                }
+
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        public void print_ledger(){
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String output = gson.toJson(ledger);
+            System.out.println(output);
+        }
+
+        public void send_block(String command){
+            /*
+            sends a json string to the unverified block server
+            the json string is the block
+            sends 1 block
+            */
+            
+            Socket skt;
+            PrintStream to_server;
+    
+    
+            try{
+                //open the connection to the admin server
+                skt = new Socket("localhost", unverified_block_server_port);
+                
+                //Create the output stream to send to the server
+                to_server = new PrintStream(skt.getOutputStream());
+    
+                //sending the command
+                to_server.println(command);
+                to_server.flush();
+    
+                skt.close();
+            }
+            catch(IOException e){
+                System.out.println(e);
+            }
+        }
+    }
 
 }
