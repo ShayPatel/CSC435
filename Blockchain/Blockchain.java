@@ -272,8 +272,9 @@ class Blockchain{
                     HashMap<String,String> output_json = new HashMap<String,String>();
                     output_json.put("type","block");
                     output_json.put("block", json);
+                    String output = gson.toJson(output_json);
                     System.out.println(String.format("Sending block: %s",b.get_block_id()));
-                    send_command(json,host,port); 
+                    send_command(output,host,port); 
                 }
             }
             else if(command.toLowerCase().equals("print") | command.toLowerCase().equals("ledger") | command.toLowerCase().equals("print ledger") | command.toLowerCase().equals("show") | command.toLowerCase().equals("show ledger")){
@@ -1218,10 +1219,10 @@ class Node{
                 HashMap command = gson.fromJson(json, HashMap.class);
 
                 String type = (String) command.get("type");
-                System.out.println("log check 1");
 
                 switch(type){
                     case "add host":
+                        System.out.println("Adding host");
                         String host = (String) command.get("host");
                         int ub_port = Integer.parseInt((String) command.get("ub_port"));
                         int vb_port = Integer.parseInt((String) command.get("vb_port"));
@@ -1232,6 +1233,7 @@ class Node{
                         print_ledger();
                         break;
                     case "block":
+                        System.out.println("Adding block");
                         String b = (String) command.get("block");
                         send_block(b);
                         break;
