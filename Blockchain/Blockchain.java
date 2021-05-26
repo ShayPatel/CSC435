@@ -1,8 +1,39 @@
+/*
+Akshay Patel 5/26/21
+
+2. Java version used (java -version), if not the official version for the class:
+build 1.8.0_282-8u282-b08-0ubuntu1~20.04-b08
+
+To compile:
+> javac -cp "gson-2.8.2.jar" Blockchain.java
+
+to run:
+on linux:
+> java -cp ".:gson-2.8.2.jar" Blockchain
+on windows
+> java -cp ".;gson-2.8.2.jar" Blockchain
+
+There are optional command line args and configurations
+Running without any cli args will start the default process. The user will be prompted to enter the node details.
+running with "test" as the arg will run a 3 node example showing the processes communicating. ex:
+> java -cp ".:gson-2.8.2.jar" Blockchain test
+running with any number as the arg will run the assignment process. ex:
+> java -cp ".:gson-2.8.2.jar" Blockchain 0
+
+List of files needed for running the program.
+BlockInput0.txt
+BlockInput1.txt
+BlockInput2.txt
+Blockchain.java
+gson-2.8.2.jar
+
+
+*/
+
 import com.google.gson.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.security.*;
 
