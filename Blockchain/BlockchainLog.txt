@@ -1,0 +1,1956 @@
+first-command: added new unverified block host | host: localhost | port 4821
+first-command: added new verified block host | host: localhost | port 4931
+first-command: added new unverified block host | host: localhost | port 4822
+first-command: added new verified block host | host: localhost | port 4932
+third-command: added new unverified block host | host: localhost | port 4820
+third-command: added new verified block host | host: localhost | port 4930
+third-command: added new unverified block host | host: localhost | port 4821
+third-command: added new verified block host | host: localhost | port 4931
+second-command: added new unverified block host | host: localhost | port 4820
+second-command: added new verified block host | host: localhost | port 4930
+second-command: added new unverified block host | host: localhost | port 4822
+second-command: added new verified block host | host: localhost | port 4932
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46536
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46538
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46540
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46542
+first-UB-worker: Acknowledging unverified block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-UB-worker: Acknowledging unverified block: 59747792-d3f3-41ad-ac16-c1042bae5988
+first-UB-worker: added the block to the processing queue
+first-worker: Working on block
+first-worker: took block from queue with id: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-worker: starting work function on block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-UB-worker: sending unverified block | host: localhost:4822 | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-UB-worker: Acknowledging unverified block: b661d446-e91e-4f80-8604-aacd76446ebc
+first-UB-worker: added the block to the processing queue
+first-UB-worker: sending unverified block | host: localhost:4822 | block: b661d446-e91e-4f80-8604-aacd76446ebc
+third-UB-server: Recieved unverified block to be processed
+first-UB-worker: added the block to the processing queue
+first-UB-worker: sending unverified block | host: localhost:4822 | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-UB-server: block sent from: /127.0.0.1:58126
+first-UB-worker: sending unverified block | host: localhost:4821 | block: b661d446-e91e-4f80-8604-aacd76446ebc
+first-UB-worker: sending unverified block | host: localhost:4821 | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47794
+first-UB-worker: sending unverified block | host: localhost:4820 | block: b661d446-e91e-4f80-8604-aacd76446ebc
+first-UB-worker: sending unverified block | host: localhost:4820 | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46554
+first-UB-worker: sending unverified block | host: localhost:4821 | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-UB-worker: sending unverified block | host: localhost:4820 | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-UB-worker: Acknowledging unverified block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-UB-worker: added the block to the processing queue
+first-UB-worker: sending unverified block | host: localhost:4822 | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-UB-worker: sending unverified block | host: localhost:4821 | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-UB-worker: sending unverified block | host: localhost:4820 | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46556
+first-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47796
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58128
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46560
+first-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47802
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46566
+third-UB-worker: Acknowledging unverified block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processed
+third-UB-worker: added the block to the processing queue
+third-worker: Working on block
+third-worker: took block from queue with id: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-worker: starting work function on block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-UB-worker: sending unverified block | host: localhost:4822 | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-UB-server: block sent from: /127.0.0.1:58130
+third-UB-worker: sending unverified block | host: localhost:4821 | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-UB-worker: sending unverified block | host: localhost:4820 | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-UB-worker: Acknowledging unverified block: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-UB-worker: added the block to the processing queue
+third-UB-worker: sending unverified block | host: localhost:4822 | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-UB-worker: sending unverified block | host: localhost:4821 | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-UB-worker: sending unverified block | host: localhost:4820 | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46574
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47808
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47814
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58144
+third-UB-worker: Acknowledging unverified block: b661d446-e91e-4f80-8604-aacd76446ebc
+third-UB-worker: added the block to the processing queue
+third-UB-worker: sending unverified block | host: localhost:4822 | block: b661d446-e91e-4f80-8604-aacd76446ebc
+third-UB-worker: sending unverified block | host: localhost:4821 | block: b661d446-e91e-4f80-8604-aacd76446ebc
+third-UB-worker: sending unverified block | host: localhost:4820 | block: b661d446-e91e-4f80-8604-aacd76446ebc
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47820
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46578
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47826
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46584
+first-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58150
+third-UB-worker: Acknowledging unverified block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+third-UB-worker: added the block to the processing queue
+third-UB-worker: sending unverified block | host: localhost:4822 | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+third-UB-worker: sending unverified block | host: localhost:4821 | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+third-UB-worker: sending unverified block | host: localhost:4820 | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47832
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46590
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58154
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58162
+third-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58168
+third-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Acknowledging unverified block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+second-UB-worker: added the block to the processing queue
+second-UB-worker: sending unverified block | host: localhost:4822 | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+second-UB-worker: Acknowledging unverified block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+second-UB-worker: added the block to the processing queue
+second-UB-worker: sending unverified block | host: localhost:4822 | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+second-worker: Working on block
+second-worker: took block from queue with id: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+second-worker: starting work function on block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Acknowledging unverified block: 59747792-d3f3-41ad-ac16-c1042bae5988
+second-UB-worker: added the block to the processing queue
+second-UB-worker: sending unverified block | host: localhost:4822 | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58174
+second-UB-worker: sending unverified block | host: localhost:4821 | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+second-UB-worker: sending unverified block | host: localhost:4820 | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-UB-server: Recieved unverified block to be processedsecond-UB-server: Recieved unverified block to be processed
+
+second-UB-server: block sent from: /127.0.0.1:47840first-UB-server: block sent from: /127.0.0.1:46598
+
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58176
+second-UB-worker: Acknowledging unverified block: b661d446-e91e-4f80-8604-aacd76446ebc
+second-UB-worker: added the block to the processing queue
+second-UB-worker: sending unverified block | host: localhost:4822 | block: b661d446-e91e-4f80-8604-aacd76446ebc
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: sending unverified block | host: localhost:4821 | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+second-UB-worker: sending unverified block | host: localhost:4821 | block: b661d446-e91e-4f80-8604-aacd76446ebc
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58182
+second-UB-server: Recieved unverified block to be processed
+third-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-server: block sent from: /127.0.0.1:47848
+second-UB-worker: sending unverified block | host: localhost:4820 | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+first-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: sending unverified block | host: localhost:4820 | block: b661d446-e91e-4f80-8604-aacd76446ebcfirst-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46608
+
+second-UB-worker: sending unverified block | host: localhost:4821 | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+second-UB-worker: sending unverified block | host: localhost:4820 | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58184
+third-UB-worker: Recieved unverified block that has already been acknowledgedsecond-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47850
+second-UB-worker: Recieved unverified block that has already been acknowledged
+
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46610
+first-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-worker: Recieved unverified block that has already been acknowledgedsecond-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47856
+second-UB-worker: Recieved unverified block that has already been acknowledged
+
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46614
+first-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47862
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47864
+second-UB-worker: Acknowledging unverified block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+second-UB-worker: added the block to the processing queue
+second-UB-worker: sending unverified block | host: localhost:4822 | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58208
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47866
+second-UB-worker: Acknowledging unverified block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+second-UB-worker: added the block to the processing queue
+second-UB-worker: sending unverified block | host: localhost:4822 | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+second-UB-worker: sending unverified block | host: localhost:4821 | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+second-UB-worker: sending unverified block | host: localhost:4820 | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46632
+second-UB-worker: sending unverified block | host: localhost:4821 | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+second-UB-worker: sending unverified block | host: localhost:4820 | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-UB-server: Recieved unverified block to be processedsecond-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47868
+third-UB-server: block sent from: /127.0.0.1:58210
+
+second-UB-server: Recieved unverified block to be processedthird-UB-worker: Acknowledging unverified block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+third-UB-worker: added the block to the processing queuefirst-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46636
+
+third-UB-worker: sending unverified block | host: localhost:4822 | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+
+second-UB-server: block sent from: /127.0.0.1:47874
+second-UB-worker: Acknowledging unverified block: eb134c40-d489-47da-92d6-9b88793005aa
+second-UB-worker: added the block to the processing queue
+second-UB-worker: sending unverified block | host: localhost:4822 | block: eb134c40-d489-47da-92d6-9b88793005aa
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58220
+third-UB-worker: sending unverified block | host: localhost:4821 | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adfsecond-UB-worker: sending unverified block | host: localhost:4821 | block: eb134c40-d489-47da-92d6-9b88793005aa
+third-UB-worker: sending unverified block | host: localhost:4820 | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+second-UB-worker: sending unverified block | host: localhost:4820 | block: eb134c40-d489-47da-92d6-9b88793005aa
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46646
+
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58222
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47878
+third-UB-worker: Acknowledging unverified block: eb134c40-d489-47da-92d6-9b88793005aa
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46648
+third-UB-worker: added the block to the processing queue
+third-UB-worker: Acknowledging unverified block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-UB-worker: sending unverified block | host: localhost:4822 | block: eb134c40-d489-47da-92d6-9b88793005aa
+third-UB-worker: added the block to the processing queue
+second-UB-worker: Recieved unverified block that has already been acknowledgedthird-UB-worker: sending unverified block | host: localhost:4822 | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-UB-worker: sending unverified block | host: localhost:4821 | block: eb134c40-d489-47da-92d6-9b88793005aa
+
+second-UB-server: Recieved unverified block to be processedfirst-UB-worker: Acknowledging unverified block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+first-UB-worker: added the block to the processing queue
+first-UB-worker: sending unverified block | host: localhost:4822 | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+first-UB-worker: sending unverified block | host: localhost:4821 | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+first-UB-worker: sending unverified block | host: localhost:4820 | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+third-UB-worker: sending unverified block | host: localhost:4820 | block: eb134c40-d489-47da-92d6-9b88793005aa
+
+second-UB-server: block sent from: /127.0.0.1:47886
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47888
+second-UB-worker: Acknowledging unverified block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-server: Recieved unverified block to be processedthird-UB-worker: sending unverified block | host: localhost:4821 | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58232
+third-UB-worker: sending unverified block | host: localhost:4820 | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46658
+first-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46662
+first-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processedfirst-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46666
+first-UB-worker: Acknowledging unverified block: eb134c40-d489-47da-92d6-9b88793005aa
+first-UB-worker: added the block to the processing queue
+first-UB-worker: sending unverified block | host: localhost:4822 | block: eb134c40-d489-47da-92d6-9b88793005aa
+
+second-UB-worker: added the block to the processing queue
+second-UB-server: block sent from: /127.0.0.1:47896
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: sending unverified block | host: localhost:4822 | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+first-UB-worker: Acknowledging unverified block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-UB-worker: sending unverified block | host: localhost:4821 | block: eb134c40-d489-47da-92d6-9b88793005aa
+second-UB-worker: sending unverified block | host: localhost:4821 | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+first-UB-worker: sending unverified block | host: localhost:4820 | block: eb134c40-d489-47da-92d6-9b88793005aa
+second-UB-server: Recieved unverified block to be processedfirst-UB-worker: added the block to the processing queue
+first-UB-worker: sending unverified block | host: localhost:4822 | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-UB-worker: sending unverified block | host: localhost:4821 | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-UB-worker: sending unverified block | host: localhost:4820 | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46674
+
+third-UB-server: block sent from: /127.0.0.1:58236
+third-UB-worker: Recieved unverified block that has already been acknowledged
+
+second-UB-server: block sent from: /127.0.0.1:47900
+second-UB-worker: sending unverified block | host: localhost:4820 | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-UB-server: Recieved unverified block to be processed
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: block sent from: /127.0.0.1:58242
+third-UB-server: Recieved unverified block to be processed
+first-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58250
+first-UB-server: block sent from: /127.0.0.1:46680
+second-UB-worker: Recieved unverified block that has already been acknowledgedfirst-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-server: Recieved unverified block to be processed
+third-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46684
+third-UB-server: block sent from: /127.0.0.1:58252
+third-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processed
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47908
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47916
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47922
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47926
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+
+third-UB-server: block sent from: /127.0.0.1:58258
+third-UB-worker: Acknowledging unverified block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-UB-worker: added the block to the processing queue
+third-UB-worker: sending unverified block | host: localhost:4822 | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-UB-worker: sending unverified block | host: localhost:4821 | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-UB-worker: sending unverified block | host: localhost:4820 | block: 56df0b07-c2c7-488d-8609-fc35fde4d905second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47932
+
+third-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processedfirst-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46690
+first-UB-worker: Acknowledging unverified block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+first-UB-worker: added the block to the processing queue
+first-UB-worker: sending unverified block | host: localhost:4822 | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+first-UB-worker: sending unverified block | host: localhost:4821 | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+first-UB-worker: sending unverified block | host: localhost:4820 | block: 56df0b07-c2c7-488d-8609-fc35fde4d905second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47938
+
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46696
+first-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: block sent from: /127.0.0.1:58268
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58274
+first-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58280
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58282
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58284
+third-UB-worker: Acknowledging unverified block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+third-UB-worker: added the block to the processing queue
+third-UB-worker: sending unverified block | host: localhost:4822 | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+third-UB-worker: sending unverified block | host: localhost:4821 | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+third-UB-worker: sending unverified block | host: localhost:4820 | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9fsecond-UB-server: Recieved unverified block to be processed
+
+second-UB-server: block sent from: /127.0.0.1:47952
+second-UB-worker: Acknowledging unverified block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+second-UB-worker: added the block to the processing queue
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46710
+third-UB-worker: Acknowledging unverified block: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-UB-worker: added the block to the processing queue
+third-UB-worker: sending unverified block | host: localhost:4822 | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+second-UB-worker: sending unverified block | host: localhost:4822 | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+third-UB-worker: sending unverified block | host: localhost:4821 | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-UB-worker: sending unverified block | host: localhost:4820 | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47958
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58286
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58288
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46716
+second-UB-worker: Acknowledging unverified block: faebb823-5617-4793-acec-3c9eb0b0f8af
+second-UB-worker: added the block to the processing queue
+third-UB-worker: Acknowledging unverified block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+second-UB-worker: sending unverified block | host: localhost:4822 | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+first-UB-worker: Acknowledging unverified block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9fsecond-UB-worker: sending unverified block | host: localhost:4821 | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+second-UB-worker: sending unverified block | host: localhost:4820 | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+second-UB-worker: sending unverified block | host: localhost:4821 | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47966
+third-UB-worker: added the block to the processing queue
+second-UB-worker: sending unverified block | host: localhost:4820 | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58294
+third-UB-worker: sending unverified block | host: localhost:4822 | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+
+first-UB-worker: added the block to the processing queuethird-UB-worker: Recieved unverified block that has already been acknowledged
+
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46726
+first-UB-worker: Acknowledging unverified block: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-UB-server: Recieved unverified block to be processedfirst-UB-worker: added the block to the processing queue
+
+third-UB-server: block sent from: /127.0.0.1:58300
+first-UB-worker: sending unverified block | host: localhost:4822 | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-UB-worker: sending unverified block | host: localhost:4821 | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-UB-worker: sending unverified block | host: localhost:4820 | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+first-UB-worker: sending unverified block | host: localhost:4821 | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58302
+third-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: sending unverified block | host: localhost:4820 | block: faebb823-5617-4793-acec-3c9eb0b0f8afsecond-UB-server: Recieved unverified block to be processed
+third-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: sending unverified block | host: localhost:4822 | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+
+second-UB-server: block sent from: /127.0.0.1:47968
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47976
+second-UB-worker: Recieved unverified block that has already been acknowledgedthird-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58312
+
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processedfirst-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46728
+second-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:47982
+
+third-UB-server: block sent from: /127.0.0.1:58318
+third-UB-worker: Acknowledging unverified block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+third-UB-worker: added the block to the processing queue
+third-UB-worker: sending unverified block | host: localhost:4822 | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+third-UB-worker: sending unverified block | host: localhost:4821 | block: ff7149be-3220-42a3-8ea8-438a99d3ef06first-UB-worker: sending unverified block | host: localhost:4821 | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+
+third-UB-worker: sending unverified block | host: localhost:4820 | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-UB-worker: sending unverified block | host: localhost:4820 | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processed
+second-UB-worker: Acknowledging unverified block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+second-UB-worker: added the block to the processing queue
+third-UB-server: block sent from: /127.0.0.1:58324
+second-UB-worker: sending unverified block | host: localhost:4822 | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+second-UB-worker: sending unverified block | host: localhost:4821 | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: sending unverified block | host: localhost:4820 | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-UB-server: Recieved unverified block to be processedfirst-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46734
+first-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46740
+second-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58326
+
+second-UB-server: block sent from: /127.0.0.1:47990
+second-UB-server: Recieved unverified block to be processedfirst-UB-server: Recieved unverified block to be processed
+
+first-UB-server: block sent from: /127.0.0.1:46748
+second-UB-server: block sent from: /127.0.0.1:47994
+third-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Acknowledging unverified block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+first-UB-worker: added the block to the processing queue
+first-UB-worker: sending unverified block | host: localhost:4822 | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+first-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: sending unverified block | host: localhost:4821 | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58336
+first-UB-worker: sending unverified block | host: localhost:4820 | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Acknowledging unverified block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46752
+first-UB-worker: Acknowledging unverified block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-UB-worker: added the block to the processing queue
+second-UB-worker: added the block to the processing queue
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:48000
+second-UB-worker: sending unverified block | host: localhost:4822 | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+second-UB-worker: sending unverified block | host: localhost:4821 | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+second-UB-worker: sending unverified block | host: localhost:4820 | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-server: Recieved unverified block to be processedthird-UB-server: Recieved unverified block to be processedfirst-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46758
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46764
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46770
+first-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+
+second-UB-server: block sent from: /127.0.0.1:48006
+second-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:48012
+third-UB-server: block sent from: /127.0.0.1:58342first-UB-worker: sending unverified block | host: localhost:4822 | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+
+first-UB-worker: sending unverified block | host: localhost:4821 | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+
+second-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: sending unverified block | host: localhost:4820 | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-UB-server: Recieved unverified block to be processed
+first-UB-server: block sent from: /127.0.0.1:46776
+third-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+first-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processed
+third-UB-server: block sent from: /127.0.0.1:58348
+second-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-server: Recieved unverified block to be processedsecond-UB-server: Recieved unverified block to be processed
+second-UB-server: block sent from: /127.0.0.1:48018
+second-UB-worker: Recieved unverified block that has already been acknowledged
+second-UB-worker: Recieved unverified block that has already been acknowledged
+
+third-UB-server: block sent from: /127.0.0.1:58354
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-UB-worker: Recieved unverified block that has already been acknowledged
+third-worker: SUCCESS! solved block | seed: HTWTLIRN | hash: 004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2
+third-worker: Sending verified block to other nodes | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-worker: sending to: localhost:4932
+third-worker: sending to: localhost:4931
+third-worker: sending to: localhost:4930
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59452
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35862
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55340
+third-BC-worker: Successfully verified block | id: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-BC-worker: Updating previous hash | old:  | new: 004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2
+third-BC-worker: block added to the ledger | id: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+{
+  "block_id": "44b7b579-5cfc-4ae2-bb1a-60acda8eaf69",
+  "previous_hash": "",
+  "winning_hash": "004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2",
+  "random_seed": "HTWTLIRN",
+  "creator_name": "first",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "Julie",
+  "last_name": "Wilson",
+  "birth_day": "1996.03.07",
+  "ssn": "123-45-6999",
+  "condition": "Insomnia",
+  "treatment": "Exercise",
+  "medicine": "HotPeppers"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932second-BC-worker: Successfully verified block | id: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59458
+third-BC-worker: sending to: localhost:4931
+first-BC-worker: Successfully verified block | id: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-BC-worker: Updating previous hash | old:  | new: 004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2
+
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55346
+second-BC-worker: Updating previous hash | old:  | new: 004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2third-BC-worker: sending to: localhost:4930
+
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35868
+second-BC-worker: block added to the ledger | id: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+{
+  "block_id": "44b7b579-5cfc-4ae2-bb1a-60acda8eaf69",
+  "previous_hash": "",
+  "winning_hash": "004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2",
+  "random_seed": "HTWTLIRN",
+  "creator_name": "first",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "Julie",
+  "last_name": "Wilson",
+  "birth_day": "1996.03.07",
+  "ssn": "123-45-6999",
+  "condition": "Insomnia",
+  "treatment": "Exercise",
+  "medicine": "HotPeppers"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+first-BC-worker: block added to the ledger | id: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+{
+  "block_id": "44b7b579-5cfc-4ae2-bb1a-60acda8eaf69",
+  "previous_hash": "",
+  "winning_hash": "004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2",
+  "random_seed": "HTWTLIRN",
+  "creator_name": "first",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "Julie",
+  "last_name": "Wilson",
+  "birth_day": "1996.03.07",
+  "ssn": "123-45-6999",
+  "condition": "Insomnia",
+  "treatment": "Exercise",
+  "medicine": "HotPeppers"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+second-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55354
+third-BC-server: Received block to be verifiedsecond-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+second-BC-worker: sending to: localhost:4930
+
+third-BC-server: block sent from: /127.0.0.1:59464
+third-BC-worker: Recieved block that has already been added to ledger
+third-BC-server: Received block to be verified
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55356
+third-BC-server: block sent from: /127.0.0.1:59466
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: block sent from: /127.0.0.1:35878
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35880
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+second-worker: block verified during work. Exiting work function | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+second-worker: unable to process the block. Seed is null | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-worker: block verified during work. Exiting work function | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+first-worker: unable to process the block. Seed is null | block: 44b7b579-5cfc-4ae2-bb1a-60acda8eaf69
+third-worker: Working on block
+third-worker: took block from queue with id: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-worker: starting work function on block: 59747792-d3f3-41ad-ac16-c1042bae5988
+second-worker: Working on block
+second-worker: took block from queue with id: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+second-worker: starting work function on block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-worker: Working on block
+first-worker: took block from queue with id: b661d446-e91e-4f80-8604-aacd76446ebc
+first-worker: starting work function on block: b661d446-e91e-4f80-8604-aacd76446ebc
+first-worker: SUCCESS! solved block | seed: OFOO98JC | hash: 036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1
+first-worker: Sending verified block to other nodes | block: b661d446-e91e-4f80-8604-aacd76446ebc
+first-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59478
+first-worker: sending to: localhost:4931
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55366
+first-worker: sending to: localhost:4930
+first-BC-server: Received block to be verifiedsecond-BC-worker: Successfully verified block | id: b661d446-e91e-4f80-8604-aacd76446ebc
+second-BC-worker: Updating previous hash | old: 004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2 | new: 036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1
+
+first-BC-server: block sent from: /127.0.0.1:35888
+second-BC-worker: block added to the ledger | id: b661d446-e91e-4f80-8604-aacd76446ebc
+{
+  "block_id": "b661d446-e91e-4f80-8604-aacd76446ebc",
+  "previous_hash": "004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2",
+  "winning_hash": "036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1",
+  "random_seed": "OFOO98JC",
+  "creator_name": "first",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "Wayne",
+  "last_name": "Blaine",
+  "birth_day": "1942.07.07",
+  "ssn": "123-45-6777",
+  "condition": "Measles",
+  "treatment": "WaitToGetBetter",
+  "medicine": "CodLiverOil"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59484
+first-BC-worker: Successfully verified block | id: b661d446-e91e-4f80-8604-aacd76446ebc
+first-BC-worker: Updating previous hash | old: 004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2 | new: 036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1
+first-BC-worker: block added to the ledger | id: b661d446-e91e-4f80-8604-aacd76446ebc
+{
+  "block_id": "b661d446-e91e-4f80-8604-aacd76446ebc",
+  "previous_hash": "004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2",
+  "winning_hash": "036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1",
+  "random_seed": "OFOO98JC",
+  "creator_name": "first",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "Wayne",
+  "last_name": "Blaine",
+  "birth_day": "1942.07.07",
+  "ssn": "123-45-6777",
+  "condition": "Measles",
+  "treatment": "WaitToGetBetter",
+  "medicine": "CodLiverOil"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+first-BC-worker: sending to: localhost:4931
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55374
+third-BC-worker: Successfully verified block | id: b661d446-e91e-4f80-8604-aacd76446ebcsecond-BC-worker: sending to: localhost:4931
+third-BC-worker: Updating previous hash | old: 004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2 | new: 036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1
+
+second-BC-worker: sending to: localhost:4930third-BC-worker: block added to the ledger | id: b661d446-e91e-4f80-8604-aacd76446ebc
+{
+  "block_id": "b661d446-e91e-4f80-8604-aacd76446ebc",
+  "previous_hash": "004962D2C20BBC98AD8A30A7F54A91DAC71C910B2817787694952583D998CEA2",
+  "winning_hash": "036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1",
+  "random_seed": "OFOO98JC",
+  "creator_name": "first",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "Wayne",
+  "last_name": "Blaine",
+  "birth_day": "1942.07.07",
+  "ssn": "123-45-6777",
+  "condition": "Measles",
+  "treatment": "WaitToGetBetter",
+  "medicine": "CodLiverOil"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35900
+third-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+third-BC-server: Received block to be verifiedfirst-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35904
+
+third-BC-server: block sent from: /127.0.0.1:59486
+third-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verifiedthird-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59492
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35906
+first-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+
+second-BC-server: block sent from: /127.0.0.1:55376
+second-BC-worker: Recieved block that has already been added to ledger
+second-BC-server: Received block to be verifiedfirst-BC-worker: Recieved block that has already been added to ledger
+
+second-BC-server: block sent from: /127.0.0.1:55382
+second-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+first-worker: Working on block
+first-worker: took block from queue with id: 59747792-d3f3-41ad-ac16-c1042bae5988
+first-worker: starting work function on block: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-worker: SUCCESS! solved block | seed: C8EBIO97 | hash: 01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035
+third-worker: Sending verified block to other nodes | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59506
+third-worker: sending to: localhost:4931
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55394third-worker: sending to: localhost:4930
+
+first-BC-server: Received block to be verifiedthird-BC-worker: Successfully verified block | id: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-BC-worker: Updating previous hash | old: 036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1 | new: 01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035
+third-BC-worker: block added to the ledger | id: 59747792-d3f3-41ad-ac16-c1042bae5988
+{
+  "block_id": "59747792-d3f3-41ad-ac16-c1042bae5988",
+  "previous_hash": "036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1",
+  "winning_hash": "01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035",
+  "random_seed": "C8EBIO97",
+  "creator_name": "first",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "Joe",
+  "last_name": "Blow",
+  "birth_day": "1996.03.07",
+  "ssn": "123-45-6888",
+  "condition": "Smallpox",
+  "treatment": "BedRest",
+  "medicine": "Whiskey"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59512
+third-BC-worker: sending to: localhost:4931
+third-BC-worker: sending to: localhost:4930
+
+first-BC-server: block sent from: /127.0.0.1:35916
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35922
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Successfully verified block | id: 59747792-d3f3-41ad-ac16-c1042bae5988
+first-BC-worker: Updating previous hash | old: 036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1 | new: 01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035
+first-BC-worker: block added to the ledger | id: 59747792-d3f3-41ad-ac16-c1042bae5988
+{
+  "block_id": "59747792-d3f3-41ad-ac16-c1042bae5988",
+  "previous_hash": "036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1",
+  "winning_hash": "01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035",
+  "random_seed": "C8EBIO97",
+  "creator_name": "first",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "Joe",
+  "last_name": "Blow",
+  "birth_day": "1996.03.07",
+  "ssn": "123-45-6888",
+  "condition": "Smallpox",
+  "treatment": "BedRest",
+  "medicine": "Whiskey"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55400
+second-BC-worker: Successfully verified block | id: 59747792-d3f3-41ad-ac16-c1042bae5988
+second-BC-worker: Updating previous hash | old: 036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1 | new: 01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59518
+second-BC-worker: block added to the ledger | id: 59747792-d3f3-41ad-ac16-c1042bae5988
+{
+  "block_id": "59747792-d3f3-41ad-ac16-c1042bae5988",
+  "previous_hash": "036C801E40785351704B063A4ED5520E90CB0BC0D77ADBF1C5E7974AF2726AB1",
+  "winning_hash": "01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035",
+  "random_seed": "C8EBIO97",
+  "creator_name": "first",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "Joe",
+  "last_name": "Blow",
+  "birth_day": "1996.03.07",
+  "ssn": "123-45-6888",
+  "condition": "Smallpox",
+  "treatment": "BedRest",
+  "medicine": "Whiskey"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+second-BC-worker: sending to: localhost:4931
+second-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+
+first-BC-server: block sent from: /127.0.0.1:35930
+first-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: sending to: localhost:4931
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59520
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55408
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35934
+third-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55412
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+first-worker: block verified during work. Exiting work function | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+first-worker: unable to process the block. Seed is null | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+third-worker: Working on block
+third-worker: took block from queue with id: b661d446-e91e-4f80-8604-aacd76446ebc
+third-worker: starting work function on block: b661d446-e91e-4f80-8604-aacd76446ebc
+first-worker: Working on block
+first-worker: took block from queue with id: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-worker: starting work function on block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+third-worker: block verified during work. Exiting work function | block: b661d446-e91e-4f80-8604-aacd76446ebc
+third-worker: unable to process the block. Seed is null | block: b661d446-e91e-4f80-8604-aacd76446ebc
+third-worker: Working on block
+third-worker: took block from queue with id: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+third-worker: starting work function on block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-worker: SUCCESS! solved block | seed: 3ZQUCDG2 | hash: 02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30
+first-worker: Sending verified block to other nodes | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59530
+first-worker: sending to: localhost:4931
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55418
+third-BC-worker: Successfully verified block | id: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+third-BC-worker: Updating previous hash | old: 01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035 | new: 02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30first-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35940
+first-BC-worker: Successfully verified block | id: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-BC-worker: Updating previous hash | old: 01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035 | new: 02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30
+first-BC-worker: block added to the ledger | id: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+{
+  "block_id": "124b2b80-1708-4cb7-b7c6-67c3718502bd",
+  "previous_hash": "01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035",
+  "winning_hash": "02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30",
+  "random_seed": "3ZQUCDG2",
+  "creator_name": "first",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "John",
+  "last_name": "Smith",
+  "birth_day": "1996.03.07",
+  "ssn": "123-45-6789",
+  "condition": "Chickenpox",
+  "treatment": "BedRest",
+  "medicine": "aspirin"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+
+third-worker: block verified during work. Exiting work function | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+third-worker: unable to process the block. Seed is null | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+second-BC-worker: Successfully verified block | id: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+second-BC-worker: Updating previous hash | old: 01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035 | new: 02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30third-BC-worker: block added to the ledger | id: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+
+{
+  "block_id": "124b2b80-1708-4cb7-b7c6-67c3718502bd",
+  "previous_hash": "01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035",
+  "winning_hash": "02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30",
+  "random_seed": "3ZQUCDG2",
+  "creator_name": "first",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "John",
+  "last_name": "Smith",
+  "birth_day": "1996.03.07",
+  "ssn": "123-45-6789",
+  "condition": "Chickenpox",
+  "treatment": "BedRest",
+  "medicine": "aspirin"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+second-BC-worker: block added to the ledger | id: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+{
+  "block_id": "124b2b80-1708-4cb7-b7c6-67c3718502bd",
+  "previous_hash": "01E3A3501705011774D3FC21B53985737C2D560C58B9E6C856177C7A18FF9035",
+  "winning_hash": "02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30",
+  "random_seed": "3ZQUCDG2",
+  "creator_name": "first",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:44",
+  "first_name": "John",
+  "last_name": "Smith",
+  "birth_day": "1996.03.07",
+  "ssn": "123-45-6789",
+  "condition": "Chickenpox",
+  "treatment": "BedRest",
+  "medicine": "aspirin"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+first-BC-worker: sending to: localhost:4931third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59536
+
+third-BC-worker: sending to: localhost:4931
+third-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55428
+third-BC-server: Received block to be verifiedfirst-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35950
+second-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+third-BC-server: block sent from: /127.0.0.1:59538
+
+second-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verifiedfirst-BC-server: Received block to be verifiedthird-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59540
+third-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+
+second-BC-server: block sent from: /127.0.0.1:55432
+
+first-BC-server: block sent from: /127.0.0.1:35956
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55434
+second-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35958
+first-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+second-worker: block verified during work. Exiting work function | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+second-worker: unable to process the block. Seed is null | block: 124b2b80-1708-4cb7-b7c6-67c3718502bd
+first-worker: Working on block
+first-worker: took block from queue with id: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+first-worker: starting work function on block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+third-worker: Working on block
+third-worker: took block from queue with id: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+third-worker: starting work function on block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+second-worker: Working on block
+second-worker: took block from queue with id: 59747792-d3f3-41ad-ac16-c1042bae5988
+second-worker: starting work function on block: 59747792-d3f3-41ad-ac16-c1042bae5988
+second-worker: block verified during work. Exiting work function | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+second-worker: unable to process the block. Seed is null | block: 59747792-d3f3-41ad-ac16-c1042bae5988
+second-worker: Working on block
+second-worker: took block from queue with id: b661d446-e91e-4f80-8604-aacd76446ebc
+second-worker: starting work function on block: b661d446-e91e-4f80-8604-aacd76446ebc
+second-worker: block verified during work. Exiting work function | block: b661d446-e91e-4f80-8604-aacd76446ebc
+second-worker: unable to process the block. Seed is null | block: b661d446-e91e-4f80-8604-aacd76446ebc
+second-worker: Working on block
+second-worker: took block from queue with id: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+second-worker: starting work function on block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-worker: SUCCESS! solved block | seed: F5TLXXHX | hash: 0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE
+first-worker: Sending verified block to other nodes | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+first-worker: sending to: localhost:4932
+first-worker: sending to: localhost:4931
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59554
+first-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+first-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55442
+first-BC-server: block sent from: /127.0.0.1:35964
+second-BC-worker: Successfully verified block | id: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+second-BC-worker: Updating previous hash | old: 02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30 | new: 0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE
+second-BC-worker: block added to the ledger | id: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+{
+  "block_id": "957552a8-36a5-45e6-8cd7-6e8bf66a3adf",
+  "previous_hash": "02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30",
+  "winning_hash": "0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE",
+  "random_seed": "F5TLXXHX",
+  "creator_name": "second",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Wei",
+  "last_name": "Xu",
+  "birth_day": "1996.03.22",
+  "ssn": "123-456-333",
+  "condition": "Shingles",
+  "treatment": "WaitForRelief",
+  "medicine": "Zovirax"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+second-BC-worker: sending to: localhost:4931
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55448
+third-BC-server: Received block to be verifiedsecond-BC-worker: sending to: localhost:4930
+
+third-BC-server: block sent from: /127.0.0.1:59560
+third-BC-worker: Successfully verified block | id: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+third-BC-worker: Updating previous hash | old: 02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30 | new: 0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE
+second-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: block added to the ledger | id: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+{
+  "block_id": "957552a8-36a5-45e6-8cd7-6e8bf66a3adf",
+  "previous_hash": "02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30",
+  "winning_hash": "0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE",
+  "random_seed": "F5TLXXHX",
+  "creator_name": "second",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Wei",
+  "last_name": "Xu",
+  "birth_day": "1996.03.22",
+  "ssn": "123-456-333",
+  "condition": "Shingles",
+  "treatment": "WaitForRelief",
+  "medicine": "Zovirax"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+third-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: sending to: localhost:4931
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59566
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55454
+third-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35970
+first-BC-worker: Successfully verified block | id: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+first-BC-worker: Updating previous hash | old: 02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30 | new: 0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE
+first-BC-worker: block added to the ledger | id: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+{
+  "block_id": "957552a8-36a5-45e6-8cd7-6e8bf66a3adf",
+  "previous_hash": "02BE2B7EC94913EE3FFE87D2B9CAE8C773799118077A5CABC6BF01410F56EC30",
+  "winning_hash": "0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE",
+  "random_seed": "F5TLXXHX",
+  "creator_name": "second",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Wei",
+  "last_name": "Xu",
+  "birth_day": "1996.03.22",
+  "ssn": "123-456-333",
+  "condition": "Shingles",
+  "treatment": "WaitForRelief",
+  "medicine": "Zovirax"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+first-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55460
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35976
+third-BC-server: Received block to be verifiedsecond-BC-worker: Recieved block that has already been added to ledger
+
+third-BC-worker: Recieved block that has already been added to ledger
+third-worker: block verified during work. Exiting work function | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+third-worker: unable to process the block. Seed is null | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+third-BC-server: block sent from: /127.0.0.1:59572
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35982
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledgersecond-BC-worker: Recieved block that has already been added to ledger
+
+first-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+first-worker: Working on block
+first-worker: took block from queue with id: eb134c40-d489-47da-92d6-9b88793005aa
+first-worker: starting work function on block: eb134c40-d489-47da-92d6-9b88793005aa
+third-worker: Working on block
+third-worker: took block from queue with id: eb134c40-d489-47da-92d6-9b88793005aa
+third-worker: starting work function on block: eb134c40-d489-47da-92d6-9b88793005aa
+first-worker: SUCCESS! solved block | seed: KPO8UMX9 | hash: 02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83
+first-worker: Sending verified block to other nodes | block: eb134c40-d489-47da-92d6-9b88793005aa
+first-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59578
+first-worker: sending to: localhost:4931
+first-worker: sending to: localhost:4930
+third-BC-worker: Successfully verified block | id: eb134c40-d489-47da-92d6-9b88793005aa
+third-BC-worker: Updating previous hash | old: 0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE | new: 02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55466
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35988
+first-BC-worker: Successfully verified block | id: eb134c40-d489-47da-92d6-9b88793005aa
+first-BC-worker: Updating previous hash | old: 0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE | new: 02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83
+first-BC-worker: block added to the ledger | id: eb134c40-d489-47da-92d6-9b88793005aa
+{
+  "block_id": "eb134c40-d489-47da-92d6-9b88793005aa",
+  "previous_hash": "0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE",
+  "winning_hash": "02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83",
+  "random_seed": "KPO8UMX9",
+  "creator_name": "second",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Bruce",
+  "last_name": "Lee",
+  "birth_day": "1940.11.27",
+  "ssn": "456-789-123",
+  "condition": "SoreStomach",
+  "treatment": "LessCombat",
+  "medicine": "Vicodine"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+second-BC-worker: Successfully verified block | id: eb134c40-d489-47da-92d6-9b88793005aathird-BC-worker: block added to the ledger | id: eb134c40-d489-47da-92d6-9b88793005aa
+{
+  "block_id": "eb134c40-d489-47da-92d6-9b88793005aa",
+  "previous_hash": "0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE",
+  "winning_hash": "02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83",
+  "random_seed": "KPO8UMX9",
+  "creator_name": "second",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Bruce",
+  "last_name": "Lee",
+  "birth_day": "1940.11.27",
+  "ssn": "456-789-123",
+  "condition": "SoreStomach",
+  "treatment": "LessCombat",
+  "medicine": "Vicodine"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59584
+third-BC-worker: sending to: localhost:4931
+third-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:35994
+third-worker: block verified during work. Exiting work function | block: eb134c40-d489-47da-92d6-9b88793005aa
+third-worker: unable to process the block. Seed is null | block: eb134c40-d489-47da-92d6-9b88793005aa
+
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55472
+second-BC-worker: Updating previous hash | old: 0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE | new: 02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83
+second-BC-worker: block added to the ledger | id: eb134c40-d489-47da-92d6-9b88793005aa
+{
+  "block_id": "eb134c40-d489-47da-92d6-9b88793005aa",
+  "previous_hash": "0006E2EAE92F5573285AEE21D57D232C7CDBBEBFC6684E7BD0CF59EAE9B96DDE",
+  "winning_hash": "02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83",
+  "random_seed": "KPO8UMX9",
+  "creator_name": "second",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Bruce",
+  "last_name": "Lee",
+  "birth_day": "1940.11.27",
+  "ssn": "456-789-123",
+  "condition": "SoreStomach",
+  "treatment": "LessCombat",
+  "medicine": "Vicodine"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+first-BC-worker: sending to: localhost:4931second-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+second-BC-worker: sending to: localhost:4930
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59590
+
+first-BC-server: Received block to be verifiedthird-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59592
+third-BC-worker: Recieved block that has already been added to ledger
+
+first-BC-server: block sent from: /127.0.0.1:36004
+first-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55480
+second-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36006
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55482
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+first-worker: Working on block
+first-worker: took block from queue with id: 56df0b07-c2c7-488d-8609-fc35fde4d905
+first-worker: starting work function on block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-worker: Working on block
+third-worker: took block from queue with id: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-worker: starting work function on block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-worker: SUCCESS! solved block | seed: DZVABIXT | hash: 0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161
+third-worker: Sending verified block to other nodes | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-worker: sending to: localhost:4932
+third-worker: sending to: localhost:4931
+third-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55500
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36022
+first-BC-worker: Successfully verified block | id: 56df0b07-c2c7-488d-8609-fc35fde4d905
+first-BC-worker: Updating previous hash | old: 02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83 | new: 0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161
+first-BC-worker: block added to the ledger | id: 56df0b07-c2c7-488d-8609-fc35fde4d905
+{
+  "block_id": "56df0b07-c2c7-488d-8609-fc35fde4d905",
+  "previous_hash": "02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83",
+  "winning_hash": "0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161",
+  "random_seed": "DZVABIXT",
+  "creator_name": "second",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Sally",
+  "last_name": "McCutty",
+  "birth_day": "1970.01.01",
+  "ssn": "123-456-999",
+  "condition": "Migraine",
+  "treatment": "IcePack",
+  "medicine": "Almotriptan"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+first-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36028
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55506
+second-BC-worker: Successfully verified block | id: 56df0b07-c2c7-488d-8609-fc35fde4d905
+second-BC-worker: Updating previous hash | old: 02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83 | new: 0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59612
+second-BC-worker: block added to the ledger | id: 56df0b07-c2c7-488d-8609-fc35fde4d905
+{
+  "block_id": "56df0b07-c2c7-488d-8609-fc35fde4d905",
+  "previous_hash": "02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83",
+  "winning_hash": "0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161",
+  "random_seed": "DZVABIXT",
+  "creator_name": "second",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Sally",
+  "last_name": "McCutty",
+  "birth_day": "1970.01.01",
+  "ssn": "123-456-999",
+  "condition": "Migraine",
+  "treatment": "IcePack",
+  "medicine": "Almotriptan"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+second-BC-worker: sending to: localhost:4931
+second-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verifiedthird-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59618
+third-BC-worker: Successfully verified block | id: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-BC-worker: Updating previous hash | old: 02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83 | new: 0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161
+third-BC-worker: block added to the ledger | id: 56df0b07-c2c7-488d-8609-fc35fde4d905
+{
+  "block_id": "56df0b07-c2c7-488d-8609-fc35fde4d905",
+  "previous_hash": "02E1B20F4404DD3987DA387FE7E2C8AC985AB96339281C28F804AE58C0DE8A83",
+  "winning_hash": "0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161",
+  "random_seed": "DZVABIXT",
+  "creator_name": "second",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Sally",
+  "last_name": "McCutty",
+  "birth_day": "1970.01.01",
+  "ssn": "123-456-999",
+  "condition": "Migraine",
+  "treatment": "IcePack",
+  "medicine": "Almotriptan"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+third-BC-worker: sending to: localhost:4931
+third-BC-worker: sending to: localhost:4930
+
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59624
+second-BC-server: Received block to be verifiedfirst-BC-server: block sent from: /127.0.0.1:36034
+first-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55512
+second-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+
+first-BC-server: block sent from: /127.0.0.1:36040
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59630
+first-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55518
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+first-worker: block verified during work. Exiting work function | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+first-worker: unable to process the block. Seed is null | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+third-worker: Working on block
+third-worker: took block from queue with id: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-worker: starting work function on block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-worker: Working on block
+first-worker: took block from queue with id: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-worker: starting work function on block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-worker: SUCCESS! solved block | seed: 0VWFWO1N | hash: 0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E
+third-worker: Sending verified block to other nodes | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-worker: sending to: localhost:4932
+third-worker: sending to: localhost:4931
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59646
+third-worker: sending to: localhost:4930
+third-BC-worker: Successfully verified block | id: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-BC-worker: Updating previous hash | old: 0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161 | new: 0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E
+third-BC-worker: block added to the ledger | id: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+{
+  "block_id": "f3c223c7-d4c9-46cb-800b-a8c89bd02485",
+  "previous_hash": "0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161",
+  "winning_hash": "0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E",
+  "random_seed": "0VWFWO1N",
+  "creator_name": "second",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Rita",
+  "last_name": "Vita",
+  "birth_day": "1992.01.31",
+  "ssn": "999-456-789",
+  "condition": "ObessivePersonality",
+  "treatment": "TryToRelax",
+  "medicine": "Ibuprofen"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55534
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59652
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36056
+third-BC-worker: sending to: localhost:4931
+third-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55540
+second-BC-worker: Successfully verified block | id: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+second-BC-worker: Updating previous hash | old: 0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161 | new: 0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E
+second-BC-worker: block added to the ledger | id: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+{
+  "block_id": "f3c223c7-d4c9-46cb-800b-a8c89bd02485",
+  "previous_hash": "0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161",
+  "winning_hash": "0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E",
+  "random_seed": "0VWFWO1N",
+  "creator_name": "second",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Rita",
+  "last_name": "Vita",
+  "birth_day": "1992.01.31",
+  "ssn": "999-456-789",
+  "condition": "ObessivePersonality",
+  "treatment": "TryToRelax",
+  "medicine": "Ibuprofen"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+second-BC-worker: sending to: localhost:4931
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36062
+first-BC-worker: Successfully verified block | id: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-BC-worker: Updating previous hash | old: 0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161 | new: 0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E
+third-BC-server: Received block to be verifiedfirst-BC-worker: block added to the ledger | id: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+{
+  "block_id": "f3c223c7-d4c9-46cb-800b-a8c89bd02485",
+  "previous_hash": "0182C1DAFE13562635E1A2CB8E0B3F87DB4B14A228F532BD7D08404A789BB161",
+  "winning_hash": "0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E",
+  "random_seed": "0VWFWO1N",
+  "creator_name": "second",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:49",
+  "first_name": "Rita",
+  "last_name": "Vita",
+  "birth_day": "1992.01.31",
+  "ssn": "999-456-789",
+  "condition": "ObessivePersonality",
+  "treatment": "TryToRelax",
+  "medicine": "Ibuprofen"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+first-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55548
+
+third-BC-worker: Recieved block that has already been added to ledger
+third-BC-server: block sent from: /127.0.0.1:59658
+second-BC-worker: Recieved block that has already been added to ledger
+
+first-BC-server: Received block to be verifiedsecond-BC-worker: sending to: localhost:4930
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59660
+
+first-BC-server: block sent from: /127.0.0.1:36070
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55552first-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36074
+second-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+second-worker: block verified during work. Exiting work function | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+second-worker: unable to process the block. Seed is null | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-worker: block verified during work. Exiting work function | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+first-worker: unable to process the block. Seed is null | block: f3c223c7-d4c9-46cb-800b-a8c89bd02485
+third-worker: Working on block
+third-worker: took block from queue with id: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-worker: starting work function on block: faebb823-5617-4793-acec-3c9eb0b0f8af
+second-worker: Working on block
+second-worker: took block from queue with id: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+second-worker: starting work function on block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+first-worker: Working on block
+first-worker: took block from queue with id: faebb823-5617-4793-acec-3c9eb0b0f8af
+first-worker: starting work function on block: faebb823-5617-4793-acec-3c9eb0b0f8af
+second-worker: block verified during work. Exiting work function | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+second-worker: unable to process the block. Seed is null | block: 957552a8-36a5-45e6-8cd7-6e8bf66a3adf
+second-worker: Working on block
+second-worker: took block from queue with id: 56df0b07-c2c7-488d-8609-fc35fde4d905
+second-worker: starting work function on block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+second-worker: block verified during work. Exiting work function | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+second-worker: unable to process the block. Seed is null | block: 56df0b07-c2c7-488d-8609-fc35fde4d905
+second-worker: Working on block
+second-worker: took block from queue with id: eb134c40-d489-47da-92d6-9b88793005aa
+second-worker: starting work function on block: eb134c40-d489-47da-92d6-9b88793005aa
+second-worker: block verified during work. Exiting work function | block: eb134c40-d489-47da-92d6-9b88793005aa
+second-worker: unable to process the block. Seed is null | block: eb134c40-d489-47da-92d6-9b88793005aa
+second-worker: Working on block
+second-worker: took block from queue with id: faebb823-5617-4793-acec-3c9eb0b0f8af
+second-worker: starting work function on block: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-worker: SUCCESS! solved block | seed: 12DFW5NK | hash: 010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8
+third-worker: Sending verified block to other nodes | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59674
+third-worker: sending to: localhost:4931
+third-worker: sending to: localhost:4930
+third-BC-worker: Successfully verified block | id: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-BC-worker: Updating previous hash | old: 0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E | new: 010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8
+third-BC-worker: block added to the ledger | id: faebb823-5617-4793-acec-3c9eb0b0f8af
+{
+  "block_id": "faebb823-5617-4793-acec-3c9eb0b0f8af",
+  "previous_hash": "0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E",
+  "winning_hash": "010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8",
+  "random_seed": "12DFW5NK",
+  "creator_name": "third",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "Abraham",
+  "last_name": "Lincoln",
+  "birth_day": "1809.02.12",
+  "ssn": "444-45-6888",
+  "condition": "GreviousWound",
+  "treatment": "Surgery",
+  "medicine": "Whiskey"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+third-BC-worker: sending to: localhost:4931
+third-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verifiedfirst-BC-server: Received block to be verified
+
+second-BC-server: block sent from: /127.0.0.1:55562first-BC-server: block sent from: /127.0.0.1:36084
+
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55568
+second-BC-worker: Successfully verified block | id: faebb823-5617-4793-acec-3c9eb0b0f8af
+second-BC-worker: Updating previous hash | old: 0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E | new: 010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8
+second-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36090
+second-BC-worker: block added to the ledger | id: faebb823-5617-4793-acec-3c9eb0b0f8af
+{
+  "block_id": "faebb823-5617-4793-acec-3c9eb0b0f8af",
+  "previous_hash": "0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E",
+  "winning_hash": "010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8",
+  "random_seed": "12DFW5NK",
+  "creator_name": "third",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "Abraham",
+  "last_name": "Lincoln",
+  "birth_day": "1809.02.12",
+  "ssn": "444-45-6888",
+  "condition": "GreviousWound",
+  "treatment": "Surgery",
+  "medicine": "Whiskey"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+first-BC-worker: Successfully verified block | id: faebb823-5617-4793-acec-3c9eb0b0f8af
+first-BC-worker: Updating previous hash | old: 0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E | new: 010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8
+second-BC-worker: sending to: localhost:4931
+first-BC-worker: block added to the ledger | id: faebb823-5617-4793-acec-3c9eb0b0f8af
+{
+  "block_id": "faebb823-5617-4793-acec-3c9eb0b0f8af",
+  "previous_hash": "0235D89AFEEA3CE706B69C111E6BE0D19349CCE5BE46A162E3B10A0FC190F53E",
+  "winning_hash": "010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8",
+  "random_seed": "12DFW5NK",
+  "creator_name": "third",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "Abraham",
+  "last_name": "Lincoln",
+  "birth_day": "1809.02.12",
+  "ssn": "444-45-6888",
+  "condition": "GreviousWound",
+  "treatment": "Surgery",
+  "medicine": "Whiskey"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55574
+second-BC-worker: sending to: localhost:4930
+first-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55578
+second-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59680
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59686
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59690
+third-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36100
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36102
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+second-worker: block verified during work. Exiting work function | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+second-worker: unable to process the block. Seed is null | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+first-worker: block verified during work. Exiting work function | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+first-worker: unable to process the block. Seed is null | block: faebb823-5617-4793-acec-3c9eb0b0f8af
+third-worker: Working on block
+third-worker: took block from queue with id: ff7149be-3220-42a3-8ea8-438a99d3ef06
+third-worker: starting work function on block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+second-worker: Working on block
+second-worker: took block from queue with id: ff7149be-3220-42a3-8ea8-438a99d3ef06
+second-worker: starting work function on block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-worker: Working on block
+first-worker: took block from queue with id: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-worker: starting work function on block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-worker: SUCCESS! solved block | seed: 24C7YPEL | hash: 01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D
+first-worker: Sending verified block to other nodes | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-worker: sending to: localhost:4932
+first-worker: sending to: localhost:4931
+first-worker: sending to: localhost:4930
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59702
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55590
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36112
+third-BC-worker: Successfully verified block | id: ff7149be-3220-42a3-8ea8-438a99d3ef06
+third-BC-worker: Updating previous hash | old: 010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8 | new: 01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D
+third-BC-worker: block added to the ledger | id: ff7149be-3220-42a3-8ea8-438a99d3ef06
+{
+  "block_id": "ff7149be-3220-42a3-8ea8-438a99d3ef06",
+  "previous_hash": "010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8",
+  "winning_hash": "01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D",
+  "random_seed": "24C7YPEL",
+  "creator_name": "third",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "John",
+  "last_name": "Kennedy",
+  "birth_day": "1917.05.29",
+  "ssn": "333-45-6999",
+  "condition": "AddisonsDisease",
+  "treatment": "DrugTherapy",
+  "medicine": "Steroids"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59708
+third-BC-worker: sending to: localhost:4931
+third-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36118
+second-BC-worker: Successfully verified block | id: ff7149be-3220-42a3-8ea8-438a99d3ef06
+second-BC-worker: Updating previous hash | old: 010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8 | new: 01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D
+second-BC-worker: block added to the ledger | id: ff7149be-3220-42a3-8ea8-438a99d3ef06
+{
+  "block_id": "ff7149be-3220-42a3-8ea8-438a99d3ef06",
+  "previous_hash": "010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8",
+  "winning_hash": "01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D",
+  "random_seed": "24C7YPEL",
+  "creator_name": "third",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "John",
+  "last_name": "Kennedy",
+  "birth_day": "1917.05.29",
+  "ssn": "333-45-6999",
+  "condition": "AddisonsDisease",
+  "treatment": "DrugTherapy",
+  "medicine": "Steroids"
+}
+second-BC-worker: Sending verified block to other nodes
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Successfully verified block | id: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-BC-worker: Updating previous hash | old: 010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8 | new: 01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D
+first-BC-worker: block added to the ledger | id: ff7149be-3220-42a3-8ea8-438a99d3ef06
+{
+  "block_id": "ff7149be-3220-42a3-8ea8-438a99d3ef06",
+  "previous_hash": "010A724D2464889E1F26285AC0C0D28F9D3214E6CB805235D8B904D6D0EC6FC8",
+  "winning_hash": "01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D",
+  "random_seed": "24C7YPEL",
+  "creator_name": "third",
+  "solver": "first",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "John",
+  "last_name": "Kennedy",
+  "birth_day": "1917.05.29",
+  "ssn": "333-45-6999",
+  "condition": "AddisonsDisease",
+  "treatment": "DrugTherapy",
+  "medicine": "Steroids"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+third-BC-server: Received block to be verifiedsecond-BC-worker: sending to: localhost:4932
+
+third-BC-server: block sent from: /127.0.0.1:59714
+first-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36124
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+third-worker: block verified during work. Exiting work function | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+third-worker: unable to process the block. Seed is null | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55596
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55602
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59720
+second-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: sending to: localhost:4931
+third-BC-worker: Recieved block that has already been added to ledger
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55608
+second-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36130
+second-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+second-worker: block verified during work. Exiting work function | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+second-worker: unable to process the block. Seed is null | block: ff7149be-3220-42a3-8ea8-438a99d3ef06
+first-worker: Working on block
+first-worker: took block from queue with id: 513f8db3-8d47-461c-8a79-edf04fb73cda
+first-worker: starting work function on block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-worker: Working on block
+third-worker: took block from queue with id: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-worker: starting work function on block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+second-worker: Working on block
+second-worker: took block from queue with id: 513f8db3-8d47-461c-8a79-edf04fb73cda
+second-worker: starting work function on block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-worker: SUCCESS! solved block | seed: 9D54ZHBT | hash: 0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25
+third-worker: Sending verified block to other nodes | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59728
+third-worker: sending to: localhost:4931
+third-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55616
+third-BC-worker: Successfully verified block | id: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-BC-worker: Updating previous hash | old: 01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D | new: 0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36138
+third-BC-worker: block added to the ledger | id: 513f8db3-8d47-461c-8a79-edf04fb73cda
+{
+  "block_id": "513f8db3-8d47-461c-8a79-edf04fb73cda",
+  "previous_hash": "01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D",
+  "winning_hash": "0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25",
+  "random_seed": "9D54ZHBT",
+  "creator_name": "third",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "Joe",
+  "last_name": "DiMaggio",
+  "birth_day": "1914.11.25",
+  "ssn": "111-22-3333",
+  "condition": "SoreKnees",
+  "treatment": "RestFromSports",
+  "medicine": "Aspirin"
+}
+third-BC-worker: Sending verified block to other nodes
+third-BC-worker: sending to: localhost:4932
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59734
+third-BC-worker: sending to: localhost:4931
+second-BC-worker: Successfully verified block | id: 513f8db3-8d47-461c-8a79-edf04fb73cda
+second-BC-worker: Updating previous hash | old: 01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D | new: 0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25third-BC-worker: sending to: localhost:4930
+
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55622
+second-BC-worker: block added to the ledger | id: 513f8db3-8d47-461c-8a79-edf04fb73cda
+{
+  "block_id": "513f8db3-8d47-461c-8a79-edf04fb73cda",
+  "previous_hash": "01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D",
+  "winning_hash": "0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25",
+  "random_seed": "9D54ZHBT",
+  "creator_name": "third",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "Joe",
+  "last_name": "DiMaggio",
+  "birth_day": "1914.11.25",
+  "ssn": "111-22-3333",
+  "condition": "SoreKnees",
+  "treatment": "RestFromSports",
+  "medicine": "Aspirin"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+second-BC-worker: sending to: localhost:4931
+second-BC-worker: sending to: localhost:4930
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36144
+first-BC-worker: Successfully verified block | id: 513f8db3-8d47-461c-8a79-edf04fb73cdathird-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59740
+
+first-BC-worker: Updating previous hash | old: 01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D | new: 0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25
+first-BC-worker: block added to the ledger | id: 513f8db3-8d47-461c-8a79-edf04fb73cda
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55628
+{
+  "block_id": "513f8db3-8d47-461c-8a79-edf04fb73cda",
+  "previous_hash": "01DAC81FE2991776B0FD87700FF1EC45EE78E8D4BD3AF12E16052B628FE8401D",
+  "winning_hash": "0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25",
+  "random_seed": "9D54ZHBT",
+  "creator_name": "third",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "Joe",
+  "last_name": "DiMaggio",
+  "birth_day": "1914.11.25",
+  "ssn": "111-22-3333",
+  "condition": "SoreKnees",
+  "treatment": "RestFromSports",
+  "medicine": "Aspirin"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932
+first-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55634
+second-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36150
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36156
+second-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59746
+first-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+second-worker: block verified during work. Exiting work function | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+second-worker: unable to process the block. Seed is null | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+first-worker: block verified during work. Exiting work function | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+first-worker: unable to process the block. Seed is null | block: 513f8db3-8d47-461c-8a79-edf04fb73cda
+third-worker: Working on block
+third-worker: took block from queue with id: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+third-worker: starting work function on block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+second-worker: Working on block
+second-worker: took block from queue with id: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+second-worker: starting work function on block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+first-worker: Working on block
+first-worker: took block from queue with id: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+first-worker: starting work function on block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+third-worker: SUCCESS! solved block | seed: XUQKAS9R | hash: 00E7C2418F717B047007D0EE4B15114486C0FB2166F55C84AC0C01E21AFB303B
+third-worker: Sending verified block to other nodes | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+third-worker: sending to: localhost:4932
+third-worker: sending to: localhost:4931
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59772
+third-worker: sending to: localhost:4930
+third-BC-worker: Successfully verified block | id: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+third-BC-worker: Updating previous hash | old: 0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25 | new: 00E7C2418F717B047007D0EE4B15114486C0FB2166F55C84AC0C01E21AFB303B
+second-BC-server: Received block to be verified
+third-BC-worker: block added to the ledger | id: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+{
+  "block_id": "7686f062-bd5a-4499-bb78-c1a3beaa2b9f",
+  "previous_hash": "0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25",
+  "winning_hash": "00E7C2418F717B047007D0EE4B15114486C0FB2166F55C84AC0C01E21AFB303B",
+  "random_seed": "XUQKAS9R",
+  "creator_name": "third",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "Helen",
+  "last_name": "Keller",
+  "birth_day": "1880.06.27",
+  "ssn": "666-45-6789",
+  "condition": "Arthritis",
+  "treatment": "WarmCloths",
+  "medicine": "Aspirin"
+}
+third-BC-worker: Sending verified block to other nodessecond-BC-server: block sent from: /127.0.0.1:55660
+
+third-BC-worker: sending to: localhost:4932
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36182
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59778
+third-BC-worker: sending to: localhost:4931
+third-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55666
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36188
+second-BC-worker: Successfully verified block | id: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+second-BC-worker: Updating previous hash | old: 0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25 | new: 00E7C2418F717B047007D0EE4B15114486C0FB2166F55C84AC0C01E21AFB303B
+second-BC-worker: block added to the ledger | id: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+{
+  "block_id": "7686f062-bd5a-4499-bb78-c1a3beaa2b9f",
+  "previous_hash": "0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25",
+  "winning_hash": "00E7C2418F717B047007D0EE4B15114486C0FB2166F55C84AC0C01E21AFB303B",
+  "random_seed": "XUQKAS9R",
+  "creator_name": "third",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "Helen",
+  "last_name": "Keller",
+  "birth_day": "1880.06.27",
+  "ssn": "666-45-6789",
+  "condition": "Arthritis",
+  "treatment": "WarmCloths",
+  "medicine": "Aspirin"
+}
+second-BC-worker: Sending verified block to other nodes
+second-BC-worker: sending to: localhost:4932
+second-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: sending to: localhost:4931first-BC-worker: Successfully verified block | id: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55672
+
+first-BC-worker: Updating previous hash | old: 0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25 | new: 00E7C2418F717B047007D0EE4B15114486C0FB2166F55C84AC0C01E21AFB303B
+first-BC-worker: block added to the ledger | id: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+{
+  "block_id": "7686f062-bd5a-4499-bb78-c1a3beaa2b9f",
+  "previous_hash": "0096FF67D02199380CBCE0298CB6A12DDB75BB04AE584673303A618B96D9BB25",
+  "winning_hash": "00E7C2418F717B047007D0EE4B15114486C0FB2166F55C84AC0C01E21AFB303B",
+  "random_seed": "XUQKAS9R",
+  "creator_name": "third",
+  "solver": "third",
+  "timestamp": " 2021-05-25.23:18:54",
+  "first_name": "Helen",
+  "last_name": "Keller",
+  "birth_day": "1880.06.27",
+  "ssn": "666-45-6789",
+  "condition": "Arthritis",
+  "treatment": "WarmCloths",
+  "medicine": "Aspirin"
+}
+first-BC-worker: Sending verified block to other nodes
+first-BC-worker: sending to: localhost:4932second-BC-worker: sending to: localhost:4930
+
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59784
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+second-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36194
+first-BC-worker: sending to: localhost:4931
+first-BC-worker: sending to: localhost:4930
+second-BC-server: Received block to be verified
+second-BC-server: block sent from: /127.0.0.1:55678
+second-BC-worker: Recieved block that has already been added to ledger
+first-BC-server: Received block to be verified
+first-BC-server: block sent from: /127.0.0.1:36200
+third-BC-server: Received block to be verified
+third-BC-server: block sent from: /127.0.0.1:59790
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+third-BC-worker: Recieved block that has already been added to ledger
+first-BC-worker: Recieved block that has already been added to ledger
+second-worker: block verified during work. Exiting work function | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+second-worker: unable to process the block. Seed is null | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+first-worker: block verified during work. Exiting work function | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
+first-worker: unable to process the block. Seed is null | block: 7686f062-bd5a-4499-bb78-c1a3beaa2b9f
