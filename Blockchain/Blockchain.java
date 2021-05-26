@@ -20,6 +20,10 @@ running with "test" as the arg will run a 3 node example showing the processes c
 running with any number as the arg will run the assignment process. ex:
 > java -cp ".:gson-2.8.2.jar" Blockchain 0
 
+To start the command console
+> java -cp ".:gson-2.8.2.jar" Blockchain console [host name] [port] [node name]
+
+
 List of files needed for running the program.
 BlockInput0.txt
 BlockInput1.txt
