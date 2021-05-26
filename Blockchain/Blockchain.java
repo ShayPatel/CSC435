@@ -2,8 +2,7 @@ import com.google.gson.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.security.*;
 
@@ -42,19 +41,22 @@ class Blockchain{
                     n.add_verified_block_host("localhost", 4931);
                     try {
                         Thread.sleep(3000);
+                        start_console("localhost",servers[0]+process,name);
                         
                         Gson gson = new Gson();
-                        ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
+                        ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "first");
                         for(block b: new_blocks){
                             String json = gson.toJson(b);
                             send_command(json,"localhost",4820); 
                         }
-                        new_blocks =  utils.read_input_file("BlockInput1.txt", "B-1");
+                        Thread.sleep(5000);
+                        new_blocks =  utils.read_input_file("BlockInput1.txt", "second");
                         for(block b: new_blocks){
                             String json = gson.toJson(b);
                             send_command(json,"localhost",4821); 
                         }
-                        new_blocks =  utils.read_input_file("BlockInput2.txt", "C-2");
+                        Thread.sleep(5000);
+                        new_blocks =  utils.read_input_file("BlockInput2.txt", "third");
                         for(block b: new_blocks){
                             String json = gson.toJson(b);
                             send_command(json,"localhost",4822); 
@@ -70,7 +72,7 @@ class Blockchain{
                     break;
             }
         }
-        else if(args.length == 0){
+        else if(args.length > 0 && args[0].equals("test")){
             Node a0 = new Node(4710,4820,4930,"A-0");
             Node b1 = new Node(4711,4821,4931,"B-1");
             Node c2 = new Node(4712,4822,4932,"C-2");
@@ -92,6 +94,7 @@ class Blockchain{
             
             try {
                 Thread.sleep(3000);
+                start_console("localhost",4710,"A-0");
                 
                 Gson gson = new Gson();
                 ArrayList<block> new_blocks =  utils.read_input_file("BlockInput0.txt", "A-0");
@@ -117,20 +120,8 @@ class Blockchain{
                 e.printStackTrace();
             }
             
-            //https://www.baeldung.com/java-detect-os
-            String os = System.getProperty("os.name");
-            if(os.equals("Linux")){
-                
-                try {
-                    Process pb = new ProcessBuilder("x-terminal-emulator", "-e", String.format("java -cp \".:gson-2.8.2.jar\" Blockchain console %s %d %s;read line","localhost",4710,"A-0")).start();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-            
         }
-        else if(args[0].equals("console")){
+        else if(args.length > 0 && args[0].equals("console")){
             String host = args[1];
             int port = Integer.parseInt(args[2]);
             String name = args[3];
@@ -138,6 +129,29 @@ class Blockchain{
                 command_console(host, port, name);
             } catch (IOException e) {
                 //Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        else{
+            try{
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter a name for your node");
+                System.out.flush();
+                String name = reader.readLine();
+                System.out.println("Enter a port to run the command server");
+                System.out.flush();
+                int command_port = Integer.parseInt(reader.readLine());
+                System.out.println("Enter a port to run the unverified block server");
+                System.out.flush();
+                int ub_port = Integer.parseInt(reader.readLine());
+                System.out.println("Enter a port to run the verified block server");
+                System.out.flush();
+                int vb_port = Integer.parseInt(reader.readLine());
+
+                Node n = new Node(command_port, ub_port, vb_port, name);
+                start_console("localhost", command_port, name);
+            }
+            catch(IOException e){
                 e.printStackTrace();
             }
         }
@@ -168,14 +182,14 @@ class Blockchain{
         }
     }
 
-    //https://stackoverflow.com/questions/3819571/bash-open-a-terminal-with-a-command-to-run-passed-as-an-argument
-    //https://askubuntu.com/questions/630698/how-can-i-keep-the-gnome-terminal-open-after-a-program-closes#:~:text=First%20option%3A%20edit%20gnome%2Dterminal,choose%20%22Keep%20terminal%20open%22.
+    
     public static void command_console(String host, int port, String name) throws IOException{
         System.out.println("Starting the command console");
         System.out.println(String.format("host: %s | port: %d | name: %s\n", host, port, name));
         
         System.out.println("Available commands:");
         System.out.println("print | ledger | show | print ledger | show ledger - prints the ledger on the running node's console");
+        System.out.println("save - to save the ledger to a json file in the node");
         System.out.println("add | host | add host | new host- connect a node to this node");
         System.out.println("file | from file | read | read file - give a txt file that contains the new block data you want to add to the blockchain");
         System.out.println("block | new block | new - allows you to enter a line to create a single block to add to the chain");
@@ -192,7 +206,7 @@ class Blockchain{
 
             if(command.toLowerCase().equals("add") | command.toLowerCase().equals("host") | command.toLowerCase().equals("add host") | command.toLowerCase().equals("new host")){
                 System.out.println("Enter the new host details");
-                System.out.println("Enter the host name: ");
+                System.out.println("Enter the host name or IP: ");
                 System.out.flush();
                 String h = reader.readLine();
                 System.out.println("Enter the port to send unverified blocks");
@@ -200,12 +214,14 @@ class Blockchain{
                 System.out.println("Enter the port to send verified blocks");
                 int vb_port = Integer.parseInt(reader.readLine());
                 
-                HashMap<String,String> output_json = new HashMap<String,String>(){{
-                    put("host",h);
-                    put("ub_port",""+ub_port);
-                    put("vb_port",""+vb_port);
-                }};
+                HashMap<String,String> output_json = new HashMap<String,String>();
+                output_json.put("host",h);
+                output_json.put("ub_port",""+ub_port);
+                output_json.put("vb_port",""+vb_port);
+                output_json.put("type","add host");
+
                 json = gson.toJson(output_json);
+                //System.out.println(json);
                 send_command(json, host, port);
             }
             else if (command.toLowerCase().equals("block") | command.toLowerCase().equals("new") | command.toLowerCase().equals("new block")){
@@ -256,13 +272,30 @@ class Blockchain{
             else if(command.toLowerCase().equals("print") | command.toLowerCase().equals("ledger") | command.toLowerCase().equals("print ledger") | command.toLowerCase().equals("show") | command.toLowerCase().equals("show ledger")){
                 send_command("{\"type\":\"print\"}", host, port);
             }
+            else if(command.toLowerCase().equals("save")){
+                send_command("{\"type\":\"save\"}", host, port);
+            }
             else{
                 System.out.println("Invalid command");
             }
         }
     }
 
-
+    public static void start_console(String host, int port, String name){
+        //https://www.baeldung.com/java-detect-os
+        //https://stackoverflow.com/questions/3819571/bash-open-a-terminal-with-a-command-to-run-passed-as-an-argument
+        //https://askubuntu.com/questions/630698/how-can-i-keep-the-gnome-terminal-open-after-a-program-closes#:~:text=First%20option%3A%20edit%20gnome%2Dterminal,choose%20%22Keep%20terminal%20open%22.
+        String os = System.getProperty("os.name");
+        if(os.equals("Linux")){
+            
+            try {
+                Process pb = new ProcessBuilder("x-terminal-emulator", "-e", String.format("java -cp \".:gson-2.8.2.jar\" Blockchain console %s %d %s;read line",host,port,name)).start();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
 
@@ -427,6 +460,7 @@ class block implements Serializable{
         data += block_id;
         data += creator_name;
         data += timestamp;
+        data += solver;
 
         data += first_name;
         data += last_name;
@@ -624,10 +658,15 @@ class Node{
 
 
         //TODO:: start the servers and the workers
-        new Thread(new command_server(command_port)).start();
-        new Thread(new unverified_block_server(ub_port)).start();
-        new Thread(new worker()).start();
-        new Thread(new verified_block_server(vb_port)).start();
+        Thread command_server_thread = new Thread(new command_server(command_port));
+        command_server_thread.start();
+        Thread unverified_block_server_thread = new Thread(new unverified_block_server(ub_port));
+        unverified_block_server_thread.start();
+        Thread worker_thread = new Thread(new worker());
+        worker_thread.start();
+        Thread verified_block_server_thread = new Thread(new verified_block_server(vb_port));
+        verified_block_server_thread.start();
+        
     }
 
     public void add_unverified_block_host(String host, int port){
@@ -968,10 +1007,11 @@ class Node{
 
                     System.out.println(String.format("%s-worker: starting work function on block: %s", name, b.get_block_id()));
                     //perform the work and get the random seed back
+                    //set the solver before work as the solver will be included in the data
+                    b.set_solver(name);
                     String random_seed = work(b.get_block_string(), block_id);
                     //set previous hash here to prevent previous hash from being changed on thread switch
                     b.set_previous_hash(previous_hash);
-                    b.set_solver(name);
 
                     if(random_seed == null){
                         System.out.println(String.format("%s-worker: unable to process the block. Seed is null | block: %s", name, b.get_block_id()));
@@ -1162,7 +1202,7 @@ class Node{
                 String json;
                 json = reader.readLine();
                 Gson gson = new Gson();
-                Map command = gson.fromJson(json, Map.class);
+                HashMap command = gson.fromJson(json, HashMap.class);
 
                 String type = (String) command.get("type");
 
@@ -1181,6 +1221,9 @@ class Node{
                         String b = (String) command.get("block");
                         send_block(b);
                         break;
+                    case "save":
+                        save_ledger();
+                        break;
                     default:
                         System.out.println("invalid command recieved");
                         break;
@@ -1197,6 +1240,16 @@ class Node{
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String output = gson.toJson(ledger);
             System.out.println(output);
+        }
+
+        public void save_ledger(){
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            try( FileWriter writer = new FileWriter("BlockchainLedger.json")){
+                gson.toJson(ledger, writer);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
         }
 
         public void send_block(String command){
