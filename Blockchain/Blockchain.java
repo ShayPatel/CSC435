@@ -269,6 +269,9 @@ class Blockchain{
                 ArrayList<block> new_blocks = utils.read_input_file(filename, name);
                 for(block b: new_blocks){
                     json = gson.toJson(b);
+                    HashMap<String,String> output_json = new HashMap<String,String>();
+                    output_json.put("type","block");
+                    output_json.put("block", json);
                     System.out.println(String.format("Sending block: %s",b.get_block_id()));
                     send_command(json,host,port); 
                 }
@@ -1215,6 +1218,7 @@ class Node{
                 HashMap command = gson.fromJson(json, HashMap.class);
 
                 String type = (String) command.get("type");
+                System.out.println("log check 1");
 
                 switch(type){
                     case "add host":
@@ -1227,7 +1231,7 @@ class Node{
                     case "print":
                         print_ledger();
                         break;
-                    case "new":
+                    case "block":
                         String b = (String) command.get("block");
                         send_block(b);
                         break;
